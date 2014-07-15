@@ -1,33 +1,37 @@
-%center
-  .page-header
+.row
+  .text-center
+    .page-header
     %h2
       Marcus Aurelius' Compass
     %big An Application to Guide Stoic Philosophical Practice
 
-%center
-  .container
-    .row
-      .col-sm-4
-        .panel.panel-default
-          .panel-body
-            = image_tag "doctrine.png"
-            .caption
-              %h5 Stoic Philosophy Explained
-              %p How did people in the ancient world understand philosophy? Read our description of the ideas behind Stoicism as a practice.
-            = button_to "The Stoic Doctrines", doctrines_index_path, method: :get, class: "btn btn-danger btn-large"
-      .col-sm-4.col
-        .panel.panel-default
-          .panel-body
-            = image_tag "exercise.png"
-            .caption
-              %h5 Practice Stoic Exercises
-              %p How can you make Stoic philosophy into a lived practice? Run written and audio exercises we developed - and create your own.
-            = button_to "My Stoic Exercises", meditations_path, method: :get, class: "btn btn-warning btn-large"
-      .col-sm-4.col
-        .panel.panel-default
-          .panel-body
-            = image_tag "meditation.png"
-            .caption
-              %h5 Read an Emperor's Meditations
-              %p Read meditations from Marcus Aurelius that we selected as inspirational and instructive for practicing Stoic philosophy today.
-            = button_to "Marcus Aurelius' Meditations", meditations_path, method: :get, class: "btn btn-primary btn-large"
+%br/
+
+.row
+  .col-sm-4
+    .panel.panel-default
+      .panel-body
+        = image_tag "doctrine.png"
+        .text-center
+          .caption
+            %h5 Stoic Philosophy Explained
+            %p How did people in the ancient world understand philosophy? Read our description of the ideas behind Stoicism as a practice.
+          = button_to "The Stoic Doctrines", doctrines_index_path, method: :get, class: "btn btn-danger btn-large"
+  .col-sm-4.col
+    .panel.panel-default
+      .panel-body
+        = image_tag "exercise.png"
+        .text-center
+          .caption
+            %h5 Practice Stoic Exercises
+            %p How can you make Stoic philosophy into a lived practice? Run written and audio exercises we developed - and create your own.
+          = button_to "My Stoic Exercises", meditations_path, method: :get, class: "btn btn-warning btn-large"
+  .col-sm-4.col
+    .panel.panel-default
+      .panel-body
+        = image_tag "meditation.png"
+        .text-center
+          .caption
+            %h5 Read an Emperor's Meditations
+            %p Read meditations from Marcus Aurelius that we selected as inspirational and instructive for practicing Stoic philosophy today.
+          = button_to "Marcus Aurelius' Meditations", meditations_path, method: :get, class: "btn btn-primary btn-large"
