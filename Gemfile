@@ -32,6 +32,7 @@ group :development, :test do
   # Needed in new OS X Sierra for this version of Ruby with Pry
   gem 'rb-readline'
   gem 'railroady'
+  #Spring Gem recommended by Everyday RSpec - greatly speeds test runs
   gem 'spring-commands-rspec'
 end
 

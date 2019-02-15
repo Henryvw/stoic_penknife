@@ -1,14 +1,13 @@
 FactoryGirl.define do
   factory :quotation do
-    title    'Dankenliste-2'
+    title    'Dankenliste'
     passage  'Von ruhmvollen Andenken meines Vaters erhielt ich den Antrieb zu einem bescheidenen und zugleich männlichen Wesen.'
-    category 'Dankeliste'
   end
 
-  trait :with_tag do
-    after(:create) do |quotation|
+  trait :tag do
+    after(:build) do |quotation|
       #quotation.tags << create(:tag, name: "Germany")
-      quotation.tags << create(:tag, name: "Franc")
+      quotation.tags << build(:tag, name: "Roman")
     end
   end
 end

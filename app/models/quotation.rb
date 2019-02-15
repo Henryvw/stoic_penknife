@@ -3,7 +3,7 @@ class Quotation < ActiveRecord::Base
   has_many :tags, through: :quotation_taggings
 
   def self.tagged_with(name)
-    Tag.find_by_name!(name).quotations # This is doing two sql queries, first one to find all tags by name, second one to find the tags quotations
+    Tag.find_by_name!(name).quotations # This default ActiveRecord method activates two sql queries, first one to find all tags by name, second one to find the tags quotations
   end
  
   def self.find_quotations_with(multiple_tags)
