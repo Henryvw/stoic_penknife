@@ -34,6 +34,7 @@ group :development, :test do
   gem 'railroady'
   #Spring Gem recommended by Everyday RSpec - greatly speeds test runs
   gem 'spring-commands-rspec'
+  gem 'database_cleaner'
 end
 
 group :production do
