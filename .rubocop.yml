@@ -1,2 +1,22 @@
+Style/EmptyMethod:
+ Enabled: False
 Documentation:
   Enabled: False
+Metrics/LineLength:
+  Exclude:
+    - db/**/*.rb
+    - spec/*.rb
+    - spec/**/*.rb
+    - spec/**/**/*.rb
+    - config/**/*.rb
+    - config/*.rb
+Metrics/MethodLength:
+  Exclude:
+    - db/**/*.rb
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+    - db/**/*.rb
+Metrics/AbcSize:
+  Exclude:
+    - app/models/ability.rb

@@ -8,7 +8,9 @@ class Exercise < ActiveRecord::Base
   has_many :exercise_taggings
   has_many :tags, through: :exercise_taggings
   accepts_nested_attributes_for :rehearsals
-  accepts_nested_attributes_for :e_questions, reject_if: ->(a) { a[:question].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :e_questions,
+    reject_if: ->(a) { a[:question].blank? },
+    allow_destroy: true
   validates :title, presence: true
   validates :general_description, presence: true
   validate :maximum_number_of_e_questions
@@ -32,6 +34,10 @@ class Exercise < ActiveRecord::Base
   end
 
   def maximum_number_of_e_questions
-    errors.add(:base, 'You may only add a maximum of 7 questions to an exercise at this time. In the future, we may add a feature to have additional questions. Contact us if this is an important feature to you.') unless e_questions.length <= 7
+    errors.add(:base, 'You may only add a maximum of 7 questions
+               to an exercise at this time. In the future, we may
+               add a feature to have additional questions. Contact us
+               if this is an important feature
+               to you.') unless e_questions.length <= 7
   end
 end
