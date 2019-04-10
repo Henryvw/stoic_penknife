@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.3.1'
-gem 'rails', '5.0.0.1'
+ruby '2.6.2'
+gem 'rails', '5.2'
 gem 'haml'
 gem 'cocoon', '1.2.6'
 gem 'devise'
@@ -13,7 +13,7 @@ gem 'geocoder'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin', github: 'activeadmin'
 
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'autoprefixer-rails'
 
 group :assets do
@@ -21,14 +21,13 @@ end
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.6'
   gem 'pry'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'capybara'
   gem 'launchy'
-  gem 'sandi_meter'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   # Needed in new OS X Sierra for this version of Ruby with Pry
   gem 'rb-readline'
   gem 'railroady'
