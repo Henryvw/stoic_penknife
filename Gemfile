@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.6.2'
-gem 'rails', '5.2'
+gem 'rails', '5.2.3'
 gem 'haml'
 gem 'cocoon', '1.2.6'
 gem 'devise'
