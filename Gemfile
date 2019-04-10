@@ -25,6 +25,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem 'rubocop', '~> 0.67.2', require: false
   gem 'capybara'
   gem 'launchy'
   gem 'factory_bot_rails'
