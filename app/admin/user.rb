@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   permit_params :user, :admin
 
@@ -29,6 +31,4 @@ ActiveAdmin.register User do
   #   permitted << :other if resource.something?
   #   permitted
   # end
-
-
 end

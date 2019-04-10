@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class RehearsalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_rehearsal, only: [:show, :edit, :update, :destroy]
+  before_action :set_rehearsal, only: %i[show edit update destroy]
 
-  #Load CanCan roles for Controller
+  # Load CanCan roles for Controller
   load_and_authorize_resource
 
   # GET /rehearsals
   # GET /rehearsals.json
   def index
-    @rehearsals = Rehearsal.where(user_id:current_user.id)
+    @rehearsals = Rehearsal.where(user_id: current_user.id)
   end
 
   # GET /rehearsals/1
@@ -23,15 +25,13 @@ class RehearsalsController < ApplicationController
     @rehearsal = @exercise.rehearsals.new
     e_questions = @rehearsal.exercise.e_questions
     e_questions.each do |e_question|
-      @rehearsal.e_answers.build(:e_question_id => e_question.id )
+      @rehearsal.e_answers.build(e_question_id: e_question.id)
     end
 
-    unless request.location.nil?
-      @rehearsal_location = request.location.city
-    end
+    @rehearsal_location = request.location.city unless request.location.nil?
 
     exercise_tags = @exercise.tags
-    @published_quotations = Quotation.where(publish:true).find_quotations_with(exercise_tags)
+    @published_quotations = Quotation.where(publish: true).find_quotations_with(exercise_tags)
   end
 
   # GET /rehearsals/1/edit
@@ -80,13 +80,14 @@ class RehearsalsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rehearsal
-      @rehearsal = Rehearsal.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def rehearsal_params
-      params.require(:rehearsal).permit(:tally, :exercise_id, :city, e_answers_attributes: [:id, :answer, :e_question_id, :_destroy])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_rehearsal
+    @rehearsal = Rehearsal.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def rehearsal_params
+    params.require(:rehearsal).permit(:tally, :exercise_id, :city, e_answers_attributes: %i[id answer e_question_id _destroy])
+  end
 end

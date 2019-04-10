@@ -9,11 +9,21 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'cancancan', '~> 1.9'
 gem 'cocoon', '1.2.6'
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'geocoder'
 gem 'haml'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.6.0'
 gem 'rails', '5.2.3'
+# Use SCSS for stylesheets
+gem 'sass-rails'
+# Use Uglifier as compressor for JavaScript assets
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+gem 'uglifier', '>= 1.3.0'
 
 group :assets do
 end
@@ -42,18 +52,6 @@ group :production do
   gem 'puma-heroku'
   gem 'rails_12factor'
 end
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.2'
-
-# Use SCSS for stylesheets
-gem 'sass-rails'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.6.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -1,1 +1,3 @@
-#FactoryGirl.define
+# frozen_string_literal: true
+
+# FactoryBot.define

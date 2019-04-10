@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class QuotationsController < ApplicationController
-  #Load CanCan roles for Controller
+  # Load CanCan roles for Controller
   load_and_authorize_resource
 
-  before_action :set_quotation, only: [:show, :edit, :update, :destroy]
+  before_action :set_quotation, only: %i[show edit update destroy]
 
   # GET /quotations
   # GET /quotations.json
@@ -12,8 +14,7 @@ class QuotationsController < ApplicationController
 
   # GET /quotations/1
   # GET /quotations/1.json
-  def show
-  end
+  def show; end
 
   # GET /quotations/new
   def new
@@ -21,8 +22,7 @@ class QuotationsController < ApplicationController
   end
 
   # GET /quotations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /quotations
   # POST /quotations.json
@@ -65,13 +65,14 @@ class QuotationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quotation
-      @quotation = Quotation.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def quotation_params
-      params.require(:quotation).permit(:title, :passage, :tag_list, :publish)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quotation
+    @quotation = Quotation.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def quotation_params
+    params.require(:quotation).permit(:title, :passage, :tag_list, :publish)
+  end
 end

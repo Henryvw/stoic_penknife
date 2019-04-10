@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -11,5 +13,4 @@ class User < ActiveRecord::Base
     helper :application # gives access to all helpers defined within `application_helper`.
     include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`
   end
-
 end

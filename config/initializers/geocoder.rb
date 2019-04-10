@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Geocoder.configure(
   # Geocoding options
-   timeout: 30,                 # geocoding service timeout (secs)
+  timeout: 30 # geocoding service timeout (secs)
   # lookup: :google,            # name of geocoding service (symbol)
   # language: :en,              # ISO-639 language code
   # use_https: false,           # use HTTPS for lookup requests? (if supported)

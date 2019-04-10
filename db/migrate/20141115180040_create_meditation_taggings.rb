@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMeditationTaggings < ActiveRecord::Migration
   def change
     create_table :meditation_taggings do |t|

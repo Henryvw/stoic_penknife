@@ -1,4 +1,6 @@
-require File.expand_path('../boot', __FILE__)
+# frozen_string_literal: true
+
+require File.expand_path('boot', __dir__)
 
 require 'rails/all'
 # config.action_mailer.raise_delivery_errors = true
@@ -22,18 +24,18 @@ Bundler.require(:default, Rails.env)
 module StoicPenknife
   class Application < Rails::Application
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
-    #config.time_zone = Time.now.zone
-    #I was trying to make a fancy local time zone for you as a user. I think I might need to add a time zone column to the user database and do various other detailed things in order for local times to be saved and stored and accessible. What appears to be a good resource, https://robots.thoughtbot.com/its-about-time-zones 
+    # config.time_zone = Time.now.zone
+    # I was trying to make a fancy local time zone for you as a user. I think I might need to add a time zone column to the user database and do various other detailed things in order for local times to be saved and stored and accessible. What appears to be a good resource, https://robots.thoughtbot.com/its-about-time-zones
 
     config.generators do |g|
       g.test_framework :rspec,
-      fixtures: true,
-      view_specs: false,
-      helper_specs: false,
-      routing_specs: false,
-      controller_specs: true,
-      request_specs: false
-      g.fixture_replacement :factory_girl, dir: "spec/factores"
+                       fixtures: true,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       controller_specs: true,
+                       request_specs: false
+      g.fixture_replacement :factory_bot, dir: 'spec/factores'
     end
 
     # Settings in config/environments/* take precedence over those specified here.
