@@ -7,8 +7,8 @@ class Exercise < ActiveRecord::Base
   has_many :tags, through: :exercise_taggings
   accepts_nested_attributes_for :rehearsals
   accepts_nested_attributes_for :e_questions,
-    reject_if: ->(a) { a[:question].blank? },
-    allow_destroy: true
+                                reject_if: ->(a) { a[:question].blank? },
+                                allow_destroy: true
   validates :title, presence: true
   validates :general_description, presence: true
   validate :maximum_number_of_e_questions

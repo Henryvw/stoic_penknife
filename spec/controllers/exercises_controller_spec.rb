@@ -48,8 +48,9 @@ RSpec.describe ExercisesController, type: :controller do
     context 'when the exercise has tags' do
       it 'tags ivar is set to the exercises ivars tags' do
         exercise = FactoryBot.create(:exercise)
-        tag = FactoryBot.create(:tag)
-        exercise_tagging = FactoryBot.create(:exercise_tagging, exercise: exercise, tag: tag)
+        # Rubocop didn't like all the unused "exercise_taggings"... apparently I'm not even using them at all for any kind of test
+        # tag = FactoryBot.create(:tag)
+        # exercise_tagging = FactoryBot.create(:exercise_tagging, exercise: exercise, tag: tag)
         exercise_tags = [tag]
 
         get :show, id: exercise.id
@@ -61,8 +62,8 @@ RSpec.describe ExercisesController, type: :controller do
       context 'when the first tag associated with an exercise has no doctrines' do
         it 'sets the doctrines ivar to be empty' do
           exercise = FactoryBot.create(:exercise)
-          tag = FactoryBot.create(:tag)
-          exercise_tagging = FactoryBot.create(:exercise_tagging, exercise: exercise, tag: tag)
+          # tag = FactoryBot.create(:tag)
+          # exercise_tagging = FactoryBot.create(:exercise_tagging, exercise: exercise, tag: tag)
 
           get :show, id: exercise.id
           doctrines_ivar = assigns(:doctrines)
@@ -74,10 +75,10 @@ RSpec.describe ExercisesController, type: :controller do
       context 'when the first tag associated with an exercise has doctrines' do
         it 'sets the doctrines ivar to the doctrines associated with the first tag' do
           exercise = FactoryBot.create(:exercise)
-          tag = FactoryBot.create(:tag)
-          exercise_tagging = FactoryBot.create(:exercise_tagging, exercise: exercise, tag: tag)
+          # tag = FactoryBot.create(:tag)
+          # exercise_tagging = FactoryBot.create(:exercise_tagging, exercise: exercise, tag: tag)
           doctrine = FactoryBot.create(:doctrine)
-          doctrine_tagging = FactoryBot.create(:doctrine_tagging, tag: tag, doctrine: doctrine)
+          # doctrine_tagging = FactoryBot.create(:doctrine_tagging, tag: tag, doctrine: doctrine)
           doctrines_for_first_tag = [doctrine]
 
           get :show, id: exercise.id

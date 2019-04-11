@@ -35,5 +35,7 @@ def flag_it_as_global
   check 'exercise[global]'
   fill_in 'exercise_title', with: @exercise.user_id
   click_button 'Save Exercise'
-  save_and_open_page
+  # Rubocop complains about the next line,
+  # calling it a "debugger entry point"
+  # save_and_open_page
 end

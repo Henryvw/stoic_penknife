@@ -1,6 +1,7 @@
 class RehearsalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_rehearsal, only: %i[show edit update destroy]
+  before_action :fetch_city, only: %i[new]
 
   # Load CanCan roles for Controller
   load_and_authorize_resource
@@ -26,10 +27,9 @@ class RehearsalsController < ApplicationController
       @rehearsal.e_answers.build(e_question_id: e_question.id)
     end
 
-    @rehearsal_location = request.location.city unless request.location.nil?
-
     exercise_tags = @exercise.tags
-    @published_quotations = Quotation.where(publish: true).find_quotations_with(exercise_tags)
+    @published_quotations = Quotation.where(publish: true)
+                                     .find_quotations_with(exercise_tags)
   end
 
   # GET /rehearsals/1/edit
@@ -44,11 +44,12 @@ class RehearsalsController < ApplicationController
     @rehearsal.user_id = current_user.id
     respond_to do |format|
       if @rehearsal.save
-        format.html { redirect_to @rehearsal.exercise, notice: 'Rehearsal was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @rehearsal }
+        format.html do
+          redirect_to @rehearsal.exercise,
+                      notice: 'Rehearsal was successfully created.'
+        end
       else
         format.html { render action: 'new' }
-        format.json { render json: @rehearsal.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,11 +59,12 @@ class RehearsalsController < ApplicationController
   def update
     respond_to do |format|
       if @rehearsal.update(rehearsal_params)
-        format.html { redirect_to @rehearsal.exercise, notice: 'Rehearsal was successfully updated.' }
-        format.json { head :no_content }
+        format.html do
+          redirect_to @rehearsal.exercise,
+                      notice: 'Rehearsal was successfully updated.'
+        end
       else
         format.html { render action: 'edit' }
-        format.json { render json: @rehearsal.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,7 +75,6 @@ class RehearsalsController < ApplicationController
     @rehearsal.destroy
     respond_to do |format|
       format.html { redirect_to @rehearsal.exercise }
-      format.json { head :no_content }
     end
   end
 
@@ -84,8 +85,20 @@ class RehearsalsController < ApplicationController
     @rehearsal = Rehearsal.find(params[:id])
   end
 
+  def fetch_city
+    @rehearsal_location = request.location.city unless request.location.nil?
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def rehearsal_params
-    params.require(:rehearsal).permit(:tally, :exercise_id, :city, e_answers_attributes: %i[id answer e_question_id _destroy])
+    params.require(:rehearsal).permit(:tally,
+                                      :exercise_id,
+                                      :city,
+                                      e_answers_attributes: %i[
+                                        id
+                                        answer
+                                        e_question_id
+                                        _destroy
+                                      ])
   end
 end

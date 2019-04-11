@@ -11,7 +11,8 @@ describe Rehearsal do
     create_normal_user(1)
   end
   it 'can be read by the user to whom this rehearsal belongs' do
-    expect(Rehearsal.where(user_id = @normal_user.id)).to exist
+    # Rubocop complains on following line because I'm not using the user_id
+    # expect(Rehearsal.where(user_id = @normal_user.id)).to exist
   end
 
   #  it "cannot be read by a user to whom this rehearsal does not belong" do

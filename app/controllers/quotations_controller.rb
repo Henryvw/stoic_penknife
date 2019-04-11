@@ -26,14 +26,11 @@ class QuotationsController < ApplicationController
   # POST /quotations.json
   def create
     @quotation = Quotation.new(quotation_params)
-
     respond_to do |format|
       if @quotation.save
-        format.html { redirect_to @quotation, notice: 'Quotation was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @quotation }
+        format.html { redirect_to @quotation, notice: 'New quotation added!' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @quotation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +40,12 @@ class QuotationsController < ApplicationController
   def update
     respond_to do |format|
       if @quotation.update(quotation_params)
-        format.html { redirect_to @quotation, notice: 'Quotation was successfully updated.' }
-        format.json { head :no_content }
+        format.html do
+          redirect_to @quotation,
+                      notice: 'Quotation was successfully updated.'
+        end
       else
         format.html { render action: 'edit' }
-        format.json { render json: @quotation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +56,6 @@ class QuotationsController < ApplicationController
     @quotation.destroy
     respond_to do |format|
       format.html { redirect_to quotations_url }
-      format.json { head :no_content }
     end
   end
 
@@ -69,8 +66,11 @@ class QuotationsController < ApplicationController
     @quotation = Quotation.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet
   def quotation_params
-    params.require(:quotation).permit(:title, :passage, :tag_list, :publish)
+    params.require(:quotation).permit(:title,
+                                      :passage,
+                                      :tag_list,
+                                      :publish)
   end
 end

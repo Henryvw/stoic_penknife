@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   has_many :exercises
 
   class MyMailer < Devise::Mailer
-    helper :application # gives access to all helpers defined within `application_helper`.
+    # gives access to all helpers
+    # defined within `application_helper`.
+    helper :application
     include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`
   end
 end

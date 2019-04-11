@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :quotation do
     title    { 'Aurelius Dankenliste' }
     passage  { 'Von ruhmvollen Andenken meines Vaters erhielt ich den Antrieb zu einem bescheidenen und zugleich männlichen Wesen.' }
-    publish {  true }
+    publish { true }
   end
 
   trait :tag do
