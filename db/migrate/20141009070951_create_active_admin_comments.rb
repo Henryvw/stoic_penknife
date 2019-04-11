@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateActiveAdminComments < ActiveRecord::Migration
   def self.up
     create_table :active_admin_comments do |t|

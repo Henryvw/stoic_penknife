@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Added on instruction of Puma, including puma-heroku gem... not sure if needed?
 plugin 'heroku'
 

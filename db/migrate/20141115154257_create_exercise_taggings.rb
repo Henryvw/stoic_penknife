@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateExerciseTaggings < ActiveRecord::Migration
   def change
     create_table :exercise_taggings do |t|

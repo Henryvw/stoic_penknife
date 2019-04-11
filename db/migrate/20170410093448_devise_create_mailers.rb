@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class DeviseCreateMailers < ActiveRecord::Migration[5.0]
   def change
     create_table :mailers do |t|

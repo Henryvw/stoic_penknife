@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateDoctrines < ActiveRecord::Migration
   def change
     create_table :doctrines do |t|

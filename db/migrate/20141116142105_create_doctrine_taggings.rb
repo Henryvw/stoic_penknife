@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateDoctrineTaggings < ActiveRecord::Migration
   def change
     create_table :doctrine_taggings do |t|

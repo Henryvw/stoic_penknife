@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Doctrine < ActiveRecord::Base
   has_many :doctrine_taggings
   has_many :tags, through: :doctrine_taggings

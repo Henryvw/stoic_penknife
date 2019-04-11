@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class DoctrinesController < ApplicationController
   # Load CanCan roles for Controller
   load_and_authorize_resource

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class EQuestion < ActiveRecord::Base
   belongs_to :exercise
   has_many :e_answers, dependent: :destroy

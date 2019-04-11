@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ChangeExerciseDescriptionColumn < ActiveRecord::Migration[5.0]
   def up
     change_column :exercises, :general_description, :text

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module ApplicationHelper
   def nav_link(path)
     class_name = current_page?(path) ? 'active' : ''

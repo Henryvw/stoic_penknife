@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Quotation < ActiveRecord::Base
   has_many :quotation_taggings
   has_many :tags, through: :quotation_taggings

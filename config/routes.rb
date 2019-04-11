@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 StoicPenknife::Application.routes.draw do
   devise_for :mailers
   devise_for :admin_users, ActiveAdmin::Devise.config

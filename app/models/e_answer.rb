@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class EAnswer < ActiveRecord::Base
   belongs_to :e_question
   belongs_to :rehearsal

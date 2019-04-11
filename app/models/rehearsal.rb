@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Rehearsal < ActiveRecord::Base
   belongs_to :exercise
   belongs_to :user

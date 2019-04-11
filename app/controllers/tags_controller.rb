@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class TagsController < ApplicationController
   def index
     @global_exercises = Exercise.tagged_with(params[:tag]).where(global: true)

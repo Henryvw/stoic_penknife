@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def create_normal_user(id)
   @normal_user = User.new
   @normal_user.id = id

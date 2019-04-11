@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 # Matthias: FactoryBot, 3 core methods for building: create, build, and build_stubb. First use create to have most confidence. Build_stubb is less expensive as it does not save to the database. It creates a 'fake' id for the Model to talk to for associations etc.

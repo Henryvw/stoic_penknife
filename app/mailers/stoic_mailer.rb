@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class StoicMailer < ActionMailer::Base
   include Devise::Mailers::Helpers
 

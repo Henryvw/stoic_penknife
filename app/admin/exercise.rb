@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 ActiveAdmin.register Exercise do
   permit_params :user, :admin
 

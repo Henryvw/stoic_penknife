@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 def create_exercise
   @exercise = Exercise.new
   @exercise.title = 'How to be a Stoic?'
