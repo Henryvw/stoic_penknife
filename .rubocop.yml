@@ -1,5 +1,7 @@
 Style/EmptyMethod:
- Enabled: False
+  Enabled: False
+Style/MultilineIfModifier:
+  Enabled: False
 Documentation:
   Enabled: False
 Metrics/LineLength:
@@ -20,3 +22,5 @@ Metrics/BlockLength:
 Metrics/AbcSize:
   Exclude:
     - app/models/ability.rb
+Style/FrozenStringLiteralComment:
+  Enabled: false
