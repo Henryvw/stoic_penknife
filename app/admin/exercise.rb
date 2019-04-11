@@ -31,6 +31,4 @@ ActiveAdmin.register Exercise do
   #   permitted << :other if resource.something?
   #   permitted
   # end
-
-
 end

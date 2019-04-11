@@ -1,0 +1,37 @@
+# Rubocop is wrong about these styles.
+Style/EmptyMethod:
+  Enabled: False
+Style/MultilineIfModifier:
+  Enabled: False
+Documentation:
+  Enabled: False
+Style/FrozenStringLiteralComment:
+  Enabled: False
+
+# Rubocop is maybe right here but I need to exclude
+# These particular files
+Metrics/LineLength:
+  Exclude:
+    - db/**/*.rb
+    - spec/**/*.rb
+    - config/**/*.rb
+    - app/controllers/rehearsals_controller.rb
+Metrics/MethodLength:
+  Exclude:
+    - db/**/*.rb
+    - app/models/ability.rb
+    - app/controllers/rehearsals_controller.rb
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+    - db/**/*.rb
+Metrics/AbcSize:
+  Exclude:
+    - app/models/ability.rb
+
+
+# I didn't write Devise. I'm not going to fix it
+# for Rubocop.
+AllCops:
+  Exclude:
+    - app/controllers/my_devise/*.rb

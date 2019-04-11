@@ -1,1 +1,1 @@
-#FactoryGirl.define
+# FactoryBot.define

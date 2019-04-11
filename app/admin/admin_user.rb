@@ -5,7 +5,7 @@ ActiveAdmin.register AdminUser do
     selectable_column
     id_column
     column :email
-    column "Last sign in at", :current_sign_in_at
+    column 'Last sign in at', :current_sign_in_at
     column :sign_in_count
     column :created_at
     actions
@@ -17,12 +17,11 @@ ActiveAdmin.register AdminUser do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs 'Admin Details' do
       f.input :email
       f.input :password
       f.input :password_confirmation
     end
     f.actions
   end
-
 end

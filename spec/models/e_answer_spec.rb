@@ -9,15 +9,15 @@ describe EAnswer do
     create_e_answer
   end
 
-  it "returns an exercise answer as a string" do
+  it 'returns an exercise answer as a string' do
     expect(@e_answer.answer). to eq 'Yes, I practice it every day.'
   end
 
-  it "can be accessed via an e_question" do
+  it 'can be accessed via an e_question' do
     expect(@e_question.e_answers).to exist
   end
 
-  it "can be accessed via a rehearsal, since it is a nested attribute of rehearsal via e_question" do
+  it 'can be accessed via a rehearsal, since it is a nested attribute of rehearsal via e_question' do
     create_rehearsal
     expect(@rehearsal.e_answers).to exist
   end

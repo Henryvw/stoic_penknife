@@ -1,8 +1,8 @@
 class QuotationsController < ApplicationController
-  #Load CanCan roles for Controller
+  # Load CanCan roles for Controller
   load_and_authorize_resource
 
-  before_action :set_quotation, only: [:show, :edit, :update, :destroy]
+  before_action :set_quotation, only: %i[show edit update destroy]
 
   # GET /quotations
   # GET /quotations.json
@@ -12,8 +12,7 @@ class QuotationsController < ApplicationController
 
   # GET /quotations/1
   # GET /quotations/1.json
-  def show
-  end
+  def show; end
 
   # GET /quotations/new
   def new
@@ -21,21 +20,17 @@ class QuotationsController < ApplicationController
   end
 
   # GET /quotations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /quotations
   # POST /quotations.json
   def create
     @quotation = Quotation.new(quotation_params)
-
     respond_to do |format|
       if @quotation.save
-        format.html { redirect_to @quotation, notice: 'Quotation was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @quotation }
+        format.html { redirect_to @quotation, notice: 'New quotation added!' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @quotation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -45,11 +40,12 @@ class QuotationsController < ApplicationController
   def update
     respond_to do |format|
       if @quotation.update(quotation_params)
-        format.html { redirect_to @quotation, notice: 'Quotation was successfully updated.' }
-        format.json { head :no_content }
+        format.html do
+          redirect_to @quotation,
+                      notice: 'Quotation was successfully updated.'
+        end
       else
         format.html { render action: 'edit' }
-        format.json { render json: @quotation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,18 +56,21 @@ class QuotationsController < ApplicationController
     @quotation.destroy
     respond_to do |format|
       format.html { redirect_to quotations_url }
-      format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quotation
-      @quotation = Quotation.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def quotation_params
-      params.require(:quotation).permit(:title, :passage, :tag_list, :publish)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quotation
+    @quotation = Quotation.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet
+  def quotation_params
+    params.require(:quotation).permit(:title,
+                                      :passage,
+                                      :tag_list,
+                                      :publish)
+  end
 end
