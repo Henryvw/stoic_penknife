@@ -1,3 +1,8 @@
+def random_id_generator
+  random_generator = Random.new
+  random_id = (random_generator.rand * 1000).to_i
+end
+
 def create_exercise
   @exercise = Exercise.new
   @exercise.title = 'How to be a Stoic?'
@@ -7,7 +12,7 @@ end
 
 def create_rehearsal
   @rehearsal = Rehearsal.new
-  @rehearsal.id = 1
+  @rehearsal.id = random_id_generator
   @rehearsal.tally = 2
   @rehearsal.exercise_id = 1
   @rehearsal.user_id = 1
