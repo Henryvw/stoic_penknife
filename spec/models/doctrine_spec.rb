@@ -43,7 +43,6 @@ describe Doctrine, type: :model do
       it '#find_quotations_with - when given a LIST of tags, find all doctrines attached to all of the tags in the database' do
         expect(Doctrine.find_doctrines_with(@tags).first.file_name).to eq('hadot_marcus_aurelius')
       end
-
     end
 
     context 'find tags given doctrine(s)' do
