@@ -21,8 +21,8 @@ jobs:
       - run: bin/rails db:migrate RAILS_ENV=test
 
   # 2. Test
-      #- run: bundle exec ruboco
-      #- run: bundle exec bin/spring rspec
+      - run: bundle exec rubocop
+      - run: bundle exec bin/spring rspec
 
   # 3. Deploy to Heroku
       - run:
