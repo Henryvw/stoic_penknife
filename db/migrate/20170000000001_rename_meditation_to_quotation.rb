@@ -1,4 +1,4 @@
-class RenameMeditationToQuotation < ActiveRecord::Migration[5.0]
+class RenameMeditationToQuotation < ActiveRecord::Migration[5.2]
   def change
     rename_table :meditations, :quotations
   end
