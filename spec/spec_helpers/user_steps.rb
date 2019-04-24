@@ -1,4 +1,4 @@
-def create_normal_user(id)
+def create_normal_user(id=random_id_generator)
   @normal_user = User.new
   @normal_user.id = id
   @normal_user.admin = false

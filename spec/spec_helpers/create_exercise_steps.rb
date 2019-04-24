@@ -14,8 +14,9 @@ def create_rehearsal
   @rehearsal = Rehearsal.new
   @rehearsal.id = random_id_generator
   @rehearsal.tally = 2
-  @rehearsal.exercise_id = 1
-  @rehearsal.user_id = 1
+  @rehearsal.exercise_id = @exercise.id
+  @rehearsal.user_id = @normal_user.id
+  @rehearsal.city = 'Berlin'
   @rehearsal.save!
 end
 
