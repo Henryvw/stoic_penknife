@@ -16,13 +16,13 @@ describe Rehearsal, type: :model do
 
   it 'can be read by the user to whom this rehearsal belongs' do
     create_normal_user(37)
-    # Rubocop complains on following line because I'm not using the user_id
     expect(Rehearsal.where(user_id = "#{@normal_user.id}")).to exist
   end
 
-  #  it "cannot be read by a user to whom this rehearsal does not belong" do
-  #    create_normal_user(2)
-  #    create_rehearsal
-  #    expect(Rehearsal.where(user_id=@normal_user.id).first.user_id).not_to exist
-  #  end
+  it "cannot be read by a user to whom this rehearsal does not belong" do
+    create_normal_user(1)
+    create_second_normal_user(473)
+    create_rehearsal
+    expect(Rehearsal.where(user_id: @second_user.id)).to be_empty
+  end
 end
