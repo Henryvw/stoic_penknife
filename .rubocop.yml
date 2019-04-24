@@ -7,7 +7,6 @@ Documentation:
   Enabled: False
 Style/FrozenStringLiteralComment:
   Enabled: False
-
 # Rubocop is maybe right here but I need to exclude
 # These particular files
 Metrics/LineLength:
@@ -29,9 +28,13 @@ Metrics/AbcSize:
   Exclude:
     - app/models/ability.rb
 
-
-# I didn't write Devise. I'm not going to fix it
-# for Rubocop.
 AllCops:
   Exclude:
+    # I didn't write Devise. I'm not going to fix it
+    # for Rubocop.
     - app/controllers/my_devise/*.rb
+    # The CircleCI build when creating the Schema has
+    # all kinds of troubles because the Rails migrations
+    # don't apparently generate exactly according to
+    # Rubocop's rules.
+    - db/schema.rb
