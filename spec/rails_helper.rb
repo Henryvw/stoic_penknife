@@ -33,6 +33,9 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
+  #In order to mock authentication, rspec test helpers from Devise are needed:
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.clean

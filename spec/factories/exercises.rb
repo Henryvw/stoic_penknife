@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :exercise do
-    title { 'Example Title' }
-    general_description { 'Example General Description' }
+    title { 'Senecas Courage Walk' }
+    general_description { 'Take a stroll with Seneca and beef up your courage.' }
   end
 end

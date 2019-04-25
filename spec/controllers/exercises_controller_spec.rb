@@ -1,24 +1,43 @@
 require 'rails_helper'
+require 'spec_helpers/create_exercise_steps'
+require 'spec_helpers/user_steps'
 
 RSpec.describe ExercisesController, type: :controller do
   describe '#show' do
-    let(:user) { FactoryBot.build_stubbed(:user) }
+    context 'As a signed-in user' do
+      let(:user) { FactoryBot.build_stubbed(:user) }
 
-    before do
-      allow(controller).to receive(:authenticate_user!)
-      allow(controller).to receive(:current_user).and_return(user)
+      before do
+        allow(controller).to receive(:authenticate_user!)
+        allow(controller).to receive(:current_user).and_return(user)
+        @exercise = FactoryBot.create(:exercise)
+      end
+
+      it 'responds successfully to a GET request' do
+        get :show, params: { id: @exercise.id }
+        expect(response).to be_success
+      end
+
+      it 'returns a 200 HTTP response code' do
+        get :show, params: { id: @exercise.id }
+        expect(response).to have_http_status("200")
+      end
+
+      it 'raises an active record error if the exercise does not exist' do
+        expect { get :show, params: { id: 'invalid ID' }}.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
 
-    it 'assigns the exercises ivar to the exercise for an id' do
-      # Arrange, Act, Assert
-      exercise = FactoryBot.create(:exercise)
-      get :show, id: exercise.id
-      exercise_ivar = assigns(:exercise)
-      expect(exercise_ivar).to eq(exercise)
-    end
+    context 'Not logged in - some rando clicking on the exercise page' do
+      it 'returns a 302 response' do
+        get :show, params: { id: '' }
+        expect(response).to have_http_status("302")
+      end
 
-    it 'raises an active record error if the exercise does not exist' do
-      expect { get :show, id: 'invalid ID' }.to raise_error(ActiveRecord::RecordNotFound)
+      it 'redirects to the sign-in page' do
+        get :show, params: { id: '' }
+        expect(response).to redirect_to("/users/sign_in")
+      end
     end
 
     it 'assigns the return value of exercise#rehearsals_for_user to the rehearsals ivar' do
