@@ -1,4 +1,4 @@
-class DeviseCreateMailers < ActiveRecord::Migration[5.0]
+class DeviseCreateMailers < ActiveRecord::Migration[5.2]
   def change
     create_table :mailers do |t|
       ## Database authenticatable

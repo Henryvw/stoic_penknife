@@ -1,4 +1,4 @@
-class CreateDoctrines < ActiveRecord::Migration
+class CreateDoctrines < ActiveRecord::Migration[5.2]
   def change
     create_table :doctrines do |t|
       t.string :file_name

@@ -1,4 +1,4 @@
-class ChangeExerciseDescriptionColumn < ActiveRecord::Migration[5.0]
+class ChangeExerciseDescriptionColumn < ActiveRecord::Migration[5.2]
   def up
     change_column :exercises, :general_description, :text
   end
