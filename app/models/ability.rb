@@ -15,8 +15,8 @@ class Ability
       can :create, Rehearsal
       cannot :index, Rehearsal
       can :update, Rehearsal, user_id: user.id
-      can :update, Exercise, user_id: user.id
-      can :create, Exercise, user_id: user.id
+      can :update, Exercise, user_id: user.id, global: false
+      can :create, Exercise, user_id: user.id, global: false
       can :destroy, Exercise, user_id: user.id
       cannot :update, Quotation
       can :manage, Doctrine

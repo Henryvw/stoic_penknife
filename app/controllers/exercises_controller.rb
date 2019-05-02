@@ -16,7 +16,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/1
   # GET /exercises/1.json
   def show
-    @exercise = Exercise.find(params[:id])
+    @exercise = Exercise.show_only_global_or_your_personal_exercise(params[:id], current_user.id)
     @rehearsals = @exercise.rehearsals_for_user(current_user)
     exercise_tags = @exercise.tags
     @published_doctrines = Doctrine.where(publish: true)
@@ -33,13 +33,22 @@ class ExercisesController < ApplicationController
   end
 
   # GET /exercises/1/edit
-  def edit; end
+  def edit
+    @exercise = Exercise.show_only_global_or_your_personal_exercise(params[:id], current_user.id)
+  end
 
   # POST /exercises
   # POST /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
     @exercise.user_id = current_user.id
+    respond_to do |format|
+      if @exercise.save
+        format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
+    end
   end
 
   # PATCH/PUT /exercises/1
