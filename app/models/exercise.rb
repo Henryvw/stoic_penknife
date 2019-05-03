@@ -38,14 +38,4 @@ class Exercise < ActiveRecord::Base
                if this is an important feature
                to you.') unless e_questions.length <= 7
   end
-
-  def self.show_only_global_or_your_personal_exercise(exercise_id, current_user_id)
-      begin
-        @exercise = Exercise.where(global: true)
-                          .or(Exercise.where(user_id: current_user_id))
-                          .find(exercise_id)
-      rescue
-        raise CanCan::AccessDenied.new("You are not allowed to access this exercise, buddy!")
-    end
-  end
 end

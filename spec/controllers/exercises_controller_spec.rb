@@ -20,11 +20,11 @@ RSpec.describe ExercisesController, type: :controller do
 
       it 'returns a 200 HTTP response code' do
         get :show, params: { id: exercise.id }
-        expect(response).to have_http_status("200")
+        expect(response).to have_http_status('200')
       end
 
       it 'raises an active record error if the exercise does not exist' do
-        expect { get :show, params: { id: '2384' }}.to raise_error(ActiveRecord::RecordNotFound)
+        expect { get :show, params: { id: '2384' } }.to raise_error(ActiveRecord::RecordNotFound)
       end
 
       it 'blocks you (redirects you to root) from viewing a private, non-published/non-global exercise that does not belong to you' do
@@ -37,12 +37,12 @@ RSpec.describe ExercisesController, type: :controller do
     context 'when not logged-in' do
       it 'returns a 302 response' do
         get :show, params: { id: exercise.id }
-        expect(response).to have_http_status("302")
+        expect(response).to have_http_status('302')
       end
 
       it 'redirects to the sign-in page' do
         get :show, params: { id: exercise.id }
-        expect(response).to redirect_to("/users/sign_in")
+        expect(response).to redirect_to('/users/sign_in')
       end
     end
   end
@@ -54,31 +54,27 @@ RSpec.describe ExercisesController, type: :controller do
 
       before do
         allow(controller).to receive(:authenticate_user!)
-        allow(controller).to receive(:current_user).and_return(@current_user)
+        allow(controller).to receive(:current_user).and_return(current_user)
       end
 
       it 'blocks you (redirects you to root) from editing an exercise that is PRIVATE and does not belong to you' do
-        exercise = FactoryBot.create(:exercise, user_id: 1, global: false)
         second_exercise = FactoryBot.create(:exercise, user_id: 35, global: false)
         get :edit, params: { id: second_exercise.id }
         expect(response).to redirect_to root_path
       end
 
       it 'blocks you (redirects you to root) from editing an exercise that is GLOBAL and does not belong to you' do
-        exercise = FactoryBot.create(:exercise, user_id: 1, global: false)
         second_exercise = FactoryBot.create(:exercise, user_id: 35, global: true)
         get :edit, params: { id: second_exercise.id }
         expect(response).to redirect_to root_path
       end
 
       it 'does not allow you to publish an exercise globally' do
-        post :edit, params: { id: exercise.id, global: true }
+        post :update, params: { exercise: { global: true }, id: exercise.id }
         expect(response).to redirect_to root_path
       end
     end
   end
-
-
   #    it 'assigns the return value of exercise#rehearsals_for_user to the rehearsals ivar' do
   #      exercise = FactoryBot.create(:exercise)
   #      allow(Exercise).to receive(:find).with(exercise.id.to_s).and_return(exercise)
@@ -106,7 +102,7 @@ RSpec.describe ExercisesController, type: :controller do
 #    context 'when the exercise has tags' do
 #      it 'tags ivar is set to the exercises ivars tags' do
 #        exercise = FactoryBot.create(:exercise)
-#        # Rubocop didn't like all the unused "exercise_taggings"... apparently I'm not even using them at all for any kind of test
+#        # Rubocop didn't like all the unused 'exercise_taggings"... apparently I'm not even using them at all for any kind of test
 #        # tag = FactoryBot.create(:tag)
 #        # exercise_tagging = FactoryBot.create(:exercise_tagging, exercise: exercise, tag: tag)
 #        exercise_tags = [tag]

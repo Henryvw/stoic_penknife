@@ -1,6 +1,6 @@
 def random_id_generator
   random_generator = Random.new
-  random_id = (random_generator.rand * 1000).to_i
+  (random_generator.rand * 1000).to_i
 end
 
 def create_exercise

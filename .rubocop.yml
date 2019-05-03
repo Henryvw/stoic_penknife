@@ -1,6 +1,8 @@
 # Rubocop is wrong about these styles.
 Style/EmptyMethod:
   Enabled: False
+Style/RaiseArgs:
+  EnforcedStyle: compact
 Style/MultilineIfModifier:
   Enabled: False
 Documentation:
