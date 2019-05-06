@@ -104,6 +104,54 @@ RSpec.describe ExercisesController, type: :controller do
       end
     end
   end
+
+
+  describe '#create' do
+    context 'as an authenticated, logged-in user' do
+        let(:current_user) { FactoryBot.create(:user) }
+
+
+      context 'with valid attributes' do
+        let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
+
+        it 'adds a new exercise' do
+          allow(controller).to receive(:authenticate_user!)
+          allow(controller).to receive(:current_user).and_return(current_user)
+
+          exercise_params = FactoryBot.attributes_for(:exercise, user_id: current_user.id)
+
+          binding.pry
+          post :create, params: { exercise: exercise_params }
+          expect { post :create, params: { exercise: exercise_params } }.to change(current_user.exercises, :count).by(1)
+        end
+      end
+
+      context 'as a non-admin a Global exercise' do
+        let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
+
+        it 'blocks you (redirects you to root) from creating an exercise that is GLOBAL' do
+          allow(controller).to receive(:authenticate_user!)
+          allow(controller).to receive(:current_user).and_return(current_user)
+
+          global_exercise = FactoryBot.attributes_for(:exercise, global: true)
+          get :create, params: { exercise: global_exercise }
+          expect(response).to redirect_to root_path
+        end
+      end
+    end
+
+    context 'As a guest / not logged-in' do
+      it 'redirects you to the sign-in / sign-up page' do
+        get :index
+        expect(response).to redirect_to '/users/sign_in'
+      end
+
+      it 'returns a 302 (redirect) response' do
+        get :index
+        expect(response).to have_http_status '302'
+      end
+    end
+  end
   #    it 'assigns the return value of exercise#rehearsals_for_user to the rehearsals ivar' do
   #      exercise = FactoryBot.create(:exercise)
   #      allow(Exercise).to receive(:find).with(exercise.id.to_s).and_return(exercise)

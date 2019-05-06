@@ -54,7 +54,6 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     @exercise.user_id = current_user.id
-    authorize! @exercise, current_user
     if @exercise.save
       redirect_to @exercise, notice: 'Exercise was successfully created.'
     else
