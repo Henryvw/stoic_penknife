@@ -1,8 +1,37 @@
 require 'rails_helper'
-require 'spec_helpers/create_exercise_steps'
-require 'spec_helpers/user_steps'
 
 RSpec.describe ExercisesController, type: :controller do
+  describe '#index' do
+    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
+    let(:current_user) { FactoryBot.create(:user) }
+
+    context 'As an authenticated user' do
+      it 'returns the index successfully (200)' do
+        allow(controller).to receive(:authenticate_user!)
+        allow(controller).to receive(:current_user).and_return(current_user)
+
+        get :index
+
+        aggregate_failures do
+          expect(response).to be_success
+          expect(response).to have_http_status "200"
+        end
+      end
+    end
+
+    context 'As a guest' do
+      it 'redirects you to the sign-in / sign-up page' do
+        get :index
+        expect(response).to redirect_to '/users/sign_in'
+      end
+
+      it 'returns a 302 (redirect) response' do
+        get :index
+        expect(response).to have_http_status "302"
+      end
+    end
+  end
+
   describe '#show' do
     let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
     let(:current_user) { FactoryBot.create(:user) }
