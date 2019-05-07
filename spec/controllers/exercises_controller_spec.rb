@@ -14,7 +14,7 @@ RSpec.describe ExercisesController, type: :controller do
 
         aggregate_failures do
           expect(response).to be_successful
-          expect(response).to have_http_status "200"
+          expect(response).to have_http_status '200'
         end
       end
     end
@@ -27,7 +27,7 @@ RSpec.describe ExercisesController, type: :controller do
 
       it 'returns a 302 (redirect) response' do
         get :index
-        expect(response).to have_http_status "302"
+        expect(response).to have_http_status '302'
       end
     end
   end
@@ -183,6 +183,29 @@ RSpec.describe ExercisesController, type: :controller do
       it 'returns a 302 (redirect) response' do
         get :index
         expect(response).to have_http_status '302'
+      end
+    end
+  end
+
+  describe '#delete' do
+    context 'as an authorized user' do
+      # Note that for destroy/delete you need to use let! (exclamation mark)
+      # because otherwise, if not already instantiated by another call,
+      # the destroy action will try to destroy something that isn't there
+      let!(:current_user) { FactoryBot.create(:user) }
+      let!(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, global: false) }
+
+      it 'successfully deletes an exercise' do
+        allow(controller).to receive(:authenticate_user!)
+        allow(controller).to receive(:current_user).and_return(current_user)
+
+        expect { delete :destroy, params: { id: exercise.id } }.to change(Exercise, :count).by(-1)
+      end
+    end
+
+    context 'as an unauthorized user' do
+      it 'does NOT delete an exercise' do
+        expect { delete :destroy, params: { id: 11 } }.to_not change(Exercise, :count)
       end
     end
   end

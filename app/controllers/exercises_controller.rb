@@ -55,7 +55,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(exercise_params)
     @exercise.user_id = current_user.id
     if @exercise.save
-      redirect_to @exercise
+      redirect_to @exercise, notice: 'Exercise was successfully created.'
     else
       render action: 'new'
     end
