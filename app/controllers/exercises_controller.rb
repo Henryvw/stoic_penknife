@@ -55,7 +55,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(exercise_params)
     @exercise.user_id = current_user.id
     if @exercise.save
-      redirect_to @exercise, notice: 'Exercise was successfully created.'
+      redirect_to @exercise
     else
       render action: 'new'
     end
@@ -69,7 +69,9 @@ class ExercisesController < ApplicationController
     # case to call the CanCan method authorize! to check whether this user
     # is authorized to update/change this model / database table
     @exercise.assign_attributes(exercise_params)
-    authorize! @exercise, current_user
+
+    block_private_user_global_editing
+
     if @exercise.save
       redirect_to @exercise, notice: 'Exercise was successfully updated.'
     else
@@ -80,6 +82,8 @@ class ExercisesController < ApplicationController
   # DELETE /exercises/1
   def destroy
     @exercise.destroy
+
+    redirect_to action: 'index'
   end
 
   private
@@ -91,6 +95,14 @@ class ExercisesController < ApplicationController
 
   def check_ownership
     return if @exercise.user_id == current_user.id || @exercise.global?
+
+    raise CanCan::AccessDenied.new(
+      'You are not allowed to access this exercise, buddy!'
+    )
+  end
+
+  def block_private_user_global_editing
+    return if @exercise.user_id == current_user.id && @exercise.global? == false
 
     raise CanCan::AccessDenied.new(
       'You are not allowed to access this exercise, buddy!'

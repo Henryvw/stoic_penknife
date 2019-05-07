@@ -15,7 +15,6 @@ class Ability
       can :create, Rehearsal
       cannot :index, Rehearsal
       can :update, Rehearsal, user_id: user.id
-      can :update, Exercise, user_id: user.id
       can :create, Exercise, user_id: user.id
       can :create, Exercise, global: false
       can :destroy, Exercise, user_id: user.id
@@ -23,8 +22,11 @@ class Ability
       can :manage, Doctrine
       cannot :create, Doctrine
       cannot :update, Doctrine
-      cannot :update, Exercise, global: true
       cannot :create, Exercise, global: true
+
+      cannot :update, Exercise
+      can :update, Exercise, user_id: user.id
+      cannot :update, Exercise, global: true
     end
     #
     # The first argument to `can` is the action you are giving the user
