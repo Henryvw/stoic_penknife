@@ -60,7 +60,8 @@ describe Quotation, type: :model do
   describe 'tag-related instance methods' do
     context 'find quotations given tag(s)' do
       it '#tagged_with - when given a particular tag, returns all quotations attached to it in the database' do
-        expect(Quotation.tagged_with('Roman').first.title).to eq('Aurelius Dankenliste')
+        binding.pry
+        expect(Quotation.tagged_with(@tags.first.name).first.title).to eq('Aurelius Dankenliste')
       end
 
       it '#find_quotations_with - when given a LIST of tags, find all quotations attached to all of the tags in the database' do

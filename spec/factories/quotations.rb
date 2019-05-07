@@ -7,7 +7,7 @@ FactoryBot.define do
 
   trait :tag do
     after(:build) do |quotation|
-      quotation.tags << create(:tag, name: 'Roman')
+      quotation.tags << create(:tag, name: "Roman#{random_id_generator}")
     end
   end
 end
