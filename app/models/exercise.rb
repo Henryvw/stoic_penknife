@@ -32,10 +32,8 @@ class Exercise < ActiveRecord::Base
   end
 
   def maximum_number_of_e_questions
-    errors.add(:base, 'You may only add a maximum of 7 questions
-               to an exercise at this time. In the future, we may
-               add a feature to have additional questions. Contact us
-               if this is an important feature
-               to you.') unless e_questions.length <= 7
+    unless e_questions.length <= 7
+      errors.add(:base, 'You may only add a max of 7 questions.')
+    end
   end
 end
