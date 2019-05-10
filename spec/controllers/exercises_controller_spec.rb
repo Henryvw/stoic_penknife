@@ -21,11 +21,6 @@ RSpec.describe ExercisesController, type: :controller do
         get :index
         expect(response).to redirect_to '/users/sign_in'
       end
-
-      it 'returns a 302 (redirect) response' do
-        get :index
-        expect(response).to have_http_status '302'
-      end
     end
   end
 
@@ -37,11 +32,6 @@ RSpec.describe ExercisesController, type: :controller do
       before do
         allow(controller).to receive(:authenticate_user!)
         allow(controller).to receive(:current_user).and_return(current_user)
-      end
-
-      it 'responds successfully to a GET request' do
-        get :show, params: { id: exercise.id }
-        expect(response).to be_successful
       end
 
       it 'returns a 200 HTTP response code' do
@@ -61,11 +51,6 @@ RSpec.describe ExercisesController, type: :controller do
     end
 
     context 'when not logged-in' do
-      it 'returns a 302 response' do
-        get :show, params: { id: exercise.id }
-        expect(response).to have_http_status('302')
-      end
-
       it 'redirects to the sign-in page' do
         get :show, params: { id: exercise.id }
         expect(response).to redirect_to('/users/sign_in')
@@ -135,11 +120,6 @@ RSpec.describe ExercisesController, type: :controller do
         get :index
         expect(response).to redirect_to '/users/sign_in'
       end
-
-      it 'returns a 302 (redirect) response' do
-        get :index
-        expect(response).to have_http_status '302'
-      end
     end
   end
 
@@ -175,11 +155,6 @@ RSpec.describe ExercisesController, type: :controller do
       it 'redirects you to the sign-in / sign-up page' do
         get :index
         expect(response).to redirect_to '/users/sign_in'
-      end
-
-      it 'returns a 302 (redirect) response' do
-        get :index
-        expect(response).to have_http_status '302'
       end
     end
   end
