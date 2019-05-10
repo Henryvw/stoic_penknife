@@ -12,10 +12,7 @@ RSpec.describe ExercisesController, type: :controller do
 
         get :index
 
-        aggregate_failures do
-          expect(response).to be_successful
-          expect(response).to have_http_status '200'
-        end
+        expect(response).to have_http_status '200'
       end
     end
 
