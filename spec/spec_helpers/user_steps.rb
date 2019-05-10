@@ -1,15 +1,13 @@
-def create_normal_user(id = random_id_generator)
+def create_normal_user
   @normal_user = User.new
-  @normal_user.id = id
   @normal_user.admin = false
   @normal_user.email = "henry_normal_user#{+ random_id_generator}@gmail.com"
   @normal_user.password = 'feastoftheepiphany'
   @normal_user.save!
 end
 
-def create_second_normal_user(id)
+def create_second_normal_user
   @second_user = User.new
-  @second_user.id = id
   @second_user.admin = false
   @second_user.email = "henry_normal_user#{+ random_id_generator}@gmail.com"
   @second_user.password = 'feastoftheepiphany'
