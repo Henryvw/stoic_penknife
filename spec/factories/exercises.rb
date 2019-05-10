@@ -18,15 +18,9 @@ FactoryBot.define do
     end
   end
 
-  trait :a_question do
+  trait :e_question do
     after(:build) do |exercise|
       exercise.e_questions << create(:e_question, question: 'How many Greeks does it take?')
-    end
-  end
-
-  trait :too_many_questions do
-    after(:build) do |exercise|
-      exercise.tags << create(:tag, name: 'Aristotle')
     end
   end
 end

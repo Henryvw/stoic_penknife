@@ -85,14 +85,9 @@ RSpec.describe Exercise, type: :model do
         general_description: 'An amazing exercise to really get your pants off.',
         user: current_user,
       )
-      exercise.e_questions.build(question: "Who?")
-      exercise.e_questions.build(question: "Why?")
-      exercise.e_questions.build(question: "What?")
-      exercise.e_questions.build(question: "How?")
-      exercise.e_questions.build(question: "Wieso?")
-      exercise.e_questions.build(question: "Warum?")
-      exercise.e_questions.build(question: "WWWWH?")
-      exercise.e_questions.build(question: "Why oh why?")
+
+      8.times { exercise.e_questions.build(question: "Why?") }
+
       exercise.valid?
       expect(exercise.errors[:base]).to include('You may only add a max of 7 questions.')
     end
