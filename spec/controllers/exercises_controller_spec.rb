@@ -44,7 +44,7 @@ RSpec.describe ExercisesController, type: :controller do
       end
 
       it 'blocks you (redirects you to root) from viewing a private, non-published/non-global exercise that does not belong to you' do
-        not_my_exercise = FactoryBot.create(:exercise, user_id: 35, global: false)
+        not_my_exercise = FactoryBot.create(:exercise, user: create(:user), global: false)
         get :show, params: { id: not_my_exercise.id }
         expect(response).to redirect_to root_path
       end
@@ -69,13 +69,13 @@ RSpec.describe ExercisesController, type: :controller do
       end
 
       it 'blocks you (redirects you to root) from editing an exercise that is PRIVATE and does not belong to you' do
-        second_exercise = FactoryBot.create(:exercise, user_id: 35, global: false)
+        second_exercise = FactoryBot.create(:exercise, user: create(:user), global: false)
         get :edit, params: { id: second_exercise.id }
         expect(response).to redirect_to root_path
       end
 
       it 'blocks you (redirects you to root) from editing an exercise that is GLOBAL and does not belong to you' do
-        second_exercise = FactoryBot.create(:exercise, user_id: 35, global: true)
+        second_exercise = FactoryBot.create(:exercise, user: create(:user), global: true)
         get :edit, params: { id: second_exercise.id }
         expect(response).to redirect_to root_path
       end
