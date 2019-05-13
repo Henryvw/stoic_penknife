@@ -4,7 +4,7 @@ RSpec.describe Exercise, type: :model do
   let(:current_user) { FactoryBot.create(:user) }
   let(:exercise) { FactoryBot.create(:exercise, user: current_user) }
 
-  describe 'Basic setup methods' do
+  describe 'Validation - Basic Setup of Testing' do
     it 'has a valid factory' do
       expect(exercise).to be_valid
     end
@@ -18,16 +18,19 @@ RSpec.describe Exercise, type: :model do
     end
   end
 
-  describe 'Classic ActiveRecord Instance Methods' do
+  describe 'Attributes - Classic ActiveRecord Instance Methods' do
     it 'returns a title' do
+      exercise = FactoryBot.create(:exercise, title: 'Senecas Courage Walk')
       expect(exercise.title).to eq('Senecas Courage Walk')
     end
 
     it 'returns a general description' do
+      exercise = FactoryBot.create(:exercise, general_description: 'Take a stroll with Seneca and beef up your courage.')
       expect(exercise.general_description).to eq('Take a stroll with Seneca and beef up your courage.')
     end
 
     it 'returns a global boolean' do
+      exercise = FactoryBot.create(:exercise, global: false)
       expect(exercise.global?).to eq(false)
     end
   end
