@@ -23,6 +23,7 @@ jobs:
   # 2. Test
       - run: bundle exec rubocop
       - run: bundle exec bin/spring rspec
+      - run: curl -s https://codecov.io/bash | bash
 
   # 3. Deploy to Heroku
       - run:
