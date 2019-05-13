@@ -27,6 +27,7 @@ jobs:
       - run: curl -s https://codecov.io/bash | bash
       - codecov/upload:
           file: {{ coverage/.resultset.json }}
+      - run: bundle exec rubocop
   # 3. Deploy to Heroku
       - run:
           name: Deploy Master to Heroku
