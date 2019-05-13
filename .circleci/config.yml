@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.4
 jobs:
   # 1. Build
   build:
@@ -22,10 +24,8 @@ jobs:
 
   # 2. Test
       - run: bundle exec bin/spring rspec
-      - run: curl -s https://codecov.io/bash | bash
       - codecov/upload:
           file: {{ coverage/.resultset.json }}
-      - run: bundle exec rubocop
   # 3. Deploy to Heroku
       - run:
           name: Deploy Master to Heroku
