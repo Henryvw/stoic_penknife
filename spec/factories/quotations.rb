@@ -5,9 +5,13 @@ FactoryBot.define do
     publish { true }
   end
 
+  sequence :roman_name do |n|
+    "RomanName#{n}"
+  end
+
   trait :tag do
     after(:build) do |quotation|
-      quotation.tags << create(:tag, name: "Roman#{random_id_generator}")
+      quotation.tags << create(:tag, name: "#{generate :roman_name}")
     end
   end
 end
