@@ -24,8 +24,6 @@ jobs:
 
   # 2. Test
       - run: bundle exec bin/spring rspec
-      - codecov/upload:
-          file: {{ coverage/.resultset.json }}
   # 3. Deploy to Heroku
       - run:
           name: Deploy Master to Heroku
