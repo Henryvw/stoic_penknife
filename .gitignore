@@ -15,5 +15,8 @@
 /log/*.log
 /tmp
 
+# Hide Code Coverage
+/coverage
+
 # Ignore all VIM Swap Files.
 *.swp
