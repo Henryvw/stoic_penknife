@@ -9,12 +9,14 @@ RSpec.describe Exercise, type: :model do
       expect(exercise).to be_valid
     end
 
-    it 'persists a valid model object when given strings for title, general description, user id and a global boolean' do
+    it 'is valid given a string for a title and creates a model object with general description and user attributes' do
       exercise = Exercise.new(
         title: 'Senecas Dance with Dragons',
         general_description: 'An amazing exercise to really get your pants off.',
         user: current_user
       )
+
+      expect(exercise).to be_valid
     end
   end
 
@@ -38,8 +40,8 @@ RSpec.describe Exercise, type: :model do
   # Henry's custom methods
   describe '#rehearsals_for_user' do
     it 'successfully fetches all rehearsals for that particular exercise for that particular user' do
-      user = FactoryBot.build_stubbed(:user)
-      #exercise = FactoryBot.create(:exercise, :socrates_tag)
+      user = FactoryBot.create(:user)
+      exercise = FactoryBot.create(:exercise, :socrates_tag)
       rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: user)
 
       actual = exercise.rehearsals_for_user(user)
@@ -51,7 +53,7 @@ RSpec.describe Exercise, type: :model do
     it 'does not fetch other users rehearsals' do
       user = FactoryBot.build_stubbed(:user)
       user_two = FactoryBot.build_stubbed(:user)
-      #exercise = FactoryBot.create(:exercise)
+      exercise = FactoryBot.create(:exercise)
       rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: user_two)
 
       actual = exercise.rehearsals_for_user(user)
@@ -62,8 +64,8 @@ RSpec.describe Exercise, type: :model do
 
   describe '#self.tagged_with (find EXERCISE with this tag)' do
     it 'returns an exercise when given a tag associated with it' do
-      exercise = FactoryBot.create(:exercise, :socrates_tag)
-      expect(Exercise.tagged_with('Socrates').first.title).to eq('Senecas Courage Walk')
+      exercise = FactoryBot.create(:exercise, :heraklitus_tag, title: 'Courageous Seneca')
+      expect(Exercise.tagged_with('Heraklitus').first.title).to eq('Courageous Seneca')
     end
   end
 

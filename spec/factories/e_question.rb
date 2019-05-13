@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :e_question do
-    question { 'How many Greeks does it take?' }
+    question { 'Question?' }
   end
 end
 

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :exercise do
-    title { 'Senecas Courage Walk' }
-    general_description { 'Take a stroll with Seneca and beef up your courage.' }
+    title { 'Title' }
+    general_description { 'General Description' }
     global { false }
   end
 
@@ -17,9 +17,15 @@ FactoryBot.define do
     end
   end
 
+  trait :heraklitus_tag do
+    after(:build) do |exercise|
+      exercise.tags << create(:tag, name: 'Heraklitus')
+    end
+  end
+
   trait :e_question do
     after(:build) do |exercise|
-      exercise.e_questions << create(:e_question, question: 'How many Greeks does it take?')
+      exercise.e_questions << create(:e_question, question: 'Question?')
     end
   end
 end
