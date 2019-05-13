@@ -44,6 +44,7 @@ group :development, :test do
   # Spring Gem recommended by Everyday RSpec - greatly speeds test runs
   gem 'spring-commands-rspec'
   gem 'sqlite3', '~> 1.3.6'
+  gem 'codecov', :require => false, :group => :test
 end
 
 group :production do
