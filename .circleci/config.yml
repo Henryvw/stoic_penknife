@@ -21,7 +21,8 @@ jobs:
   # 1.3  Set Up Database
       - run: bin/rails db:create
       - run: bin/rails db:migrate RAILS_ENV=test
-
+      - codecov/upload:
+        file: {{ coverage/.resultset.json }}
   # 2. Test
       - run: bundle exec bin/spring rspec
   # 3. Deploy to Heroku
