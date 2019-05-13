@@ -25,7 +25,8 @@ jobs:
       - run: bundle exec bin/spring rspec
       - codecov/upload:
         file: {{ ./coverage/.resultset.json }}
-        when: always
+        # when: always - This is a change that is not yet implemented to the Code Cov "Orb"
+      - run: bundle exec rubocop
   # 3. Deploy to Heroku
       - run:
           name: Deploy Master to Heroku
