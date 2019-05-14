@@ -57,15 +57,11 @@ class RehearsalsController < ApplicationController
   # PATCH/PUT /rehearsals/1
   # PATCH/PUT /rehearsals/1.json
   def update
-    respond_to do |format|
-      if @rehearsal.update(rehearsal_params)
-        format.html do
-          redirect_to @rehearsal.exercise,
-                      notice: 'Rehearsal was successfully updated.'
-        end
-      else
-        format.html { render action: 'edit' }
-      end
+    if @rehearsal.update(rehearsal_params)
+      redirect_to @rehearsal.exercise,
+        notice: 'Rehearsal was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
