@@ -10,16 +10,16 @@ RSpec.feature 'Normal User Manages Exercise' do
     set_exercise_owned_by_normal_user
   end
 
-  scenario 'New Exercise created' do
+  xscenario 'New Exercise created' do
     check_if_exercise_created
   end
 
-  scenario 'Exercise should be local' do
+  xscenario 'Exercise should be local' do
     visit_exercise_page
     check_if_exercise_is_local
   end
 
-  scenario 'User CANNOT flag Exercise as Global' do
+  xscenario 'User CANNOT flag Exercise as Global' do
     visit_exercise_page
     check_that_edit_exercise_link_is_removed
   end

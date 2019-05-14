@@ -3,4 +3,3 @@ FactoryBot.define do
     question { 'Question?' }
   end
 end
-
