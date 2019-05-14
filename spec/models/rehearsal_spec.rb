@@ -3,9 +3,9 @@ require 'spec_helpers/create_exercise_steps'
 require 'spec_helpers/user_steps'
 
 describe Rehearsal, type: :model do
-    let(:normal_user) { FactoryBot.create(:user) }
-    let(:rehearsal) { FactoryBot.create(:rehearsal) }
-    let(:exercise) { FactoryBot.create(:exercise) }
+  let(:normal_user) { FactoryBot.create(:user) }
+  let(:rehearsal) { FactoryBot.create(:rehearsal) }
+  let(:exercise) { FactoryBot.create(:exercise) }
 
   before do
     create_e_question
@@ -20,17 +20,20 @@ describe Rehearsal, type: :model do
     rehearsal = Rehearsal.new(
       exercise_id: exercise.id,
       user_id: normal_user.id,
-      city: "Berlin"
+      city: 'Berlin'
     )
     expect(rehearsal).to be_valid
   end
 
   it 'can be read by the user to whom this rehearsal belongs' do
-    expect(Rehearsal.where(user_id = "#{normal_user.id}")).to exist
+    # rubocop:disable Lint/UselessAssignment
+    rehearsal = Rehearsal.where(user_id = normal_user.id.to_s)
+    # rubocop:enable Lint/UselessAssignment
+    expect(rehearsal).to exist
   end
 
-  it "cannot be read by a user to whom this rehearsal does not belong" do
-    normal_user = FactoryBot.create(:user, id: 55)
+  it 'cannot be read by a user to whom this rehearsal does not belong' do
+    FactoryBot.create(:user, id: 55)
     second_normal_user = FactoryBot.create(:user, id: 473)
     expect(Rehearsal.where(user_id: second_normal_user.id)).to be_empty
   end

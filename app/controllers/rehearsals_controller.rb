@@ -59,7 +59,7 @@ class RehearsalsController < ApplicationController
   def update
     if @rehearsal.update(rehearsal_params)
       redirect_to @rehearsal.exercise,
-        notice: 'Rehearsal was successfully updated.'
+                  notice: 'Rehearsal was successfully updated.'
     else
       render action: 'edit'
     end
