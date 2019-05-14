@@ -64,7 +64,7 @@ RSpec.describe Exercise, type: :model do
 
   describe '#self.tagged_with (find EXERCISE with this tag)' do
     it 'returns an exercise when given a tag associated with it' do
-      exercise = FactoryBot.create(:exercise, :heraklitus_tag, title: 'Courageous Seneca')
+      FactoryBot.create(:exercise, :heraklitus_tag, title: 'Courageous Seneca')
       expect(Exercise.tagged_with('Heraklitus').first.title).to eq('Courageous Seneca')
     end
   end
@@ -78,7 +78,7 @@ RSpec.describe Exercise, type: :model do
 
   describe '#tag_list= (setter)' do
     it 'sets a tag' do
-      exercise.tag_list='Aristarchus'
+      exercise.tag_list = 'Aristarchus'
       expect(exercise.tag_list).to include('Aristarchus')
     end
   end
@@ -88,10 +88,10 @@ RSpec.describe Exercise, type: :model do
       exercise = Exercise.new(
         title: 'Senecas Dance with Dragons',
         general_description: 'An amazing exercise to really get your pants off.',
-        user: current_user,
+        user: current_user
       )
 
-      8.times { exercise.e_questions.build(question: "Why?") }
+      8.times { exercise.e_questions.build(question: 'Why?') }
 
       exercise.valid?
       expect(exercise.errors[:base]).to include('You may only add a max of 7 questions.')

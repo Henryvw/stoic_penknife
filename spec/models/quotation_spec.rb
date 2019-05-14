@@ -9,8 +9,8 @@ require 'rails_helper'
 # 4. Class methods perform as expected.
 
 describe Quotation, type: :model do
-    let(:quotation) { FactoryBot.create(:quotation, :tag) }
-    let(:tags) { quotation.tags }
+  let(:quotation) { FactoryBot.create(:quotation, :tag) }
+  let(:tags) { quotation.tags }
 
   # Test setup i.e. FactoryBot Works with this Model
   it 'has a valid factory' do
