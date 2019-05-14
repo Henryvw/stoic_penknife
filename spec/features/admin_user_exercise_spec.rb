@@ -14,12 +14,12 @@ RSpec.feature 'Admin Flags Global Exercise' do
     check_if_exercise_created
   end
 
-  scenario 'Exercise should be local' do
+  xscenario 'Exercise should be local' do
     visit_exercise_page
     check_if_exercise_is_local
   end
 
-  scenario 'User CAN flag Exercise as Global' do
+  xscenario 'User CAN flag Exercise as Global' do
     visit_edit_exercise_page
     flag_it_as_global
     check_if_exercise_now_tagged_as_global
