@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :exercise do
+
     title { 'Title' }
     general_description { 'General Description' }
     global { false }
