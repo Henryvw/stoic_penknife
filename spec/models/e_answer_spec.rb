@@ -1,24 +1,23 @@
 require 'rails_helper'
-require 'spec_helpers/create_exercise_steps'
-require 'spec_helpers/user_steps'
 
 describe EAnswer do
-  before :each do
-    create_exercise
-    create_e_question
-    create_e_answer
-  end
+  let(:exercise) { FactoryBot.create(:exercise) }
+  let(:rehearsal) { FactoryBot.create(:rehearsal) }
+  let(:e_question) { FactoryBot.create(:e_question) }
+  let(:e_answer) { FactoryBot.create(:e_answer) }
 
   it 'returns an exercise answer as a string' do
-    expect(@e_answer.answer). to eq 'Yes, I practice it every day.'
+    e_answer = FactoryBot.create(:e_answer, answer: 'Yes, I practice it every day.')
+    expect(e_answer.answer). to eq 'Yes, I practice it every day.'
   end
 
-  xit 'can be accessed via an e_question' do
-    expect(@e_question.e_answers).to exist
+  it 'can be accessed via an e_question' do
+    e_answer = FactoryBot.create(:e_answer, e_question_id: e_question.id)
+    expect(e_question.e_answers).to include(e_answer)
   end
 
-  xit 'can be accessed via a rehearsal, since it is a nested attribute of rehearsal via e_question' do
-    create_rehearsal
-    expect(@rehearsal.e_answers).to exist
+  it 'can be accessed via a rehearsal, since it is a nested attribute of rehearsal via e_question' do
+    e_answer = FactoryBot.create(:e_answer, rehearsal_id: rehearsal.id)
+    expect(rehearsal.e_answers).to include(e_answer)
   end
 end
