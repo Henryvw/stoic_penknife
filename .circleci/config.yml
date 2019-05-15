@@ -32,8 +32,7 @@ jobs:
       - run: bin/rails db:migrate RAILS_ENV=test
   # 2. Test
       - run: bundle exec bin/spring rspec
-      - codecov/upload:
-        file: {{ ./coverage/.resultset.json }}
+      - run: curl -s https://codecov.io/bash | bash
         # when: always - This is a change that is not yet implemented to the Code Cov "Orb"
       - run: bundle exec rubocop
   # 3. Deploy to Heroku
