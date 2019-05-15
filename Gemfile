@@ -31,6 +31,7 @@ end
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'capybara'
+  gem 'codecov', require: false, group: :test
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'launchy'
