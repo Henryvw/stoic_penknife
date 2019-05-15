@@ -1,16 +1,9 @@
 require 'rails_helper'
-require 'spec_helpers/create_exercise_steps'
-require 'spec_helpers/user_steps'
 
 describe Rehearsal, type: :model do
   let(:normal_user) { FactoryBot.create(:user) }
   let(:rehearsal) { FactoryBot.create(:rehearsal) }
   let(:exercise) { FactoryBot.create(:exercise) }
-
-  before do
-    create_e_question
-    create_e_answer
-  end
 
   it 'has a valid factory-esque (in this case custom) process for faking rehearsal objects' do
     expect(rehearsal).to be_valid
