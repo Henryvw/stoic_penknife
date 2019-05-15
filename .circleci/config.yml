@@ -2,6 +2,14 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.4
   heroku: circleci/heroku@0.0.6
+
+workflows:
+  build_test_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
 jobs:
   # 1. Build
   build:
@@ -30,5 +38,11 @@ jobs:
       - run: bundle exec rubocop
   # 3. Deploy to Heroku
     #Note API Token - generate by heroku auth:token - https://stackoverflow.com/questions/27810419/git-push-heroku-master-is-still-asking-for-authentication. Will expire in 2020.
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
       - heroku/deploy-via-git:
-        only-branch: master
+          only-branch: master
+
