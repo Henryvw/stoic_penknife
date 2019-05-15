@@ -30,4 +30,5 @@ jobs:
       - run: bundle exec rubocop
   # 3. Deploy to Heroku
     #Note API Token - generate by heroku auth:token - https://stackoverflow.com/questions/27810419/git-push-heroku-master-is-still-asking-for-authentication. Will expire in 2020.
-      - heroku/deploy-via-git
+      - heroku/deploy-via-git:
+        only-branch: master
