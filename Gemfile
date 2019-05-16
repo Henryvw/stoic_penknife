@@ -37,7 +37,7 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rubocop', '~> 0.67.2', require: false
   # Needed in new OS X Sierra for this version of Ruby with Pry
   gem 'railroady'
