@@ -1,7 +1,9 @@
 # Code Coverage (Count How Many Tests I have and display in ReadMe Badge) Integration
+# SimpleCov creates the test reports
 require 'simplecov'
 SimpleCov.start 'rails'
 
+# CodeCov is built on top and pushes the SimpleCov results to their website for analysis
 if ENV['CI']
   require 'codecov'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
