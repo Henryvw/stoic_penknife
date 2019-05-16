@@ -30,12 +30,13 @@ jobs:
       - run: sudo apt-get install nodejs
   # 1.3  Set Up Database
       - run: bin/rails db:create
-      - run: bin/rails db:migrate RAILS_ENV=test
+      - run: bin/rails db:migrate
   # 2. Test
-      - run: env
+  # A way to dump shell environment variables to the screen
+  # - run: env
+      - run: bundle exec rubocop
       - run: bundle exec rspec
         # when: always - This is a change that is not yet implemented to the Code Cov "Orb"
-      - run: bundle exec rubocop
   # 3. Deploy to Heroku
     # Note API Token - generate by heroku auth:token - https://stackoverflow.com/questions/27810419/git-push-heroku-master-is-still-asking-for-authentication. Will expire in 2020.
   deploy:
