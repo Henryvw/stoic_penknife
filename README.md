@@ -14,3 +14,4 @@ If you want to play around, simply download the app and make sure you have Rails
 ### Testing
 I have a woefully incomplete and, let's face it, broken, RSpec test suite. As I find time, I may increase that coverage. Contributing to that test suite, if you are inspired, is one path to getting Stoic love from me.
 
+
