@@ -32,10 +32,8 @@ jobs:
       - run: bin/rails db:create
       - run: bin/rails db:migrate RAILS_ENV=test
   # 2. Test
+      - run: env
       - run: bundle exec rspec
-      - run: ls -la coverage/
-      - codecov/upload:
-        file: coverage/*.json
         # when: always - This is a change that is not yet implemented to the Code Cov "Orb"
       - run: bundle exec rubocop
   # 3. Deploy to Heroku
