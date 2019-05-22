@@ -4,6 +4,9 @@ require 'spec_helper'
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 
+# Require Capybara for System Specs
+require 'capybara/rspec'
+
 # Require FactoryBot Config. Part of FactoryBot setup.
 require 'support/factory_bot.rb'
 
@@ -39,6 +42,8 @@ RSpec.configure do |config|
 
   # In order to mock authentication, rspec test helpers from Devise are needed:
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include RequestSpecHelper, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :system
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
