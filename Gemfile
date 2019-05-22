@@ -35,6 +35,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'launchy'
+  gem 'pg'
   gem 'pry'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta2'
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'railroady'
   gem 'rb-readline'
   # Spring Gem recommended by Everyday RSpec - greatly speeds test runs
+  gem 'selenium-webdriver'
   gem 'spring-commands-rspec'
   gem 'sqlite3', '~> 1.3.6'
 end
