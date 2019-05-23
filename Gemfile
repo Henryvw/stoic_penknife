@@ -17,6 +17,7 @@ gem 'haml'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.6.0'
+gem 'pg'
 gem 'rails', '5.2.3'
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -35,7 +36,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'launchy'
-  gem 'pg'
   gem 'pry'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta2'
@@ -50,7 +50,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'puma'
   gem 'puma-heroku'
   gem 'rails_12factor'
