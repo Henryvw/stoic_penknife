@@ -19,10 +19,10 @@ describe Rehearsal, type: :model do
   end
 
   it 'can be read by the user to whom this rehearsal belongs' do
-    # rubocop:disable Lint/UselessAssignment
-    rehearsal = Rehearsal.where(user_id = normal_user.id.to_s)
-    # rubocop:enable Lint/UselessAssignment
-    expect(rehearsal).to exist
+    FactoryBot.create(:user, id: 50)
+    rehearsal = FactoryBot.create(:rehearsal, user_id: 50)
+
+    expect(Rehearsal.where(user_id: 50)).to include(rehearsal)
   end
 
   it 'cannot be read by a user to whom this rehearsal does not belong' do
