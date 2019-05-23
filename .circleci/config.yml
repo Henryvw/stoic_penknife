@@ -18,7 +18,13 @@ jobs:
       - image: circleci/ruby:2.6.2
         environment:
           RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
       - image: circleci/postgres:9.5-alpine
+        environment: 
+          POSTGRES_USER: henryvanwagenberg
+          POSTGRES_PASSWORD: custom_password
+          POSTGRES_DB: stoic_penknife_development 
   # 1.2 Run commands to install relevant packages
     steps:
       - checkout
