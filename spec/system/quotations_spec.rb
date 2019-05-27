@@ -46,7 +46,7 @@ RSpec.describe 'Quotations', type: :system do
     end
   end
 
-  describe 'Admin user creates a new quotation' do
+  describe 'Admin user' do
     it 'can see a list (index) of quotations' do
       sign_in admin_user
       visit quotations_path
