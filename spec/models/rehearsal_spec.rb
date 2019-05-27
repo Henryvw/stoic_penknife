@@ -19,10 +19,10 @@ describe Rehearsal, type: :model do
   end
 
   it 'can be read by the user to whom this rehearsal belongs' do
-    FactoryBot.create(:user, id: 50)
-    rehearsal = FactoryBot.create(:rehearsal, user_id: 50)
+    user = FactoryBot.create(:user)
+    rehearsal = FactoryBot.create(:rehearsal, user: user)
 
-    expect(Rehearsal.where(user_id: 50)).to include(rehearsal)
+    expect(Rehearsal.where(user_id: user.id)).to include(rehearsal)
   end
 
   it 'cannot be read by a user to whom this rehearsal does not belong' do
