@@ -20,7 +20,6 @@ class ExercisesController < ApplicationController
   load_and_authorize_resource
 
   # GET /exercises
-  # GET /exercises.json
   def index
     @exercises = Exercise.where(user_id: current_user.id)
     @global_exercises = Exercise.where(global: true)
@@ -28,7 +27,6 @@ class ExercisesController < ApplicationController
   end
 
   # GET /exercises/1
-  # GET /exercises/1.json
   def show
     @rehearsals = @exercise.rehearsals_for_user(current_user)
     exercise_tags = @exercise.tags
@@ -50,7 +48,6 @@ class ExercisesController < ApplicationController
   end
 
   # POST /exercises
-  # POST /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
     @exercise.user_id = current_user.id

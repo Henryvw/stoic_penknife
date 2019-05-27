@@ -4,6 +4,9 @@ require 'spec_helper'
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 
+# Require Capybara for System Specs
+require 'capybara/rspec'
+
 # Require FactoryBot Config. Part of FactoryBot setup.
 require 'support/factory_bot.rb'
 
@@ -22,7 +25,7 @@ require 'support/factory_bot.rb'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -39,6 +42,7 @@ RSpec.configure do |config|
 
   # In order to mock authentication, rspec test helpers from Devise are needed:
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :system
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

@@ -7,13 +7,11 @@ class RehearsalsController < ApplicationController
   load_and_authorize_resource
 
   # GET /rehearsals
-  # GET /rehearsals.json
   def index
     @rehearsals = Rehearsal.where(user_id: current_user.id)
   end
 
   # GET /rehearsals/1
-  # GET /rehearsals/1.json
   def show
     @exercise = @rehearsal.exercise
   end
@@ -38,7 +36,6 @@ class RehearsalsController < ApplicationController
   end
 
   # POST /rehearsals
-  # POST /rehearsals.json
   def create
     @rehearsal = Rehearsal.new(rehearsal_params)
     @rehearsal.user_id = current_user.id
@@ -55,7 +52,6 @@ class RehearsalsController < ApplicationController
   end
 
   # PATCH/PUT /rehearsals/1
-  # PATCH/PUT /rehearsals/1.json
   def update
     if @rehearsal.update(rehearsal_params)
       redirect_to @rehearsal.exercise,
@@ -66,7 +62,6 @@ class RehearsalsController < ApplicationController
   end
 
   # DELETE /rehearsals/1
-  # DELETE /rehearsals/1.json
   def destroy
     @rehearsal.destroy
     respond_to do |format|

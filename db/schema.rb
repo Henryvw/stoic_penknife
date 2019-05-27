@@ -10,32 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_214_123_006) do
+ActiveRecord::Schema.define(version: 2019_02_14_123006) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension 'plpgsql'
+
   create_table 'active_admin_comments', force: :cascade do |t|
-    t.string   'namespace', limit: 255
-    t.text     'body'
-    t.string   'resource_id',   limit: 255, null: false
-    t.string   'resource_type', limit: 255, null: false
-    t.integer  'author_id'
-    t.string   'author_type', limit: 255
+    t.string 'namespace', limit: 255
+    t.text 'body'
+    t.string 'resource_id', limit: 255, null: false
+    t.string 'resource_type', limit: 255, null: false
+    t.integer 'author_id'
+    t.string 'author_type', limit: 255
     t.datetime 'created_at'
     t.datetime 'updated_at'
-    t.index %w[author_type author_id], name: 'index_active_admin_comments_on_author_type_and_author_id'
+    t.index ['author_type', 'author_id'], name: 'index_active_admin_comments_on_author_type_and_author_id'
     t.index ['namespace'], name: 'index_active_admin_comments_on_namespace'
-    t.index %w[resource_type resource_id], name: 'index_active_admin_comments_on_resource_type_and_resource_id'
+    t.index ['resource_type', 'resource_id'], name: 'index_active_admin_comments_on_resource_type_and_resource_id'
   end
 
   create_table 'admin_users', force: :cascade do |t|
-    t.string   'email',                  limit: 255, default: '', null: false
-    t.string   'encrypted_password',     limit: 255, default: '', null: false
-    t.string   'reset_password_token',   limit: 255
+    t.string 'email', limit: 255, default: '', null: false
+    t.string 'encrypted_password', limit: 255, default: '', null: false
+    t.string 'reset_password_token', limit: 255
     t.datetime 'reset_password_sent_at'
     t.datetime 'remember_created_at'
-    t.integer  'sign_in_count', default: 0, null: false
+    t.integer 'sign_in_count', default: 0, null: false
     t.datetime 'current_sign_in_at'
     t.datetime 'last_sign_in_at'
-    t.string   'current_sign_in_ip',     limit: 255
-    t.string   'last_sign_in_ip',        limit: 255
+    t.string 'current_sign_in_ip', limit: 255
+    t.string 'last_sign_in_ip', limit: 255
     t.datetime 'created_at'
     t.datetime 'updated_at'
     t.index ['email'], name: 'index_admin_users_on_email', unique: true
@@ -43,8 +47,8 @@ ActiveRecord::Schema.define(version: 20_190_214_123_006) do
   end
 
   create_table 'doctrine_taggings', force: :cascade do |t|
-    t.integer  'tag_id'
-    t.integer  'doctrine_id'
+    t.integer 'tag_id'
+    t.integer 'doctrine_id'
     t.datetime 'created_at'
     t.datetime 'updated_at'
     t.index ['doctrine_id'], name: 'index_doctrine_taggings_on_doctrine_id'
@@ -52,30 +56,30 @@ ActiveRecord::Schema.define(version: 20_190_214_123_006) do
   end
 
   create_table 'doctrines', force: :cascade do |t|
-    t.string   'file_name', limit: 255
+    t.string 'file_name', limit: 255
     t.datetime 'created_at'
     t.datetime 'updated_at'
-    t.boolean  'publish'
+    t.boolean 'publish'
   end
 
   create_table 'e_answers', force: :cascade do |t|
-    t.integer  'e_question_id'
-    t.text     'answer'
+    t.integer 'e_question_id'
+    t.text 'answer'
     t.datetime 'created_at'
     t.datetime 'updated_at'
-    t.integer  'rehearsal_id'
+    t.integer 'rehearsal_id'
   end
 
   create_table 'e_questions', force: :cascade do |t|
-    t.integer  'exercise_id'
-    t.text     'question'
+    t.integer 'exercise_id'
+    t.text 'question'
     t.datetime 'created_at'
     t.datetime 'updated_at'
   end
 
   create_table 'exercise_taggings', force: :cascade do |t|
-    t.integer  'tag_id'
-    t.integer  'exercise_id'
+    t.integer 'tag_id'
+    t.integer 'exercise_id'
     t.datetime 'created_at'
     t.datetime 'updated_at'
     t.index ['exercise_id'], name: 'index_exercise_taggings_on_exercise_id'
@@ -83,34 +87,34 @@ ActiveRecord::Schema.define(version: 20_190_214_123_006) do
   end
 
   create_table 'exercises', force: :cascade do |t|
-    t.string   'title',               limit: 255
-    t.text     'general_description', limit: 255
+    t.string 'title', limit: 255
+    t.text 'general_description'
     t.datetime 'created_at'
     t.datetime 'updated_at'
-    t.integer  'user_id'
-    t.boolean  'global'
+    t.integer 'user_id'
+    t.boolean 'global'
   end
 
   create_table 'mailers', force: :cascade do |t|
-    t.string   'email',                  default: '', null: false
-    t.string   'encrypted_password',     default: '', null: false
-    t.string   'reset_password_token'
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
     t.datetime 'reset_password_sent_at'
     t.datetime 'remember_created_at'
-    t.integer  'sign_in_count', default: 0, null: false
+    t.integer 'sign_in_count', default: 0, null: false
     t.datetime 'current_sign_in_at'
     t.datetime 'last_sign_in_at'
-    t.string   'current_sign_in_ip'
-    t.string   'last_sign_in_ip'
-    t.datetime 'created_at',                          null: false
-    t.datetime 'updated_at',                          null: false
+    t.string 'current_sign_in_ip'
+    t.string 'last_sign_in_ip'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
     t.index ['email'], name: 'index_mailers_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_mailers_on_reset_password_token', unique: true
   end
 
   create_table 'quotation_taggings', force: :cascade do |t|
-    t.integer  'tag_id'
-    t.integer  'quotation_id'
+    t.integer 'tag_id'
+    t.integer 'quotation_id'
     t.datetime 'created_at'
     t.datetime 'updated_at'
     t.index ['quotation_id'], name: 'index_quotation_taggings_on_quotation_id'
@@ -118,43 +122,44 @@ ActiveRecord::Schema.define(version: 20_190_214_123_006) do
   end
 
   create_table 'quotations', force: :cascade do |t|
-    t.string   'title',      limit: 255
-    t.text     'passage'
+    t.string 'title', limit: 255
+    t.text 'passage'
     t.datetime 'created_at'
     t.datetime 'updated_at'
-    t.boolean  'publish'
+    t.boolean 'publish'
   end
 
   create_table 'rehearsals', force: :cascade do |t|
-    t.integer  'tally'
+    t.integer 'tally'
     t.datetime 'created_at'
     t.datetime 'updated_at'
-    t.integer  'exercise_id'
-    t.integer  'user_id'
-    t.string   'city'
+    t.integer 'exercise_id'
+    t.integer 'user_id'
+    t.string 'city'
   end
 
   create_table 'tags', force: :cascade do |t|
-    t.string   'name', limit: 255
+    t.string 'name', limit: 255
     t.datetime 'created_at'
     t.datetime 'updated_at'
   end
 
   create_table 'users', force: :cascade do |t|
-    t.string   'email',                  limit: 255, default: '', null: false
-    t.string   'encrypted_password',     limit: 255, default: '', null: false
-    t.string   'reset_password_token',   limit: 255
+    t.string 'email', limit: 255, default: '', null: false
+    t.string 'encrypted_password', limit: 255, default: '', null: false
+    t.string 'reset_password_token', limit: 255
     t.datetime 'reset_password_sent_at'
     t.datetime 'remember_created_at'
-    t.integer  'sign_in_count', default: 0, null: false
+    t.integer 'sign_in_count', default: 0, null: false
     t.datetime 'current_sign_in_at'
     t.datetime 'last_sign_in_at'
-    t.string   'current_sign_in_ip',     limit: 255
-    t.string   'last_sign_in_ip',        limit: 255
+    t.string 'current_sign_in_ip', limit: 255
+    t.string 'last_sign_in_ip', limit: 255
     t.datetime 'created_at'
     t.datetime 'updated_at'
-    t.boolean  'admin'
+    t.boolean 'admin'
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
+
 end
