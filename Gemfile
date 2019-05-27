@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rb-readline'
   # Spring Gem recommended by Everyday RSpec - greatly speeds test runs
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   gem 'spring-commands-rspec'
   gem 'sqlite3', '~> 1.3.6'
 end
