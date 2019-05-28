@@ -16,7 +16,8 @@ class DoctrinesController < ApplicationController
     redirect_to doctrines_new_path
   end
 
-  def show; end
+  def show
+  end
 
   def doctrine_params
     params.require(:doctrine).permit(:file_name, :tag_list, :publish)
