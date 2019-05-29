@@ -22,13 +22,6 @@ describe Rehearsal, type: :model do
     should belong_to(:user)
   end
 
-  it 'cannot be read by a user to whom this rehearsal does not belong' do
-    FactoryBot.create(:user, id: 55)
-    second_normal_user = FactoryBot.create(:user, id: 473)
-    FactoryBot.create(:rehearsal, user: normal_user)
-    expect(Rehearsal.where(user_id: second_normal_user.id)).to be_empty
-  end
-
   context 'classic Active Record instance methods' do
     it 'returns an exercises id' do
       exercise = FactoryBot.create(:exercise, rehearsals: [rehearsal])
