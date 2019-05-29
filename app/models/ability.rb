@@ -10,10 +10,11 @@ class Ability
     else
       can :update, User, id: user.id
       can :read, :all
+      cannot :read, Rehearsal
       can :read, Rehearsal, user_id: user.id
+      can :index, Rehearsal, user_id: user.id
       can :destroy, Rehearsal, user_id: user.id
       can :create, Rehearsal
-      cannot :index, Rehearsal
       can :update, Rehearsal, user_id: user.id
       can :create, Exercise, user_id: user.id
       can :create, Exercise, global: false
