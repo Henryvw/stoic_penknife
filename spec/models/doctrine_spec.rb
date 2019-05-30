@@ -36,7 +36,7 @@ describe Doctrine, type: :model do
     context 'find doctrines given tag(s)' do
       it '#tagged_with - when given a particular tag, returns all doctrines attached to it in the database' do
         tag = FactoryBot.create(:tag, name: 'Musonius Rufus')
-        doctrine = FactoryBot.create(:doctrine, tags: [tag])
+        FactoryBot.create(:doctrine, tags: [tag])
 
         expect(Doctrine.tagged_with('Musonius Rufus').first.file_name).to eq('hadot_marcus_aurelius')
       end
