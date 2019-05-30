@@ -103,14 +103,22 @@ RSpec.describe 'Exercises', type: :system do
     end
 
     it 'can delete an exercise' do
-      rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: normal_user)
-
+      exercise = FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
       sign_in normal_user
-      visit rehearsal_path(rehearsal.id)
-      click_link 'Edit This Rehearsal'
+      visit exercise_path(exercise.id)
+
       expect do
-        click_link 'Delete This Rehearsal'
-      end.to change(Rehearsal, :count).by(-1)
+        click_link 'Delete Exercise'
+      end.to change(Exercise, :count).by(-1)
+    end
+
+    it 'cannot flag an exercise as global' do
+      exercise = FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      sign_in normal_user
+      visit exercise_path(exercise.id)
+      click_link 'Edit Exercise'
+
+      expect(page).to_not have_content('Publish this exercise globally')
     end
   end
 
