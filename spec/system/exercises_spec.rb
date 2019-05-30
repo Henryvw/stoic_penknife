@@ -7,7 +7,7 @@ RSpec.describe 'Exercises', type: :system do
     let(:exercise) { FactoryBot.create(:exercise, e_questions: [e_question], global: true) }
 
     it 'can read a private exercise if it belongs to me' do
-      exercise = FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
 
       sign_in normal_user
       visit exercises_path
@@ -35,13 +35,13 @@ RSpec.describe 'Exercises', type: :system do
       fill_in 'exercise_tag_list', with: 'Fake Tag'
 
       # From Capybara Docs:
-      # 'fill_in(locator, options = {}) ⇒ Object'
+      # 'fill_in(locator, options = {}) => Object'
       # 'Locate a text field or text area and fill it in with the given text The field can be found via its name, id or label text.'
-      # The page.html is sometimes missing the name, id or label as Capybara sees it (why? I don't know). In this case I found in 
-      # the browser the name of the form group (note that it was HIGHER in the DOM tree, the form GROUP rather than some hidden 
+      # The page.html is sometimes missing the name, id or label as Capybara sees it (why? I don't know). In this case I found in
+      # the browser the name of the form group (note that it was HIGHER in the DOM tree, the form GROUP rather than some hidden
       # lower element. I don't know whether that's relevant / easier for Capybara to find) that I was looking for,
       # exercise[e_questions_attributes][0][question]
- 
+
       fill_in 'exercise[e_questions_attributes][0][question]', with: 'Fake Exercise Question #1'
       fill_in 'exercise[e_questions_attributes][1][question]', with: 'Fake Exercise Question #2'
       fill_in 'exercise[e_questions_attributes][2][question]', with: 'Fake Exercise Question #3'
@@ -79,7 +79,7 @@ RSpec.describe 'Exercises', type: :system do
       visit exercise_path(exercise.id)
       click_link 'Edit Exercise'
       all(:field).last.set('Question to DELETE')
-      page.all("div", text: "Remove").last.click_link('Remove Question')
+      page.all('div', text: 'Remove').last.click_link('Remove Question')
       click_link 'Add New Question'
       all(:field).last.set('Fake Exercise Question #1')
 
@@ -96,7 +96,7 @@ RSpec.describe 'Exercises', type: :system do
 
       click_link 'Edit Exercise'
       fill_in 'exercise[e_questions_attributes][0][question]', with: 'EDITED Question'
-      click_button "Save Exercise"
+      click_button 'Save Exercise'
 
       expect(page).to have_content('Exercise was successfully updated.')
       expect(page).to have_content('EDITED Question')
