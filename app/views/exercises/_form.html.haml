@@ -11,12 +11,12 @@
     .input-group
       .input-group-addon
         = f.label :title
-      = f.text_field :title, class: "form-control", id: "form-border"
+      = f.text_field :title, class: "form-control"
     %br
     .input-group
       .input-group-addon
         = f.label :general_description
-      = f.text_area :general_description, class: "form-control", id: "form-border", rows: "4"
+      = f.text_area :general_description, class: "form-control", rows: "4"
     %br
     .input-group
       .input-group-addon
@@ -25,13 +25,13 @@
         = f.label :tag_list, "(Separated by commas,"
         %br
         = f.label :tag_list, "e.g. Assent, Sex, Freedom)"
-      = f.text_area :tag_list, class: "form-control", id: "form-border", rows: "4"
+      = f.text_area :tag_list, class: "form-control", rows: "4"
 
     %h3.page-header.exercise_title Exercise Questions
     .input-group
       #e_questions
         = f.fields_for :e_questions do |e_builder|
-          = render "e_question_fields", :f => e_builder, id: "form-border"
+          = render "e_question_fields", :f => e_builder
       .clearfix
       .links
         .clearfix

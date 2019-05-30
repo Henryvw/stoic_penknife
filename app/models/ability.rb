@@ -7,6 +7,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
+      can :manage, Exercise
     else
       can :update, User, id: user.id
       can :read, :all
@@ -24,7 +25,6 @@ class Ability
       cannot :create, Doctrine
       cannot :update, Doctrine
       cannot :create, Exercise, global: true
-
       cannot :update, Exercise
       can :update, Exercise, user_id: user.id
       cannot :update, Exercise, global: true

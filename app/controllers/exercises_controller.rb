@@ -99,7 +99,7 @@ class ExercisesController < ApplicationController
   end
 
   def block_private_user_global_editing
-    return if @exercise.user_id == current_user.id && @exercise.global? == false
+    return if @exercise.user_id == current_user.id && @exercise.global? == false || current_user.admin? == true
 
     raise CanCan::AccessDenied.new(
       'You are not allowed to access this exercise, buddy!'
