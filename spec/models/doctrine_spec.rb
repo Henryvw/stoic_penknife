@@ -34,7 +34,10 @@ describe Doctrine, type: :model do
 
   describe 'Custom methods, mostly tag methods' do
     context 'find doctrines given tag(s)' do
-      xit '#tagged_with - when given a particular tag, returns all doctrines attached to it in the database' do
+      it '#tagged_with - when given a particular tag, returns all doctrines attached to it in the database' do
+        tag = FactoryBot.create(:tag, name: 'Roman')
+        doctrine = FactoryBot.create(:doctrine, tags: [tag])
+
         expect(Doctrine.tagged_with('Roman').first.file_name).to eq('hadot_marcus_aurelius')
       end
 
@@ -44,8 +47,10 @@ describe Doctrine, type: :model do
     end
 
     context 'find tags given doctrine(s)' do
-      xit '#tag_list - when given a particular doctrine, finds a list of all the TAGS associated with it' do
-        expect(doctrine.tag_list).to include('Roman')
+      it '#tag_list - when given a particular doctrine, finds a list of all the TAGS associated with it' do
+        tag = FactoryBot.create(:tag, name: 'Epicurean')
+        doctrine = FactoryBot.create(:doctrine, tags: [tag])
+        expect(doctrine.tag_list).to include('Epicurean')
       end
 
       it 'using ActiveRecord find_or_create! method creates or assigns tag(s) given when a doctrine is created' do
