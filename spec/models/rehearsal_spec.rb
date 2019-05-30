@@ -19,16 +19,7 @@ describe Rehearsal, type: :model do
   end
 
   it 'can be read by the user to whom this rehearsal belongs' do
-    user = FactoryBot.create(:user)
-    rehearsal = FactoryBot.create(:rehearsal, user: user)
-
-    expect(Rehearsal.where(user_id: user.id)).to include(rehearsal)
-  end
-
-  it 'cannot be read by a user to whom this rehearsal does not belong' do
-    FactoryBot.create(:user, id: 55)
-    second_normal_user = FactoryBot.create(:user, id: 473)
-    expect(Rehearsal.where(user_id: second_normal_user.id)).to be_empty
+    should belong_to(:user)
   end
 
   context 'classic Active Record instance methods' do
