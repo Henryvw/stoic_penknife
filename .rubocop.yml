@@ -9,6 +9,8 @@ Documentation:
   Enabled: False
 Style/FrozenStringLiteralComment:
   Enabled: False
+Style/UnneededInterpolation:
+  Enabled: False
 # Rubocop is maybe right here but I need to exclude
 # These particular files
 Metrics/LineLength:
