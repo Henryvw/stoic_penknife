@@ -21,4 +21,4 @@
 # Ignore all VIM Swap Files.
 *.swp
 
-/public/assets*
+/public/assets/*
