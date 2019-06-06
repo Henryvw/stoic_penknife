@@ -27,12 +27,12 @@ def create_question
   @question.save!
 end
 
-def create_e_answer
-  @e_answer = EAnswer.new
-  @e_answer.question_id = 1
-  @e_answer.reply = 'Yes, I practice it every day.'
-  @e_answer.rehearsal_id = 1
-  @e_answer.save!
+def create_answer
+  @answer = Answer.new
+  @answer.question_id = 1
+  @answer.reply = 'Yes, I practice it every day.'
+  @answer.rehearsal_id = 1
+  @answer.save!
 end
 
 def set_exercise_owned_by_normal_user

@@ -1,6 +1,6 @@
 class Exercise < ActiveRecord::Base
   belongs_to :user
-  has_many :e_answers, through: :questions
+  has_many :answers, through: :questions
   has_many :questions, dependent: :destroy
   has_many :rehearsals
   has_many :exercise_taggings

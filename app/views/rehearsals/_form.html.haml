@@ -7,17 +7,17 @@
         %h4 Exercise Instructions
         %p.page_header
           = @exercise.general_description
-    - @rehearsal.e_answers.each_with_index do |e_answer, index|
+    - @rehearsal.answers.each_with_index do |answer, index|
       %tr
         %big 
-          %td= e_answer.question.question
+          %td= answer.question.question
       %p
       .form
         .form-group
           #questions
-            = f.fields_for :e_answers, e_answer do |builder|
+            = f.fields_for :answers, answer do |builder|
               = builder.text_area :reply, class: "form-control", id: "form-border", rows: 3
-              = hidden_field_tag "rehearsal[e_answers_attributes]#{index}[question_id]", e_answer.question.id
+              = hidden_field_tag "rehearsal[answers_attributes]#{index}[question_id]", answer.question.id
 
             = hidden_field_tag 'rehearsal[exercise_id]', @rehearsal.exercise.id
             = hidden_field_tag 'rehearsal[city]', @rehearsal_location

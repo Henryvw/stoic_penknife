@@ -18,10 +18,10 @@
       %tr
         %td Question:&nbsp;
         %td= question.question
-      - question.e_answers.each do |e_answer|
+      - question.answers.each do |answer|
         %tr
           %td Answer:&nbsp;
-          %td= e_answer.answer
+          %td= answer.reply
 
 %br
 

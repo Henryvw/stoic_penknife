@@ -39,7 +39,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
     3.times do
       question = @exercise.questions.build
-      question.e_answers.build
+      question.answers.build
     end
   end
 

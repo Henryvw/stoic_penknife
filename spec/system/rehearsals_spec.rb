@@ -5,12 +5,12 @@ RSpec.describe 'Rehearsals', type: :system do
     let(:normal_user) { FactoryBot.create(:user) }
     let(:question) { FactoryBot.create(:question) }
     let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
-    let(:e_answer) { FactoryBot.create(:e_answer) }
-    let(:rehearsal) { FactoryBot.create(:rehearsal, e_answers: [e_answer]) }
+    let(:answer) { FactoryBot.create(:answer) }
+    let(:rehearsal) { FactoryBot.create(:rehearsal, answers: [answer]) }
 
     it 'can read a rehearsal if it belongs to me' do
-      e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance.')
-      rehearsal = FactoryBot.create(:rehearsal, e_answers: [e_answer], exercise: exercise, user: normal_user)
+      answer = FactoryBot.create(:answer, reply: 'I learned to dance.')
+      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user)
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)
@@ -20,7 +20,7 @@ RSpec.describe 'Rehearsals', type: :system do
 
     it 'cannot read a rehearsal that belongs to another user' do
       second_normal_user = FactoryBot.create(:user)
-      rehearsal = FactoryBot.create(:rehearsal, e_answers: [e_answer], exercise: exercise, user: second_normal_user)
+      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: second_normal_user)
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)
@@ -29,8 +29,8 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can capture and view the city in which I practiced my rehearsal' do
-      e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance.')
-      rehearsal = FactoryBot.create(:rehearsal, e_answers: [e_answer], exercise: exercise, user: normal_user, city: 'Moscow')
+      answer = FactoryBot.create(:answer, reply: 'I learned to dance.')
+      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user, city: 'Moscow')
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)
@@ -39,11 +39,11 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can see an index of my rehearsals' do
-      first_e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance')
-      second_e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance a 2nd time')
-      third_e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance a 3rd time')
-      e_answers = [first_e_answer, second_e_answer, third_e_answer]
-      FactoryBot.create(:rehearsal, e_answers: e_answers, exercise: exercise, user: normal_user)
+      first_answer = FactoryBot.create(:answer, reply: 'I learned to dance')
+      second_answer = FactoryBot.create(:answer, reply: 'I learned to dance a 2nd time')
+      third_answer = FactoryBot.create(:answer, reply: 'I learned to dance a 3rd time')
+      answers = [first_answer, second_answer, third_answer]
+      FactoryBot.create(:rehearsal, answers: answers, exercise: exercise, user: normal_user)
 
       sign_in normal_user
       visit exercise_path(exercise.id)
@@ -54,8 +54,8 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can see a city on the individual exercises rehearsal index' do
-      e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance.')
-      FactoryBot.create(:rehearsal, e_answers: [e_answer], exercise: exercise, user: normal_user, city: 'Moscow')
+      answer = FactoryBot.create(:answer, reply: 'I learned to dance.')
+      FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user, city: 'Moscow')
 
       sign_in normal_user
       visit exercise_path(exercise.id)
@@ -70,7 +70,7 @@ RSpec.describe 'Rehearsals', type: :system do
       visit exercise_path(exercise.id)
 
       click_link 'Rehearse this Exercise'
-      find(id: 'rehearsal_e_answers_attributes0_question_id', visible: false).set('Rehearsal Answer to 1st Question')
+      find(id: 'rehearsal_answers_attributes0_question_id', visible: false).set('Rehearsal Answer to 1st Question')
       click_button "Finish Rehearsing #{exercise.title}"
 
       expect(page).to have_content('Rehearsal was successfully created.')

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_062656) do
+ActiveRecord::Schema.define(version: 2019_06_06_072533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 2019_06_06_062656) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.integer "question_id"
+    t.text "reply"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "rehearsal_id"
+  end
+
   create_table "doctrine_taggings", force: :cascade do |t|
     t.integer "tag_id"
     t.integer "doctrine_id"
@@ -60,14 +68,6 @@ ActiveRecord::Schema.define(version: 2019_06_06_062656) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "publish"
-  end
-
-  create_table "e_answers", force: :cascade do |t|
-    t.integer "question_id"
-    t.text "answer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "rehearsal_id"
   end
 
   create_table "exercise_taggings", force: :cascade do |t|

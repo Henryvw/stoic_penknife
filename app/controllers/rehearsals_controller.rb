@@ -22,7 +22,7 @@ class RehearsalsController < ApplicationController
     @rehearsal = @exercise.rehearsals.new
     questions = @rehearsal.exercise.questions
     questions.each do |question|
-      @rehearsal.e_answers.build(question_id: question.id)
+      @rehearsal.answers.build(question_id: question.id)
     end
 
     exercise_tags = @exercise.tags
@@ -85,7 +85,7 @@ class RehearsalsController < ApplicationController
     params.require(:rehearsal).permit(:tally,
                                       :exercise_id,
                                       :city,
-                                      e_answers_attributes: %i[
+                                      answers_attributes: %i[
                                         id
                                         reply
                                         question_id
