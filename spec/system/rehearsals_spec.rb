@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Rehearsals', type: :system do
   describe 'normal signed-in user' do
     let(:normal_user) { FactoryBot.create(:user) }
-    let(:e_question) { FactoryBot.create(:e_question) }
-    let(:exercise) { FactoryBot.create(:exercise, e_questions: [e_question], global: true) }
+    let(:question) { FactoryBot.create(:question) }
+    let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
     let(:e_answer) { FactoryBot.create(:e_answer) }
     let(:rehearsal) { FactoryBot.create(:rehearsal, e_answers: [e_answer]) }
 
@@ -70,7 +70,7 @@ RSpec.describe 'Rehearsals', type: :system do
       visit exercise_path(exercise.id)
 
       click_link 'Rehearse this Exercise'
-      find(id: 'rehearsal_e_answers_attributes0_e_question_id', visible: false).set('Rehearsal Answer to 1st Question')
+      find(id: 'rehearsal_e_answers_attributes0_question_id', visible: false).set('Rehearsal Answer to 1st Question')
       click_button "Finish Rehearsing #{exercise.title}"
 
       expect(page).to have_content('Rehearsal was successfully created.')

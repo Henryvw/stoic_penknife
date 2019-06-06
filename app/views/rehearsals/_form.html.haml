@@ -10,14 +10,14 @@
     - @rehearsal.e_answers.each_with_index do |e_answer, index|
       %tr
         %big 
-          %td= e_answer.e_question.question
+          %td= e_answer.question.question
       %p
       .form
         .form-group
-          #e_questions
+          #questions
             = f.fields_for :e_answers, e_answer do |builder|
               = builder.text_area :answer, class: "form-control", id: "form-border", rows: 3
-              = hidden_field_tag "rehearsal[e_answers_attributes]#{index}[e_question_id]", e_answer.e_question.id
+              = hidden_field_tag "rehearsal[e_answers_attributes]#{index}[question_id]", e_answer.question.id
 
             = hidden_field_tag 'rehearsal[exercise_id]', @rehearsal.exercise.id
             = hidden_field_tag 'rehearsal[city]', @rehearsal_location

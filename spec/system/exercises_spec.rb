@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Exercises', type: :system do
   describe 'normal signed-in user' do
     let(:normal_user) { FactoryBot.create(:user) }
-    let(:e_question) { FactoryBot.create(:e_question) }
-    let(:exercise) { FactoryBot.create(:exercise, e_questions: [e_question], global: true) }
+    let(:question) { FactoryBot.create(:question) }
+    let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
 
     it 'can read a private exercise if it belongs to me' do
-      FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
 
       sign_in normal_user
       visit exercises_path
@@ -17,7 +17,7 @@ RSpec.describe 'Exercises', type: :system do
 
     it 'can read a global exercise, even if it belongs to someone else' do
       second_normal_user = FactoryBot.create(:user)
-      exercise = FactoryBot.create(:exercise, e_questions: [e_question], global: true, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      exercise = FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.', user: normal_user)
 
       sign_in second_normal_user
       visit exercise_path(exercise.id)
@@ -40,11 +40,11 @@ RSpec.describe 'Exercises', type: :system do
       # The page.html is sometimes missing the name, id or label as Capybara sees it (why? I don't know). In this case I found in
       # the browser the name of the form group (note that it was HIGHER in the DOM tree, the form GROUP rather than some hidden
       # lower element. I don't know whether that's relevant / easier for Capybara to find) that I was looking for,
-      # exercise[e_questions_attributes][0][question]
+      # exercise[questions_attributes][0][question]
 
-      fill_in 'exercise[e_questions_attributes][0][question]', with: 'Fake Exercise Question #1'
-      fill_in 'exercise[e_questions_attributes][1][question]', with: 'Fake Exercise Question #2'
-      fill_in 'exercise[e_questions_attributes][2][question]', with: 'Fake Exercise Question #3'
+      fill_in 'exercise[questions_attributes][0][question]', with: 'Fake Exercise Question #1'
+      fill_in 'exercise[questions_attributes][1][question]', with: 'Fake Exercise Question #2'
+      fill_in 'exercise[questions_attributes][2][question]', with: 'Fake Exercise Question #3'
 
       expect do
         click_button 'Save Exercise'
@@ -61,9 +61,9 @@ RSpec.describe 'Exercises', type: :system do
       fill_in 'Title', with: 'Fake Exercise Title'
       fill_in 'General description', with: 'Fake Exercise Description'
       fill_in 'exercise_tag_list', with: 'Fake Tag'
-      fill_in 'exercise[e_questions_attributes][0][question]', with: 'Fake Exercise Question #1'
-      fill_in 'exercise[e_questions_attributes][1][question]', with: 'Fake Exercise Question #2'
-      fill_in 'exercise[e_questions_attributes][2][question]', with: 'Fake Exercise Question #3'
+      fill_in 'exercise[questions_attributes][0][question]', with: 'Fake Exercise Question #1'
+      fill_in 'exercise[questions_attributes][1][question]', with: 'Fake Exercise Question #2'
+      fill_in 'exercise[questions_attributes][2][question]', with: 'Fake Exercise Question #3'
 
       click_link 'Add New Question'
       all(:field).last.set('NEW Fake Exercise Question')
@@ -74,7 +74,7 @@ RSpec.describe 'Exercises', type: :system do
     end
 
     it 'can delete a question when creating/editing an exercise', js: true do
-      exercise = FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
       sign_in normal_user
       visit exercise_path(exercise.id)
       click_link 'Edit Exercise'
@@ -90,12 +90,12 @@ RSpec.describe 'Exercises', type: :system do
     end
 
     it 'can edit an exercise' do
-      exercise = FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
       sign_in normal_user
       visit exercise_path(exercise.id)
 
       click_link 'Edit Exercise'
-      fill_in 'exercise[e_questions_attributes][0][question]', with: 'EDITED Question'
+      fill_in 'exercise[questions_attributes][0][question]', with: 'EDITED Question'
       click_button 'Save Exercise'
 
       expect(page).to have_content('Exercise was successfully updated.')
@@ -103,7 +103,7 @@ RSpec.describe 'Exercises', type: :system do
     end
 
     it 'can delete an exercise' do
-      exercise = FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
       sign_in normal_user
       visit exercise_path(exercise.id)
 
@@ -113,7 +113,7 @@ RSpec.describe 'Exercises', type: :system do
     end
 
     it 'cannot flag an exercise as global' do
-      exercise = FactoryBot.create(:exercise, e_questions: [e_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
       sign_in normal_user
       visit exercise_path(exercise.id)
       click_link 'Edit Exercise'
@@ -124,8 +124,8 @@ RSpec.describe 'Exercises', type: :system do
 
   describe 'admin user' do
     let(:admin_user) { FactoryBot.create(:user, admin: true) }
-    let(:e_question) { FactoryBot.create(:e_question) }
-    let(:exercise) { FactoryBot.create(:exercise, e_questions: [e_question], global: true) }
+    let(:question) { FactoryBot.create(:question) }
+    let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
     it 'can publish an exercise globally' do
       sign_in admin_user
       visit new_exercise_path
@@ -133,7 +133,7 @@ RSpec.describe 'Exercises', type: :system do
       fill_in 'Title', with: 'Fake Exercise Title'
       fill_in 'General description', with: 'Fake Exercise Description'
 
-      fill_in 'exercise[e_questions_attributes][0][question]', with: 'Fake Exercise Question #1'
+      fill_in 'exercise[questions_attributes][0][question]', with: 'Fake Exercise Question #1'
 
       find_by_id('exercise_global').set(true)
 

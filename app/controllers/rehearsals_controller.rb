@@ -20,9 +20,9 @@ class RehearsalsController < ApplicationController
   def new
     @exercise = Exercise.find(params[:exercise])
     @rehearsal = @exercise.rehearsals.new
-    e_questions = @rehearsal.exercise.e_questions
-    e_questions.each do |e_question|
-      @rehearsal.e_answers.build(e_question_id: e_question.id)
+    questions = @rehearsal.exercise.questions
+    questions.each do |question|
+      @rehearsal.e_answers.build(question_id: question.id)
     end
 
     exercise_tags = @exercise.tags
@@ -88,7 +88,7 @@ class RehearsalsController < ApplicationController
                                       e_answers_attributes: %i[
                                         id
                                         answer
-                                        e_question_id
+                                        question_id
                                         _destroy
                                       ])
   end
