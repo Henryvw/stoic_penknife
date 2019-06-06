@@ -1,4 +1,4 @@
-class CreateEQuestions < ActiveRecord::Migration[5.2]
+class CreateQuestions < ActiveRecord::Migration[5.2]
   def change
     create_table :e_questions do |t|
       t.integer :exercise_id
