@@ -44,8 +44,8 @@
         %th
         %th Day
         %th Place
-        - @exercise.e_questions.each do |e_question|
-          %th= truncate(e_question.question, length: 100)
+        - @exercise.questions.each do |question|
+          %th= truncate(question.inquiry, length: 100)
         - @rehearsals.each do |rehearsal|
           %tr
             %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-stoic-white btn-lg"
@@ -55,8 +55,8 @@
             -else
               %td Unknown City
 
-            - rehearsal.e_answers.each do |e_answer|
-              %td= truncate(e_answer.answer, length: 100)
+            - rehearsal.answers.each do |answer|
+              %td= truncate(answer.reply, length: 100)
 
   - if @exercise.global
     %br
@@ -77,9 +77,9 @@
         %b Steps in the Exercise
         %table.table.table-bordered.table-responsive
           %tbody
-          - @exercise.e_questions.each do |e_question|
+          - @exercise.questions.each do |question|
             %tr
-              %td= e_question.question
+              %td= question.inquiry
     .col-md-8
       .panel.panel-warning
         %b Doctrines Pertaining to This Exercise

@@ -38,8 +38,8 @@ class ExercisesController < ApplicationController
   def new
     @exercise = Exercise.new
     3.times do
-      e_question = @exercise.e_questions.build
-      e_question.e_answers.build
+      question = @exercise.questions.build
+      question.answers.build
     end
   end
 
@@ -117,7 +117,7 @@ class ExercisesController < ApplicationController
                                      :category,
                                      :global,
                                      :tag_list,
-                                     e_questions_attributes:
-                                       %i[id question _destroy])
+                                     questions_attributes:
+                                       %i[id inquiry _destroy])
   end
 end

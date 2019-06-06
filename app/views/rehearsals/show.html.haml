@@ -23,15 +23,15 @@
                 %p= @exercise.general_description
             .panel
               .panel-body.stoic-white.stoic-dark-text
-                - @rehearsal.e_answers.each_with_index do |e_answer, index|
+                - @rehearsal.answers.each_with_index do |answer, index|
                   %tr
                     %h5.black-stoic-border
                       %th
-                        %b= e_answer.e_question.question
+                        %b= answer.question.inquiry
                   %p
                   %tr
                     %p
-                      %td= e_answer.answer
+                      %td= answer.reply
             = link_to "Back To #{@exercise.title}", @rehearsal.exercise, class: "btn btn-stoic-white"
             = link_to 'Edit This Rehearsal', edit_rehearsal_path(@rehearsal), class: "btn btn-stoic-white"
             %br

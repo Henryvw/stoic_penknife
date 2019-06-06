@@ -20,19 +20,19 @@ def create_rehearsal
   @rehearsal.save!
 end
 
-def create_e_question
-  @e_question = EQuestion.new
-  @e_question.exercise_id = 1
-  @e_question.question = 'Do you practice the Discipline of Assent?'
-  @e_question.save!
+def create_question
+  @question = Question.new
+  @question.exercise_id = 1
+  @question.inquiry = 'Do you practice the Discipline of Assent?'
+  @question.save!
 end
 
-def create_e_answer
-  @e_answer = EAnswer.new
-  @e_answer.e_question_id = 1
-  @e_answer.answer = 'Yes, I practice it every day.'
-  @e_answer.rehearsal_id = 1
-  @e_answer.save!
+def create_answer
+  @answer = Answer.new
+  @answer.question_id = 1
+  @answer.reply = 'Yes, I practice it every day.'
+  @answer.rehearsal_id = 1
+  @answer.save!
 end
 
 def set_exercise_owned_by_normal_user

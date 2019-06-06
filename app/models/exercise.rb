@@ -1,17 +1,17 @@
 class Exercise < ActiveRecord::Base
   belongs_to :user
-  has_many :e_answers, through: :e_questions
-  has_many :e_questions, dependent: :destroy
+  has_many :answers, through: :questions
+  has_many :questions, dependent: :destroy
   has_many :rehearsals
   has_many :exercise_taggings
   has_many :tags, through: :exercise_taggings
   accepts_nested_attributes_for :rehearsals
-  accepts_nested_attributes_for :e_questions,
-                                reject_if: ->(a) { a[:question].blank? },
+  accepts_nested_attributes_for :questions,
+                                reject_if: ->(a) { a[:inquiry].blank? },
                                 allow_destroy: true
   validates :title, presence: true
   validates :general_description, presence: true
-  validate :maximum_number_of_e_questions
+  validate :maximum_number_of_questions
 
   def rehearsals_for_user(user)
     rehearsals.where(user: user)
@@ -31,10 +31,10 @@ class Exercise < ActiveRecord::Base
     end
   end
 
-  def maximum_number_of_e_questions
+  def maximum_number_of_questions
     return errors.add(
       :base,
       'You may only add a max of 7 questions.'
-    ) unless e_questions.length <= 7
+    ) unless questions.length <= 7
   end
 end

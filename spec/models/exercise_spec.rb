@@ -91,7 +91,7 @@ RSpec.describe Exercise, type: :model do
         user: current_user
       )
 
-      8.times { exercise.e_questions.build(question: 'Why?') }
+      8.times { exercise.questions.build(inquiry: 'Why?') }
 
       exercise.valid?
       expect(exercise.errors[:base]).to include('You may only add a max of 7 questions.')

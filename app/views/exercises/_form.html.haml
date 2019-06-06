@@ -29,14 +29,14 @@
 
     %h3.page-header.exercise_title Exercise Questions
     .input-group
-      #e_questions
-        = f.fields_for :e_questions do |e_builder|
-          = render "e_question_fields", :f => e_builder
+      #questions
+        = f.fields_for :questions do |e_builder|
+          = render "question_fields", :f => e_builder
       .clearfix
       .links
         .clearfix
         %br
-        = link_to_add_association 'Add New Question', f, :e_questions, class: "btn btn-stoic-white"
+        = link_to_add_association 'Add New Question', f, :questions, class: "btn btn-stoic-white"
         %h5 There is a limit of 7 questions per exercise.
     %br
     - if current_user.admin

@@ -23,9 +23,9 @@ FactoryBot.define do
     end
   end
 
-  trait :e_question do
+  trait :question do
     after(:build) do |exercise|
-      exercise.e_questions << create(:e_question, question: 'Question?')
+      exercise.questions << create(:question, question: 'Question?')
     end
   end
 end

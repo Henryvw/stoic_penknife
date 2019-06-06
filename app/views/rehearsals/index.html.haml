@@ -14,14 +14,14 @@
       %td= link_to 'Show', rehearsal
       %td= link_to 'Edit', edit_rehearsal_path(rehearsal)
       %td= link_to 'Destroy', rehearsal, :method => :delete, :data => { :confirm => 'Are you sure?' }
-    - rehearsal.exercise.e_questions.each do |e_question|
+    - rehearsal.exercise.questions.each do |question|
       %tr
         %td Question:&nbsp;
-        %td= e_question.question
-      - e_question.e_answers.each do |e_answer|
+        %td= question.inquiry
+      - question.answers.each do |answer|
         %tr
           %td Answer:&nbsp;
-          %td= e_answer.answer
+          %td= answer.reply
 
 %br
 
