@@ -3,33 +3,34 @@ require 'rails_helper'
 RSpec.describe 'Doctrines', type: :system do
   describe 'Signed-out user' do
     it 'can see a list (index) of doctrines' do
-      visit doctrines_path
-      expect(page).to have_content 'What Is Stoic Penknife?'
+      visit '/doctrines'
+      expect(page).to have_content 'Discipline of Assent'
+      expect(page).to have_content 'Discipline of Desire'
+      expect(page).to have_content 'Discipline of Action'
+    end
+
+    it 'cannot create new doctrines' do
+      visit doctrines_new_path
+      expect(current_path).to eql('/')
+      expect(page).to have_content 'You are not authorized to access this page'
     end
   end
 
-  describe 'Normal Signed-in user' do
-    let(:current_user) { FactoryBot.create(:user) }
+  describe 'Signed-in user' do
+    let(:normal_user) { FactoryBot.create(:normal_user, admin: false) }
 
-    it 'can see a particular doctrine page' do
-      sign_in current_user
-      visit doctrines_action_path
-      expect(page).to have_content 'What Is Stoic Penknife?'
+    it 'cannot create new doctrines' do
+      visit doctrines_new_path
+      expect(current_path).to eql('/')
+      expect(page).to have_content 'You are not authorized to access this page'
     end
   end
 
   describe 'Admin user' do
     let(:admin_user) { FactoryBot.create(:user, admin: true) }
 
-    it 'can see a list (index) of doctrines' do
+    it 'can create a new doctrine when filled out correctly' do
       sign_in admin_user
-      visit doctrines_action_path
-      expect(page).to have_content 'What Is Stoic Penknife?'
-    end
-
-    it 'can create a new doctrine' do
-      sign_in admin_user
-      FactoryBot.create(:doctrine)
       doctrine_params = FactoryBot.attributes_for(:doctrine, file_name: 'goethe_love', tag_list: 'faust')
 
       visit doctrines_new_path
