@@ -7,7 +7,7 @@ class Exercise < ActiveRecord::Base
   has_many :tags, through: :exercise_taggings
   accepts_nested_attributes_for :rehearsals
   accepts_nested_attributes_for :questions,
-                                reject_if: ->(a) { a[:question].blank? },
+                                reject_if: ->(a) { a[:inquiry].blank? },
                                 allow_destroy: true
   validates :title, presence: true
   validates :general_description, presence: true

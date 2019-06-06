@@ -4,8 +4,8 @@ describe Question do
   let(:question) { FactoryBot.create(:question) }
 
   it 'returns an exercise question as a string' do
-    question = FactoryBot.create(:question, question: 'Do you practice the Discipline of Assent?')
-    expect(question.question).to eq 'Do you practice the Discipline of Assent?'
+    question = FactoryBot.create(:question, inquiry: 'Do you practice the Discipline of Assent?')
+    expect(question.inquiry).to eq 'Do you practice the Discipline of Assent?'
   end
 
   it 'returns a list of its associated answers' do

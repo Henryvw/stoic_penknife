@@ -23,7 +23,7 @@ end
 def create_question
   @question = Question.new
   @question.exercise_id = 1
-  @question.question = 'Do you practice the Discipline of Assent?'
+  @question.inquiry = 'Do you practice the Discipline of Assent?'
   @question.save!
 end
 

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :question do
-    question { 'Factory Question?' }
+    inquiry { 'Factory Question?' }
   end
 end

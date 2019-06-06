@@ -42,9 +42,9 @@ RSpec.describe 'Exercises', type: :system do
       # lower element. I don't know whether that's relevant / easier for Capybara to find) that I was looking for,
       # exercise[questions_attributes][0][question]
 
-      fill_in 'exercise[questions_attributes][0][question]', with: 'Fake Exercise Question #1'
-      fill_in 'exercise[questions_attributes][1][question]', with: 'Fake Exercise Question #2'
-      fill_in 'exercise[questions_attributes][2][question]', with: 'Fake Exercise Question #3'
+      fill_in 'exercise[questions_attributes][0][inquiry]', with: 'Fake Exercise Question #1'
+      fill_in 'exercise[questions_attributes][1][inquiry]', with: 'Fake Exercise Question #2'
+      fill_in 'exercise[questions_attributes][2][inquiry]', with: 'Fake Exercise Question #3'
 
       expect do
         click_button 'Save Exercise'
@@ -61,9 +61,9 @@ RSpec.describe 'Exercises', type: :system do
       fill_in 'Title', with: 'Fake Exercise Title'
       fill_in 'General description', with: 'Fake Exercise Description'
       fill_in 'exercise_tag_list', with: 'Fake Tag'
-      fill_in 'exercise[questions_attributes][0][question]', with: 'Fake Exercise Question #1'
-      fill_in 'exercise[questions_attributes][1][question]', with: 'Fake Exercise Question #2'
-      fill_in 'exercise[questions_attributes][2][question]', with: 'Fake Exercise Question #3'
+      fill_in 'exercise[questions_attributes][0][inquiry]', with: 'Fake Exercise Question #1'
+      fill_in 'exercise[questions_attributes][1][inquiry]', with: 'Fake Exercise Question #2'
+      fill_in 'exercise[questions_attributes][2][inquiry]', with: 'Fake Exercise Question #3'
 
       click_link 'Add New Question'
       all(:field).last.set('NEW Fake Exercise Question')
@@ -95,7 +95,7 @@ RSpec.describe 'Exercises', type: :system do
       visit exercise_path(exercise.id)
 
       click_link 'Edit Exercise'
-      fill_in 'exercise[questions_attributes][0][question]', with: 'EDITED Question'
+      fill_in 'exercise[questions_attributes][0][inquiry]', with: 'EDITED Question'
       click_button 'Save Exercise'
 
       expect(page).to have_content('Exercise was successfully updated.')
@@ -133,7 +133,7 @@ RSpec.describe 'Exercises', type: :system do
       fill_in 'Title', with: 'Fake Exercise Title'
       fill_in 'General description', with: 'Fake Exercise Description'
 
-      fill_in 'exercise[questions_attributes][0][question]', with: 'Fake Exercise Question #1'
+      fill_in 'exercise[questions_attributes][0][inquiry]', with: 'Fake Exercise Question #1'
 
       find_by_id('exercise_global').set(true)
 

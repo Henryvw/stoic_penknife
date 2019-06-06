@@ -118,6 +118,6 @@ class ExercisesController < ApplicationController
                                      :global,
                                      :tag_list,
                                      questions_attributes:
-                                       %i[id question _destroy])
+                                       %i[id inquiry _destroy])
   end
 end

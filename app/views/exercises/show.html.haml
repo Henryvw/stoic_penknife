@@ -45,7 +45,7 @@
         %th Day
         %th Place
         - @exercise.questions.each do |question|
-          %th= truncate(question.question, length: 100)
+          %th= truncate(question.inquiry, length: 100)
         - @rehearsals.each do |rehearsal|
           %tr
             %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-stoic-white btn-lg"
@@ -79,7 +79,7 @@
           %tbody
           - @exercise.questions.each do |question|
             %tr
-              %td= question.question
+              %td= question.inquiry
     .col-md-8
       .panel.panel-warning
         %b Doctrines Pertaining to This Exercise
