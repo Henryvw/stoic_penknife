@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :e_answer do
-    answer { 'answer' }
+    reply { 'reply' }
     sequence(:rehearsal_id)
     sequence(:question_id)
   end

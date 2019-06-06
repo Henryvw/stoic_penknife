@@ -9,7 +9,7 @@ describe Question do
   end
 
   it 'returns a list of its associated e_answers' do
-    e_answer = FactoryBot.create(:e_answer, answer: 'Yes, I love it.')
+    e_answer = FactoryBot.create(:e_answer, reply: 'Yes, I love it.')
     question = FactoryBot.create(:question, e_answers: [e_answer])
     expect(question.e_answers).to include(e_answer)
   end

@@ -16,7 +16,7 @@
         .form-group
           #questions
             = f.fields_for :e_answers, e_answer do |builder|
-              = builder.text_area :answer, class: "form-control", id: "form-border", rows: 3
+              = builder.text_area :reply, class: "form-control", id: "form-border", rows: 3
               = hidden_field_tag "rehearsal[e_answers_attributes]#{index}[question_id]", e_answer.question.id
 
             = hidden_field_tag 'rehearsal[exercise_id]', @rehearsal.exercise.id

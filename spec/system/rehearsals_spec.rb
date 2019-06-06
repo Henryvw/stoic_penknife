@@ -9,7 +9,7 @@ RSpec.describe 'Rehearsals', type: :system do
     let(:rehearsal) { FactoryBot.create(:rehearsal, e_answers: [e_answer]) }
 
     it 'can read a rehearsal if it belongs to me' do
-      e_answer = FactoryBot.create(:e_answer, answer: 'I learned to dance.')
+      e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance.')
       rehearsal = FactoryBot.create(:rehearsal, e_answers: [e_answer], exercise: exercise, user: normal_user)
 
       sign_in normal_user
@@ -29,7 +29,7 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can capture and view the city in which I practiced my rehearsal' do
-      e_answer = FactoryBot.create(:e_answer, answer: 'I learned to dance.')
+      e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance.')
       rehearsal = FactoryBot.create(:rehearsal, e_answers: [e_answer], exercise: exercise, user: normal_user, city: 'Moscow')
 
       sign_in normal_user
@@ -39,9 +39,9 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can see an index of my rehearsals' do
-      first_e_answer = FactoryBot.create(:e_answer, answer: 'I learned to dance')
-      second_e_answer = FactoryBot.create(:e_answer, answer: 'I learned to dance a 2nd time')
-      third_e_answer = FactoryBot.create(:e_answer, answer: 'I learned to dance a 3rd time')
+      first_e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance')
+      second_e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance a 2nd time')
+      third_e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance a 3rd time')
       e_answers = [first_e_answer, second_e_answer, third_e_answer]
       FactoryBot.create(:rehearsal, e_answers: e_answers, exercise: exercise, user: normal_user)
 
@@ -54,7 +54,7 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can see a city on the individual exercises rehearsal index' do
-      e_answer = FactoryBot.create(:e_answer, answer: 'I learned to dance.')
+      e_answer = FactoryBot.create(:e_answer, reply: 'I learned to dance.')
       FactoryBot.create(:rehearsal, e_answers: [e_answer], exercise: exercise, user: normal_user, city: 'Moscow')
 
       sign_in normal_user

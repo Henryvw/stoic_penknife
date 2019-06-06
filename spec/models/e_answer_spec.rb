@@ -7,8 +7,8 @@ describe EAnswer do
   let(:e_answer) { FactoryBot.create(:e_answer) }
 
   it 'returns an exercise answer as a string' do
-    e_answer = FactoryBot.create(:e_answer, answer: 'Yes, I practice it every day.')
-    expect(e_answer.answer). to eq 'Yes, I practice it every day.'
+    e_answer = FactoryBot.create(:e_answer, reply: 'Yes, I practice it every day.')
+    expect(e_answer.reply). to eq 'Yes, I practice it every day.'
   end
 
   it 'can be accessed via an question' do

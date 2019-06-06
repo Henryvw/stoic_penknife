@@ -30,7 +30,7 @@ end
 def create_e_answer
   @e_answer = EAnswer.new
   @e_answer.question_id = 1
-  @e_answer.answer = 'Yes, I practice it every day.'
+  @e_answer.reply = 'Yes, I practice it every day.'
   @e_answer.rehearsal_id = 1
   @e_answer.save!
 end

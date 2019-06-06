@@ -87,7 +87,7 @@ class RehearsalsController < ApplicationController
                                       :city,
                                       e_answers_attributes: %i[
                                         id
-                                        answer
+                                        reply
                                         question_id
                                         _destroy
                                       ])
