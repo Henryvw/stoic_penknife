@@ -5,29 +5,27 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
+    can :read, Exercise, global: true
+    can :read, Quotation
+    can :read, Doctrine
     if user.admin?
       can :manage, :all
-      can :manage, Exercise
-    else
+    elsif User.exists?(user.id)
+      can :create, Exercise, user_id: user.id
+      can :update, Exercise, user_id: user.id
+      can :create, Exercise, global: false
+      can :destroy, Exercise, user_id: user.id
+      cannot :update, Exercise, global: true
+      cannot :create, Exercise, global: true
       can :update, User, id: user.id
-      can :read, :all
       cannot :read, Rehearsal
       can :read, Rehearsal, user_id: user.id
       can :index, Rehearsal, user_id: user.id
       can :destroy, Rehearsal, user_id: user.id
       can :create, Rehearsal
       can :update, Rehearsal, user_id: user.id
-      can :create, Exercise, user_id: user.id
-      can :create, Exercise, global: false
-      can :destroy, Exercise, user_id: user.id
+      can :read, Exercise, user_id: user.id
       cannot :update, Quotation
-      can :manage, Doctrine
-      cannot :create, Doctrine
-      cannot :update, Doctrine
-      cannot :create, Exercise, global: true
-      cannot :update, Exercise
-      can :update, Exercise, user_id: user.id
-      cannot :update, Exercise, global: true
     end
     #
     # The first argument to `can` is the action you are giving the user

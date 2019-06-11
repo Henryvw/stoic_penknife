@@ -7,7 +7,7 @@ ruby '2.6.2'
 gem 'activeadmin', github: 'activeadmin'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'cancancan', '~> 1.9'
+gem 'cancancan'
 gem 'cocoon', '1.2.6'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.2'

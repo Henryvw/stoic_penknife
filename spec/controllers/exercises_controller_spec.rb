@@ -17,15 +17,15 @@ RSpec.describe ExercisesController, type: :controller do
     end
 
     context 'As a guest' do
-      it 'redirects you to the sign-in / sign-up page' do
+      it 'returns the index successfully (200)' do
         get :index
-        expect(response).to redirect_to '/users/sign_in'
+        expect(response).to have_http_status '200'
       end
     end
   end
 
   describe '#show' do
-    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
+    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, global: true) }
     let(:current_user) { FactoryBot.create(:user) }
 
     context 'when logged in' do
@@ -51,9 +51,15 @@ RSpec.describe ExercisesController, type: :controller do
     end
 
     context 'when not logged-in' do
-      it 'redirects to the sign-in page' do
+      it 'allows you to see a global exercise' do
         get :show, params: { id: exercise.id }
-        expect(response).to redirect_to('/users/sign_in')
+        expect(response).to have_http_status('200')
+      end
+
+      it 'blocks (redirects) you from seeing a private exercise' do
+        someones_private_exercise = FactoryBot.create(:exercise, user: create(:user), global: false)
+        get :show, params: { id: someones_private_exercise.id }
+        expect(response).to redirect_to root_path
       end
     end
   end
@@ -115,9 +121,9 @@ RSpec.describe ExercisesController, type: :controller do
       end
     end
 
-    context 'As a guest / not logged-in' do
-      it 'redirects you to the sign-in / sign-up page' do
-        get :index
+    context 'As a guest / not logged-in user' do
+      it 'Allows you to view the ' do
+        get :new
         expect(response).to redirect_to '/users/sign_in'
       end
     end
@@ -153,7 +159,7 @@ RSpec.describe ExercisesController, type: :controller do
 
     context 'As a guest / not logged-in' do
       it 'redirects you to the sign-in / sign-up page' do
-        get :index
+        get :edit, params: { id: '' }
         expect(response).to redirect_to '/users/sign_in'
       end
     end
