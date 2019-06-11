@@ -471,3 +471,15 @@ ul li a .move-right {
   color: #fff;
   text-align: left;
 }
+
+.diagonal {
+  transform: rotate(10deg) skew(15deg)
+}
+
+#cbt p { color: black }
+#cbt a:link { font-size:14px; color: rgb(77,134,184); }
+#cbt a:visited { color:rgb(4,4,4); }
+#cbt a:hover { color:rgb(204,100,85) ; text-decoration: none; }
+#cbt a:active {}
+
+

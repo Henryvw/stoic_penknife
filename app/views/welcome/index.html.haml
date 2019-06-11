@@ -6,11 +6,17 @@
           %br
           = image_tag "stoic_penknife_logo_sea.png", class: "img-responsive"
           %br
+          .panel.panel-default.stoic-yellow
+            .panel-body
+              %p#cbt 
+                This app is
+                %a{:href => "https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy#Philosophical_roots"} Ancient Greek Cognitive Behavioral Therapy (CBT)
         .col-sm-6
+          %br
           %br
           = image_tag "white_title.png",  class: "img-responsive"
           %br
-          %big An Application to Practice Ancient Philosophical Technologies of the Soul
+          %big An App to Practice Ancient Philosophical Technologies of the Soul
           %br
           %br
           .panel.panel-default.stoic-grey
@@ -23,8 +29,8 @@
           .panel.panel-default.stoic-grey
             .panel-body
               .caption
-                %h4 How Does Stoic Philosophy Work?
-                %p How did the ancient world understand Stoic Philosophers and the exercises they practiced to work changes in their own minds? What is Stoic Penknife?
-            = link_to "Learn How Stoic Philosophy Works", doctrines_index_path, method: :get, class: "btn btn-stoic-white"
-            = link_to "What is Stoic Penknife?", about_path, method: :get, class: "btn btn-stoic-white"
+                %h4 How do written Stoic exercises work?
+                %p How did the ancient world understand Stoic Philosophers and the exercises they practiced to work changes in their own minds?
+            = link_to "How does Stoic Penknife work?", about_path, method: :get, class: "btn btn-stoic-white"
+            = link_to "How does Stoic Philosophy work?", doctrines_index_path, method: :get, class: "btn btn-stoic-white"
             .panel-body
