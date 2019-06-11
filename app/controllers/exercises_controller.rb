@@ -12,18 +12,24 @@ class ExercisesController < ApplicationController
   # A simplification for this logic would be to have two controllers, one
   # as an Admin controller. Then you could separate controls rather than
   # the logic in check_ownership and all the logic in the CanCan Ability model.
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[new edit create update destroy]
   before_action :set_exercise, only: %i[show edit update destroy]
-  before_action :check_ownership, only: %i[show edit update destroy]
+  before_action :check_ownership, only: %i[edit update destroy]
 
   # Load CanCan roles for Controller
   load_and_authorize_resource
 
   # GET /exercises
   def index
-    @exercises = Exercise.where(user_id: current_user.id)
     @global_exercises = Exercise.where(global: true)
                                 .order(:updated_at).reverse
+    # I added .try here as part of adding the feature to enable
+    # non-logged-in users to access the exercises. it is a Rails
+    # method but an anti-pattern to use it too much.
+    # IF you need to use .try elsewhere, instead create a kind of
+    # "custom nil object", aka a "Guest" User, who has
+    # zero private exercises, a "name" of guest, etc.
+    @exercises = Exercise.where(user_id: current_user.try(:id))
   end
 
   # GET /exercises/1
