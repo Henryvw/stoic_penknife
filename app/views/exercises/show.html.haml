@@ -26,15 +26,20 @@
       - if can? :update, @exercise
         = link_to 'Edit Exercise', edit_exercise_path(@exercise), class: "btn btn-stoic-white"
         = link_to 'Delete Exercise', @exercise, :method => :delete, :data => { :confirm => "Are you certain that you'd like to delete this philosophical exercise?" }, class: "btn btn-stoic-white"
+      - if @exercise.buzzword
+        %br
+        %br
+        .label{class: "#{randomize_label_color_css} #{randomize_diagonal_css}"}
+          = @exercise.buzzword
       - if @exercise.global
         %br
         %br
-        .label.label-primary Global Exercise
+        .label.label-primary Stoic Penknife Exercise
       - else
         %br
         %br
-        .label.stoic-brown Custom Exercise
-
+        .label.stoic-brown Your Custom Exercise
+        
   .row
     %h3.page-header
       Past Rehearsals

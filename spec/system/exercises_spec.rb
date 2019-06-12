@@ -174,7 +174,7 @@ RSpec.describe 'Exercises', type: :system do
       find_by_id('exercise_global').set(true)
 
       click_button 'Save Exercise'
-      expect(page).to have_content('Global Exercise')
+      expect(page).to have_content('Stoic Penknife Exercise')
     end
   end
 end
