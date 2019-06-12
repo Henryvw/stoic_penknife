@@ -1,6 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe 'Exercises', type: :system do
+  describe 'non-logged-in (guest) user' do
+    let(:question) { FactoryBot.create(:question) }
+    let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
+
+    it 'can read a global exercise' do
+      FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.')
+      visit exercises_path
+      expect(page).to have_content('Senecas Amazing Exercise')
+    end
+
+    it 'can read the exercise index - with global exercises' do
+      exercise = FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.')
+      visit exercise_path(exercise.id)
+      expect(page).to have_content('Senecas Amazing Exercise')
+    end
+
+    it 'cannot read a private exercise' do
+      other_user = FactoryBot.create(:user)
+      someones_private_exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: other_user)
+      visit exercise_path(someones_private_exercise.id)
+      expect(page).to have_content('You are not authorized to access this page')
+    end
+
+    it 'can read the buzzwords on the exercises index page' do
+      FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.', buzzword: 'Great for after a break-up')
+      visit exercises_path
+      expect(page).to have_content('Great for after a break-up')
+    end
+
+    it 'can see the special tag on the individual exercise show page' do
+      exercise = FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.')
+      visit exercise_path(exercise.id)
+      expect(page).to have_content('Senecas Amazing Exercise')
+    end
+  end
+
   describe 'normal signed-in user' do
     let(:normal_user) { FactoryBot.create(:user) }
     let(:question) { FactoryBot.create(:question) }
@@ -138,7 +174,7 @@ RSpec.describe 'Exercises', type: :system do
       find_by_id('exercise_global').set(true)
 
       click_button 'Save Exercise'
-      expect(page).to have_content('Global Exercise')
+      expect(page).to have_content('Stoic Penknife Exercise')
     end
   end
 end

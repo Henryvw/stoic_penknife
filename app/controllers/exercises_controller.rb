@@ -122,6 +122,7 @@ class ExercisesController < ApplicationController
                                      :general_description,
                                      :category,
                                      :global,
+                                     :buzzword,
                                      :tag_list,
                                      questions_attributes:
                                        %i[id inquiry _destroy])

@@ -188,6 +188,12 @@ fieldset[disabled] .btn-stoic-yellow.active {
   background-color: #fff;
 }
 
+.btn-stoic-buzzword {
+  color: #fff;
+  background-color: rgb(190,172,80);
+  border-color: #285e8e;
+}
+
 .btn-stoic-green {
   color: #fff;
   background-color: rgb(135,170,106);
@@ -459,7 +465,7 @@ ul li a .move-right {
 }
 
 .alert-success {
-  background-color: #dff0d8 !important;;
+  background-color: #dff0d8 !important;
   border-color: #d6e9c6;
   color: #468847;
   text-align: left;
@@ -472,8 +478,14 @@ ul li a .move-right {
   text-align: left;
 }
 
-.diagonal {
-  transform: rotate(10deg) skew(15deg)
+.diagonal-down {
+  transform: rotate(1.4deg);
+  display: inline-block;
+}
+
+.diagonal-up {
+  transform: rotate(-1.4deg);
+  display: inline-block;
 }
 
 #cbt p { color: black }
@@ -481,5 +493,3 @@ ul li a .move-right {
 #cbt a:visited { color:rgb(4,4,4); }
 #cbt a:hover { color:rgb(204,100,85) ; text-decoration: none; }
 #cbt a:active {}
-
-

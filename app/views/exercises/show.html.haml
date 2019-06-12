@@ -26,15 +26,20 @@
       - if can? :update, @exercise
         = link_to 'Edit Exercise', edit_exercise_path(@exercise), class: "btn btn-stoic-white"
         = link_to 'Delete Exercise', @exercise, :method => :delete, :data => { :confirm => "Are you certain that you'd like to delete this philosophical exercise?" }, class: "btn btn-stoic-white"
+      - if @exercise.buzzword
+        %br
+        %br
+        .label{class: "#{randomize_label_color_css} #{randomize_diagonal_css}"}
+          = @exercise.buzzword
       - if @exercise.global
         %br
         %br
-        .label.label-primary Global Exercise
+        .label.label-primary Stoic Penknife Exercise
       - else
         %br
         %br
-        .label.stoic-brown Custom Exercise
-
+        .label.stoic-brown Your Custom Exercise
+        
   .row
     %h3.page-header
       Past Rehearsals
@@ -62,14 +67,14 @@
     %br
     .panel.panel-info
       .panel-heading
-        %b Stoic Penknife Global Exercise
-        This exercise is published globally across all of Stoic Penknife and its users.
+        %b Stoic Penknife Exercise
+        Your written practice of this Stoic Penknife exercise is private and only available to you to read.
   - else
     %br
     .panel.stoic-brown
       .panel-heading
         %b Custom Exercise
-        This is a custom exercise created by, and only visible to, you.
+        This is a custom exercise created by, and only visible to, you. Both the exercise and your written practice of it are private to you.
 .container
   .row
     .col-md-4

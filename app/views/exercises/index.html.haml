@@ -3,7 +3,7 @@
     %h2.page-header Stoic Philosophical Exercises
     %h4 Click an exercise to practice one of the ancient techniques of the Stoic philosophers.
     .panel.panel-default.stoic-dark-text
-      %h4.panel-heading.stoic-light-blue These shared "global" exercises are available for everyone to practice
+      %h4.panel-heading.stoic-light-blue Only you can read your own personal, private writing as you practice these exercises.
       .table-responsive
         %table.table.table-striped.table-condensed
           %tr
@@ -14,13 +14,17 @@
           - @global_exercises.each do |global_exercise|
             %tr{class: "exercise_#{global_exercise.id}"}
               %td= link_to global_exercise.title, global_exercise, class: "btn btn-stoic-white"
-              %td= link_to 'Rehearse', new_rehearsal_path(:exercise => global_exercise.id), class: "btn btn-stoic-action"
+              %td
+                .label{class: "#{randomize_label_color_css} #{randomize_diagonal_css}"}
+                  = global_exercise.buzzword
+
               %td= truncate(global_exercise.general_description, length: 250)
               %td= raw global_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
 .container
   .row
     .panel.panel-default.stoic-dark-text
-      %h4.panel-heading.stoic-light-brown Create, edit and rehearse your own custom exercises here
+      %h4.panel-heading.stoic-light-brown Create and edit your own custom exercises here. 
+      %h5.panel-heading.stoic-light-brown Both your custom exercise itself (your questions, etc.) and your personal writing as you practice the exercise, are private. Only you can read either of them.
       = link_to 'Create New Exercise', new_exercise_path, class: "btn btn-stoic-brown"
 
       %br
