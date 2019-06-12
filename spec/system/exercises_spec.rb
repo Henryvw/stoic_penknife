@@ -6,7 +6,7 @@ RSpec.describe 'Exercises', type: :system do
     let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
 
     it 'can read a global exercise' do
-      exercise = FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.')
+      FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.')
       visit exercises_path
       expect(page).to have_content('Senecas Amazing Exercise')
     end
@@ -25,7 +25,7 @@ RSpec.describe 'Exercises', type: :system do
     end
 
     it 'can read the buzzwords on the exercises index page' do
-      exercise = FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.', buzzword: 'Great for after a break-up')
+      FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.', buzzword: 'Great for after a break-up')
       visit exercises_path
       expect(page).to have_content('Great for after a break-up')
     end

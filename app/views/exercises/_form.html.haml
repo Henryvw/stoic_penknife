@@ -46,6 +46,11 @@
         .input-group-addon
           = f.check_box :global, class: "checkbox"
       %br
+      .input-group
+        .input-group-addon
+          = f.label "Add an exciting buzzword for the exercise here"
+          = f.text_field :buzzword, class: "form-control"
+      %br
     .actions
       %center
         = f.submit 'Save Exercise', class: "btn btn-stoic-action btn-lg"
