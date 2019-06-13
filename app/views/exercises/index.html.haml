@@ -18,7 +18,7 @@
                 .label{class: "#{randomize_label_color_css} #{randomize_diagonal_css}"}
                   = global_exercise.buzzword
 
-              %td= truncate(global_exercise.general_description, length: 250)
+              %td= truncate(global_exercise.general_description, length: 200)
               %td= raw global_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
 .container
   .row
