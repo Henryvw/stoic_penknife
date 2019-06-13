@@ -488,6 +488,10 @@ ul li a .move-right {
   display: inline-block;
 }
 
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
 #cbt p { color: black }
 #cbt a:link { font-size:14px; color: rgb(77,134,184); }
 #cbt a:visited { color:rgb(4,4,4); }
