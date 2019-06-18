@@ -1,3 +1,31 @@
 .panel-body {
   color: blue;
 }
+
+body {
+  font-family: 'grecoroman', sans-serif !important;
+}
+
+.masthead-brand {
+  font-family: 'spqr', sans-serif !important;
+}
+
+/* Bring in my custom Grecoroman and SPQR fonts, in relevant woff2, woff and tff formats */
+@font-face {
+  font-family: 'grecoroman';
+  src: font-url('grecoroman.woff2') format('woff2'),
+       font-url('grecoroman.woff') format('woff'),
+       font-url('grecoroman.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'spqr';
+  font-style: normal;
+  font-weight: 300;
+  src: local('spqr'),
+       font-url('spqr.woff2') format('woff2'),
+       font-url('spqr.woff') format('woff'),
+       font-url('spqr.ttf') format('truetype');
+}
