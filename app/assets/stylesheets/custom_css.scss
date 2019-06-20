@@ -2,8 +2,16 @@
   color: blue;
 }
 
+
 body {
   font-family: 'grecoroman', sans-serif !important;
+}
+
+.bg {
+  background: url('red_roman_mosaic_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
 }
 
 .masthead-brand {
