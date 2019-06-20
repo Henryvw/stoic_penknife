@@ -1,36 +1,20 @@
-%center
+.bg
   .container
-    .welcome-title 
-      .row
-        .col-sm-6
-          %br
-          = image_tag "stoic_penknife_logo_sea.png", class: "img-responsive"
-          %br
-          .panel.panel-default.stoic-yellow
-            .panel-body
-              %p#cbt 
-                This app is
-                %a{:href => "https://philarchive.org/archive/DIATPF"} Ancient Greek Cognitive Behavioral Therapy (CBT)
-        .col-sm-6
-          %br
-          %br
-          = image_tag "white_title.png",  class: "img-responsive"
-          %br
-          %big An App to Practice Ancient Philosophical Technologies of the Soul
-          %br
-          %br
-          .panel.panel-default.stoic-grey
-            .panel-body
-              = image_tag "exercise.png", class: "img-rounded img-responsive"
-              .caption
-                %h4 Practice Ancient Stoic Exercises
-                %p Practice written exercises from Seneca, Epictetus and Marcus Aurelius - and create your own.
-              = button_to "Practice Stoic Exercises", exercises_path, method: :get, class: "btn btn-lg btn-stoic-action"
-          .panel.panel-default.stoic-grey
-            .panel-body
-              .caption
-                %h4 How do written Stoic exercises work?
-                %p How did the ancient world understand Stoic Philosophers and the exercises they practiced to work changes in their own minds?
-            = link_to "How does Stoic Penknife work?", about_path, method: :get, class: "btn btn-stoic-white"
-            = link_to "How does Stoic Philosophy work?", doctrines_index_path, method: :get, class: "btn btn-stoic-white"
-            .panel-body
+    .row
+      .col-sm
+        = image_tag "stoic_penknife_logo_sea.png", class: "img-fluid"
+      .col-sm
+        %p#cbt
+          This app is
+          %a{:href => "https://philarchive.org/archive/DIATPF"} Ancient Greek Cognitive Behavioral Therapy (CBT)
+      .col-sm
+        = image_tag "white_title.png"
+        %big An App to Practice Ancient Philosophical Technologies of the Soul
+        = image_tag "exercise.png"
+        %h4 Practice An Ancient Stoic Exercise
+        %p Practice written exercises from Seneca, Epictetus and Marcus Aurelius - and create your own.
+        = button_to "Practice Stoic Exercises", exercises_path, method: :get
+        %h4 How do written Stoic exercises work?
+        %p How did the ancient world understand Stoic Philosophers and the exercises they practiced to work changes in their own minds?
+        = link_to "How does Stoic Penknife work?", about_path, method: :get
+        = link_to "How does Stoic Philosophy work?", doctrines_index_path, method: :get
