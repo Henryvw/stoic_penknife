@@ -1,6 +1,6 @@
 class DoctrinesController < ApplicationController
   # Load CanCan roles for Controller
-  load_and_authorize_resource
+  load_and_authorize_resource :only => [:new, :create]
 
   def index
     @doctrines = Doctrine.all

@@ -9,6 +9,11 @@ RSpec.describe 'Doctrines', type: :system do
       expect(page).to have_content 'Discipline of Action'
     end
 
+    it 'can visit an individual custom-route doctrine show page' do
+      visit '/doctrines_assent'
+      expect(page).to have_content 'Theory of Representation, Judgement and Assent'
+    end
+
     it 'cannot create new doctrines' do
       visit doctrines_new_path
       expect(current_path).to eql('/')
