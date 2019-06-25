@@ -69,7 +69,7 @@ RSpec.describe 'Rehearsals', type: :system do
       sign_in normal_user
       visit exercise_path(exercise.id)
 
-      click_link 'Rehearse this Exercise'
+      click_link 'Practice It'
       find(id: 'rehearsal_answers_attributes0_question_id', visible: false).set('Rehearsal Answer to 1st Question')
       click_button "Finish Rehearsing #{exercise.title}"
 
