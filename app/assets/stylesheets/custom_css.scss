@@ -5,10 +5,12 @@
 
 body {
   font-family: 'grecoroman', sans-serif !important;
+  height: 100%;
+  background: linear-gradient(90deg, rgb(187, 60, 36) 30%, rgb(156, 142, 111) 30% 70%);
 }
 
 .bg {
-  background: url('red_roman_mosaic_background.png');
+  background: url('mosaic_hercules_background.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center; 

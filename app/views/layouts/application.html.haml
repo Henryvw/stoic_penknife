@@ -10,14 +10,9 @@
     %meta{:content => "http://www.stoicpenknife.com/assets/exercise-4cef7567a85d74a5f961ae4db73fb63fc25f8b87504772683fb92c7fc9b8e181.png", :property => "og:image"}/
     %meta{:content => "http://www.stoicpenknife.com/assets/exercise-4cef7567a85d74a5f961ae4db73fb63fc25f8b87504772683fb92c7fc9b8e181.png", :name => "twitter:image"}/
     %meta{:content => "Practice ancient Stoic philosophical technologies of the soul from Seneca, Marcus Aurelius and Epictetus", :property => "twitter:description"}/
-  %body
-    = render partial: "layouts/navbar"
-    = render "layouts/messages"
-    = yield
-
-
-    %br/
-    %br/
-
-    %center
-      = image_tag "footer.png"
+    %body
+      = render partial: "layouts/navbar"
+      = render "layouts/messages"
+      = yield
+      %center
+        = image_tag "footer.png"
