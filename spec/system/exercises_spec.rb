@@ -35,6 +35,10 @@ RSpec.describe 'Exercises', type: :system do
       visit exercise_path(exercise.id)
       expect(page).to have_content('Senecas Amazing Exercise')
     end
+
+    it 'can see the active storage image on the individual exercise show page' do
+      exercise = FactoryBot.create(:exercise)
+      expect(page).to have_css
   end
 
   describe 'normal signed-in user' do

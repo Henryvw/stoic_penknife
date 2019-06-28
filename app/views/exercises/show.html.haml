@@ -6,6 +6,7 @@
           = @exercise.title
         .panel-body
           = @exercise.general_description
+          = image_tag(@exercise.icon, alt: "Exercise Tag", class: "img-responsive")
           %br
           %br
           %p

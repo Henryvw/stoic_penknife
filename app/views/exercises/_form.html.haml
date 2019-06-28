@@ -39,6 +39,10 @@
         = link_to_add_association 'Add New Question', f, :questions, class: "btn btn-stoic-white"
         %h5 There is a limit of 7 questions per exercise.
     %br
+    .input-group
+      .input-group-addon
+        = f.label "Add an image icon"
+        = f.file_field :icon, class: "form-control"
     - if current_user.admin
       .input-group
         .input-group-addon

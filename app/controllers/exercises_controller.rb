@@ -124,6 +124,7 @@ class ExercisesController < ApplicationController
                                      :global,
                                      :buzzword,
                                      :tag_list,
+                                     :icon,
                                      questions_attributes:
                                        %i[id inquiry _destroy])
   end
