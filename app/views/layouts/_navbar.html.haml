@@ -1,19 +1,15 @@
-.text-center
-  .cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
-    .masthead.mb-auto
-      .inner
-        .masthead-brand
-          %h3
-            %a{:href => root_url} Stoic Penknife
+.nav
+  .nav-item
+    %a.nav-link.active{:href => root_url} Stoic Penknife
 
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => root_url} Stoic Penknife
+          %span.icon-bar
+            %span.icon-bar
+              %a.navbar-brand{:href => root_url} Stoic Penknife
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
@@ -30,14 +26,14 @@
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Topics
             %span.caret
-          %ul.dropdown-menu
-            %li
-              - nav_link(doctrines_path) do
-                = link_to "Stoic Doctrines", doctrines_path
+              %ul.dropdown-menu
+                %li
+                  - nav_link(doctrines_path) do
+                    = link_to "Stoic Doctrines", doctrines_path
             %li.divider{:role => "separator"}
-            %li
-              - nav_link(exercises_path) do
-                = link_to "Stoic Exercises", exercises_path
+              %li
+                - nav_link(exercises_path) do
+                  = link_to "Stoic Exercises", exercises_path
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li

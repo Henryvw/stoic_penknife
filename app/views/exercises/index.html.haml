@@ -1,25 +1,17 @@
 .container
   .row
-    %h2.page-header Stoic Philosophical Exercises
+    %h2 Stoic Philosophical Exercises
     %h4 Click an exercise to practice one of the ancient techniques of the Stoic philosophers.
-    .panel.panel-default.stoic-dark-text
-      %h4.panel-heading.stoic-light-blue Only you can read your own personal, private writing as you practice these exercises.
-      .table-responsive
-        %table.table.table-striped.table-condensed
-          %tr
-            %th Exercise
-            %th
-            %th Description
-            %th Philosophical Category Tags
-          - @global_exercises.each do |global_exercise|
-            %tr{class: "exercise_#{global_exercise.id}"}
-              %td= link_to global_exercise.title, global_exercise, class: "btn btn-stoic-white"
-              %td
-                .label{class: "#{randomize_label_color_css} #{randomize_diagonal_css}"}
-                  = global_exercise.buzzword
-
-              %td= truncate(global_exercise.general_description, length: 200)
-              %td= raw global_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
+    .panel.panel-default
+      %h4.panel-heading Only you can read your own personal, private writing as you practice these exercises.
+    .card-columns
+      - @global_exercises.each do |global_exercise|
+        .card
+          = link_to global_exercise.title, global_exercise, class: "card-title btn btn-outline-#{randomize_color_css}"
+          .label{class: "#{randomize_color_css} #{randomize_diagonal_css}"}
+            = global_exercise.buzzword
+          %p{class: "card-text"}=truncate(global_exercise.general_description, length: 200)
+          %p{class: "card-footer"}= raw global_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-muted" }.join('  ')
 .container
   .row
     .panel.panel-default.stoic-dark-text
@@ -34,7 +26,7 @@
           %tr
             %th Exercise
             %th
-            %th General description
+              %th General description
             %th Philosophical Category Tags
           - @exercises.each do |exercise|
             %tr{class: "exercise_#{exercise.id}"}

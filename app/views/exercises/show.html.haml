@@ -30,7 +30,7 @@
       - if @exercise.buzzword
         %br
         %br
-        .label{class: "#{randomize_label_color_css} #{randomize_diagonal_css}"}
+        .label{class: "label-#{randomize_color_css} #{randomize_diagonal_css}"}
           = @exercise.buzzword
       - if @exercise.global
         %br
