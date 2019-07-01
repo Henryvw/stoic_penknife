@@ -122,7 +122,7 @@ RSpec.describe ExercisesController, type: :controller do
     end
 
     context 'As a guest / not logged-in user' do
-      it 'Allows you to view the ' do
+      it 'Blocks you (redirects you to sign_in) from creating an exercise' do
         get :new
         expect(response).to redirect_to '/users/sign_in'
       end

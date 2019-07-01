@@ -37,8 +37,10 @@ RSpec.describe 'Exercises', type: :system do
     end
 
     it 'can see the active storage image on the individual exercise show page' do
-      exercise = FactoryBot.create(:exercise)
-      expect(page).to have_css
+      exercise = FactoryBot.create(:exercise, :with_icon, global: true)
+      visit exercise_path(exercise.id)
+      expect(page).to have_css("img[src*='test-image.jpg']")
+    end
   end
 
   describe 'normal signed-in user' do

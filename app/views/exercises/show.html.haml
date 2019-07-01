@@ -6,7 +6,7 @@
           = @exercise.title
         .panel-body
           = @exercise.general_description
-          = image_tag(@exercise.icon, alt: "Exercise Tag", class: "img-responsive")
+          = image_tag(@exercise.icon, alt: "Exercise Tag", class: "img-responsive") if @exercise.icon.attached?
           %br
           %br
           %p
