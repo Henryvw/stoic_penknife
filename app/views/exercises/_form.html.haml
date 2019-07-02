@@ -26,6 +26,11 @@
         %br
         = f.label :tag_list, "e.g. Assent, Sex, Freedom)"
       = f.text_area :tag_list, class: "form-control", rows: "4"
+    %br
+    .input-group
+      .input-group-addon
+        = f.label "Add an image icon"
+        = f.file_field :icon, class: "form-control"
 
     %h3.page-header.exercise_title Exercise Questions
     .input-group
@@ -38,7 +43,6 @@
         %br
         = link_to_add_association 'Add New Question', f, :questions, class: "btn btn-stoic-white"
         %h5 There is a limit of 7 questions per exercise.
-    %br
     - if current_user.admin
       .input-group
         .input-group-addon

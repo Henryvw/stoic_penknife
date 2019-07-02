@@ -35,6 +35,14 @@ RSpec.describe Exercise, type: :model do
       exercise = FactoryBot.create(:exercise, global: false)
       expect(exercise.global?).to eq(false)
     end
+
+    it 'can access the associated image icon attributes via active storage' do
+      exercise = FactoryBot.create(:exercise, :with_icon)
+      filename_hash = exercise.icon.filename.instance_values
+      actual_filename_as_array = filename_hash.values
+      expect(filename_hash).to include('filename')
+      expect(actual_filename_as_array).to include('test-image.jpg')
+    end
   end
 
   # Henry's custom methods

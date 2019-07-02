@@ -36,6 +36,7 @@ module StoicPenknife
       g.fixture_question :factory_bot, dir: 'spec/factores'
     end
 
+    config.active_storage.service = :local
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -12,6 +12,7 @@ class Exercise < ActiveRecord::Base
   validates :title, presence: true
   validates :general_description, presence: true
   validate :maximum_number_of_questions
+  has_one_attached :icon
 
   def rehearsals_for_user(user)
     rehearsals.where(user: user)

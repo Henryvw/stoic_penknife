@@ -19,3 +19,6 @@
 *.swp
 
 /public/assets/*
+
+# Hide test/factory-generated image (icon) assets
+/storage/*

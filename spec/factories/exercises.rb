@@ -28,4 +28,12 @@ FactoryBot.define do
       exercise.questions << create(:question, question: 'Question?')
     end
   end
+
+  trait :with_icon do
+    after(:build) do |exercise|
+      file_path = Rails.root.join('spec', 'support', 'assets', 'test-image.jpg')
+      file = fixture_file_upload(Rails.root.join(file_path))
+      exercise.icon.attach(file)
+    end
+  end
 end
