@@ -44,5 +44,5 @@ AllCops:
     - db/schema.rb
     # The Rails team's Active Storage auto-migrations that 
     # cause a large number of Rubocop errors. I'm not 
-    # going to mess with or second-guess their those kinds of changes.
+    # going to mess with or second-guess their changes.
     - db/migrate/*active_storage.rb
