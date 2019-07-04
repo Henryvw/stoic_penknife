@@ -5,7 +5,7 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, shrink-to-fit=no"}
     %meta{:content => "Practice ancient Stoic philosophical technologies of the soul from Seneca, Marcus Aurelius and Epictetus", :property => "og:description"}/
     %meta{:content => "http://www.stoicpenknife.com/assets/exercise-4cef7567a85d74a5f961ae4db73fb63fc25f8b87504772683fb92c7fc9b8e181.png", :property => "og:image"}/
     %meta{:content => "http://www.stoicpenknife.com/assets/exercise-4cef7567a85d74a5f961ae4db73fb63fc25f8b87504772683fb92c7fc9b8e181.png", :name => "twitter:image"}/
@@ -16,3 +16,8 @@
       = yield
       %center
         = image_tag "footer.png"
+
+      =# Bootstrap JS Script activations
+      %script{:crossorigin => "anonymous", :integrity => "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", :src => "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
+      %script{:crossorigin => "anonymous", :integrity => "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"}
+      %script{:crossorigin => "anonymous", :integrity => "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"}
