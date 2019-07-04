@@ -34,4 +34,3 @@
               %td= link_to 'Rehearse', new_rehearsal_path(:exercise => exercise.id), class: "btn btn-stoic-brown"
               %td= truncate(exercise.general_description, length: 250)
               %td= raw exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
-
