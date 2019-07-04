@@ -17,8 +17,8 @@ gem 'haml'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.6.0'
-gem 'mini_magick'
 gem 'jquery-rails'
+gem 'mini_magick'
 gem 'pg'
 gem 'rails', '5.2.3'
 # Use SCSS for stylesheets
