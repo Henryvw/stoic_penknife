@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require turbolinks
-//= require cocoon
 //= require jquery3
+//= require cocoon
 //= require popper
 //= require bootstrap-sprockets
+//= custom_js
 //= require_tree .
