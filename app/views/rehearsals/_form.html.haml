@@ -21,6 +21,9 @@
 
             = hidden_field_tag 'rehearsal[exercise_id]', @rehearsal.exercise.id
             = hidden_field_tag 'rehearsal[city]', @rehearsal_location
+    - if @rehearsal.answers.count == 0
+      = render 'progress_bar'
 
     .actions
       = f.submit "Finish Rehearsing #{@exercise.title}", class: "btn btn-stoic-green btn-lg"
+
