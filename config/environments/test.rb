@@ -33,4 +33,7 @@ StoicPenknife::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Active Storage - use local for test
+  config.active_storage.service = :local
 end

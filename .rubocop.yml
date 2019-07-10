@@ -28,6 +28,7 @@ Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
     - db/**/*.rb
+    - config/**/*.rb
 Metrics/AbcSize:
   Exclude:
     - app/models/ability.rb
