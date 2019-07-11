@@ -24,17 +24,6 @@ module StoicPenknife
     # config.time_zone = Time.now.zone
     # I was trying to make a fancy local time zone for you as a user. I think I might need to add a time zone column to the user database and do various other detailed things in order for local times to be saved and stored and accessible. What appears to be a good resource, https://robots.thoughtbot.com/its-about-time-zones
 
-    config.generators do |g|
-      g.test_framework :rspec,
-                       fixtures: true,
-                       view_specs: false,
-                       helper_specs: false,
-                       routing_specs: false,
-                       controller_specs: true,
-                       request_specs: false
-      g.fixture_question :factory_bot, dir: 'spec/factores'
-    end
-
     config.active_storage.service = :local
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
