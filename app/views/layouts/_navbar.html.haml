@@ -1,4 +1,4 @@
-%nav.navbar.navbar-expand-sm.navbar-light.bg-transparent
+%nav.navbar.navbar-expand-lg.navbar-light.bg-transparent
   %a.navbar-brand{href: root_url}
     = image_tag("stoic_penknife_logo_ink.png", size: "40x40", class: "img-response")
     Stoic Penknife
@@ -17,7 +17,7 @@
       %li.nav-item
         %a.nav-link{href: doctrines_path} Stoic Doctrine
       %li.nav-item
-        %a.nav-link{href: exercises_path} Stoic Life-Exercises
+        %a.nav-link{href: exercises_path} Stoic Think-Exercises
 
     %ul.nav.navbar-nav.mr-auto.navbar-right
       - if user_signed_in?
