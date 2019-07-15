@@ -1,4 +1,4 @@
-# Stoic Penknife [![BUILD_STATUS][]][CIRCLE_CI] [![TEST_COVERAGE][]][CODE_COV] [![LIBERPAY][]]
+# Stoic Penknife [![BUILD_STATUS][]][CIRCLE_CI] [![TEST_COVERAGE][]][CODE_COV] [![LIBERPAY][]][LIBERPAY]
 
 Stoic Penknife is a Ruby on Rails web application to practice ancient Stoic philosophical exercises. Marcus Aurelius, Seneca, Epictetus and other ancient philosophers once practiced these exercises on paper - now you can do it with an app! Amazing.
 
