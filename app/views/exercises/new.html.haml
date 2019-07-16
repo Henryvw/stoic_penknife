@@ -1,11 +1,8 @@
 .container
   .row
     .col-md-8
-      .panel.stoic-brown
-        .panel-heading
-          %h1.page-header.exercise_title Create A New Exercise
-        .panel-body
+      .card
+        .card-body
+          .card-title
+            %h2 Create A New Exercise
           = render 'form'
-        .panel-body
-          = link_to 'Back to List of Exercises', exercises_path, class: "btn btn-stoic-action btn-lg"
-          %br
