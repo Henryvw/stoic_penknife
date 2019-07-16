@@ -1,41 +1,46 @@
 .bg
   .container
     .row
-      .col
-        .row.justify-content-end
+      .col-4
+        .row.justify-content-start.pt-2
           .jumbotron
-            %h3.display-5
+            %h3
               Change your
               %b.text-danger thoughts
               , change your
               %b.text-danger life
-        .row.justify-content-end
+        .row.justify-content-start
           %h1
             %a.btn.btn-lg.btn-block.btn-danger{href: exercises_path} Practice a Stoic Think-Exercise
-        .row.justify-content-end
+        .row.justify-content-start
           %script{:src => "https://liberapay.com/Henryvw/widgets/receiving.js"}
 
-      .col
-        .row.justify-content-end
-          .w-75.mb-2{style: "max-width: 65%"}
+      .col-8
+        .row.justify-content-end.pt-2.pb-2
+          .w-75{style: "max-width: 35%"}
             = image_tag "stoic_penknife_logo_new_clay.png", class: "img-fluid"
-    .row.justify-content-end
-      .card.mt-2
-        .card-body.pt-3.pb-3
-          Practice the
-          %b.text-danger ancient
-          philosophical roots of
-          %b.text-danger modern
-          %a{href: "https://philarchive.org/archive/DIATPF"} Cognitive Behavioral Therapy (CBT)
-      .card.mt-2
-        .card-body.pt-3.pb-3
-          Experience the App for Ancient Greek & Roman Philosophy's
-          %b.text-danger 'Technologies of the Soul'
-      .card.mt-2
-        .card-body.pt-3.pb-3
-          Practice exercises from the ancient philosophers
-          %b.text-danger Seneca,
-          %b.text-danger Epictetus,
-          and
-          %b.text-danger Marcus Aurelius
-          \-- and create your own
+        .row.justify-content-end.pb-5
+          .card
+            .card-body.pb-3.mt-n2
+              Practice the
+              %b.text-danger ancient
+              philosophical roots of
+              %b.text-danger modern
+              %a{href: "https://philarchive.org/archive/DIATPF"} Cognitive Behavioral Therapy (CBT)
+          .card.mt-2
+            .card-body.pt-3.pb-3
+              Experience the App for Ancient Greek & Roman Philosophy's
+              %b.text-danger 'Technologies of the Soul'
+          .card.mt-2
+            .card-body.pt-3.pb-3
+              Practice exercises from the ancient philosophers
+              %b.text-danger Seneca,
+              %b.text-danger Epictetus,
+              and
+              %b.text-danger Marcus Aurelius
+              \-- and create your own
+    .row.pb-5
+    .row.pb-5
+    .row.pb-5
+    .row.pb-5
+

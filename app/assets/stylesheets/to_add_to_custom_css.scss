@@ -10,6 +10,12 @@
 
 body {
   height: 100%;
-  background: linear-gradient(90deg, rgb(187, 60, 36) 30%, rgb(156, 142, 111) 30% 70%);
+  background: linear-gradient(90deg, rgb(187, 60, 36) 30% 70%, rgb(156, 142, 111) 30%);
 }
 
+.bg {
+  background: url('mosaic_hercules_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
