@@ -1,41 +1,33 @@
 .container
-  %br
-  %br
   .row
-    .col-sm-5.col-sm-offset-2
-      .page-header
-      %center
-        %h1
-          Who Made Stoic Penknife?
-        %big An Application to Practice Ancient Stoic Philosophical Technologies of the Soul
-      %br
-      %br
-        %p
-          Feel free to contact us at
-          %a{:href => "mailto:Henry@stoicpenknife.com?Subject=Stoic%20Penknife", :target => "_top"} Henry@stoicpenknife.com.
-        %p
-          That email will go directly to me, Henry van Wagenberg, one of the creators of Stoic Penknife. Between 2013 and 2018 I was the Austria, Switzerland, Germany regional director of the
-          %a{:href => "http://www.newstoa.com/"} "New Stoa"
-          , an organization dedicated to re-awakening Stoic philosophy and lived Stoic philosophical practice in the present day.
-        %br
-          Have you written an exercise based on Epictetus, Marcus Aurelius, Seneca or other Stoic or ancient philosopher that you would like to share with others?
-        %br
-          Are you experienced at using CBT (Cognitive Behavioral Therapy) and have ideas for editing existing exercises -- or adding new ones?
-        %br
-          Have you found inspirational words in an ancient text that you would like to transform into a Stoic Penknife exercise? Would you like to "fork" the code of Stoic Penknife and create your own Stoic exercise practice application? Would you like to share with us your experiences using Stoic Penknife to think about your life? Contact us! We would love to hear from you and are open to changes and adding your exercise to the list shared with all users.
-        %br
-          Stoic Penknife is a free, open source application. The code is hosted on GitHub,
-          %a{:href => "http://www.github.com/Henryvw/stoic_penknife"} https://www.github.com/Henryvw/stoic_penknife.
-        %br
-          I live in Berlin, Germany.
-
-        %br
-          Donate to support further development of Stoic Penknife as an Open Source project:
-        %br
-          %script{:src => "https://liberapay.com/Henryvw/widgets/receiving.js"}
-    .col-sm-4
-      %br
-      %br
-      %br
-      %br
-      = image_tag "henry.jpg", class: "img-rounded img-responsive"
+    .col-6
+      =# TO-DO: Google how to separate paragraphs in Bootstrap without using BR tag?
+      =# To-DO: Add link to the homepage wikipedia page
+      %h2 Who Made Stoic Penknife?
+      %h5 An Application to Practice Ancient Stoic Philosophical Technologies of the Soul
+      %p
+        Feel free to contact us at
+        %a{href: "mailto:Henry@stoicpenknife.com?Subject=Stoic%20Penknife", target: "_top"} Henry@stoicpenknife.com.
+      %p
+        That email will go directly to me, Henry van Wagenberg, one of the creators of Stoic Penknife. Between 2013 and 2018 I was the Austria, Switzerland, Germany regional director of the
+        %a{href: "http://www.newstoa.com/"} "New Stoa"
+        , an organization dedicated to re-awakening Stoic philosophy and lived Stoic philosophical practice in the present day.
+        Have you written an exercise based on Epictetus, Marcus Aurelius, Seneca or other Stoic or ancient philosopher that you would like to share with others?
+        Are you experienced at using CBT (Cognitive Behavioral Therapy) and have ideas for editing existing exercises -- or adding new ones?
+        Have you found inspirational words in an ancient text that you would like to transform into a Stoic Penknife exercise? Would you like to "fork" the code of Stoic Penknife and create your own Stoic exercise practice application? Would you like to share with us your experiences using Stoic Penknife to think about your life? Contact us! We would love to hear from you and are open to changes and adding your exercise to the list shared with all users.
+        Stoic Penknife is a free, open source application. The code is hosted on GitHub,
+        %a{href: "http://www.github.com/Henryvw/stoic_penknife"} https://www.github.com/Henryvw/stoic_penknife.
+        I live in Berlin, Germany.
+        Donate to support further development of Stoic Penknife as an Open Source project:
+        %script{src: "https://liberapay.com/Henryvw/widgets/receiving.js"}
+        %h3 Roman Frescoes Permissions and Attribution
+        %p 
+          
+          The black Roman mosaic background is from the MET Museum and is licensed under the Creative Commons License 
+          %a{href: "https://www.metmuseum.org/art/collection/search/250930"} www.metmuseum.org/art/collection/search/250930
+          The Roman Hercules Mosaic background image on the homepage is from Spain. It was taken by Carole Raddato from FRANKFURT, Germany. It is on Wikipedia and is licensed under the Creative Commons License.
+          The relevant license can be found here:
+          %a{href: "https://creativecommons.org/licenses/by-sa/2.0"} https://creativecommons.org/licenses/by-sa/2.0
+          Individual Exercise mosaics are from the relevant Wikimedia pages on the individual ancient Roman Mosaics in Spain, Italy and France. For details, questions or corrections related to image attribution please contact me, henry@stoicpenknife.com.
+    .col-3
+      = image_tag "henry.jpg", class: "img-thumbnail", style: "max-width: 100%"
