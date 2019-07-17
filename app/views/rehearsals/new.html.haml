@@ -1,28 +1,23 @@
 .container
   .row
-    .col-md-7
-      .card
+    .col-md-6
+      .card.mb-3
         .card-body
           .card-title
             %h4
               Practice
               = @exercise.title
           = render 'form'
-          - unless @published_quotations.nil? || @published_quotations.empty?
-            .col-sm-4
-              .card
-                .card-body
-                  %h4 Ancient Philosopher Who Practiced This Exercise
-                  - @published_quotations.each do |quotation|
-                    "
-                    = quotation.passage
-                    "
-                    %br
-                    - unless @exercise.tags.empty?
-                      %br
-                      %b Source:
-                      = link_to @exercise.tags.first.name, tag_path(@exercise.tags.first.name), class: "btn btn-stoic-white"
-        .card-body
           = link_to "Back to the exercise page", @exercise, class: "btn btn-sm btn-primary"
-          %br
-          %br
+    .col-3
+      - unless @published_quotations.nil? || @published_quotations.empty?
+        .card
+          .card-body
+            %b Ancient Philosopher Who Practiced This Exercise
+            - @published_quotations.each do |quotation|
+              .card-text
+                = quotation.passage
+              - unless @exercise.tags.empty?
+                %b Source:
+                .card-footer
+                  = link_to @exercise.tags.first.name, tag_path(@exercise.tags.first.name)
