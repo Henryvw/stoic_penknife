@@ -1,22 +1,17 @@
-= form_for @rehearsal do |f|
+= bootstrap_form_for @rehearsal do |f|
   = f.hidden_field :user_id
-
-  .form-group.col-md-8
-    .panel
-      .panel-body.stoic-grey
-        %h4 Exercise Instructions
-        %p.page_header
-          = @exercise.general_description
+  .form-group.col-md-12
+    .card.mb-3
+      .card-body
+        .card-title
+          %h4 Think-Exercise Instructions
+        %p= @exercise.general_description
     - @rehearsal.answers.each_with_index do |answer, index|
-      %tr
-        %big 
-          %td= answer.question.inquiry
-      %p
       .form
         .form-group
           #questions
             = f.fields_for :answers, answer do |builder|
-              = builder.text_area :reply, class: "form-control", id: "form-border", rows: 3
+              = builder.text_area :reply, label: "#{answer.question.inquiry}", class: "form-control", id: "form-border", rows: 2
               = hidden_field_tag "rehearsal[answers_attributes]#{index}[question_id]", answer.question.id
 
             = hidden_field_tag 'rehearsal[exercise_id]', @rehearsal.exercise.id
@@ -25,5 +20,5 @@
       = render 'progress_bar'
 
     .actions
-      = f.submit "Finish Rehearsing #{@exercise.title}", class: "btn btn-stoic-green btn-lg"
+      = f.submit "Finish My Practice of #{@exercise.title}", class: "btn btn-md btn-success mt-3"
 

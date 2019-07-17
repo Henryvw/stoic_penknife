@@ -1,29 +1,28 @@
 .container
   .row
-    .col-md-11
-      .panel.stoic-blue
-        .panel-heading
-          %h3.page-header
-            Rehearse
-            = @exercise.title
-        .panel-body
+    .col-md-7
+      .card
+        .card-body
+          .card-title
+            %h4
+              Practice
+              = @exercise.title
           = render 'form'
           - unless @published_quotations.nil? || @published_quotations.empty?
             .col-sm-4
-              .panel.black-plain-stoic-border
-                .panel-body
-                  %h4#quotation-blue Ancient Philosopher Who Practiced This Exercise
-                  .stoic-dark-text
-                    - @published_quotations.each do |quotation|
-                      "
-                      = quotation.passage
-                      "
+              .card
+                .card-body
+                  %h4 Ancient Philosopher Who Practiced This Exercise
+                  - @published_quotations.each do |quotation|
+                    "
+                    = quotation.passage
+                    "
+                    %br
+                    - unless @exercise.tags.empty?
                       %br
-                      - unless @exercise.tags.empty?
-                        %br
-                        %b Source:
-                        = link_to @exercise.tags.first.name, tag_path(@exercise.tags.first.name), class: "btn btn-stoic-white"
-        .panel-body
-          = link_to "Back to the exercise page", @exercise, class: "btn btn-stoic-white"
+                      %b Source:
+                      = link_to @exercise.tags.first.name, tag_path(@exercise.tags.first.name), class: "btn btn-stoic-white"
+        .card-body
+          = link_to "Back to the exercise page", @exercise, class: "btn btn-sm btn-primary"
           %br
           %br
