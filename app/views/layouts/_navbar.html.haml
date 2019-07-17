@@ -19,7 +19,7 @@
       %li.nav-item
         %a.nav-link{href: exercises_path} Stoic Think-Exercises
 
-    %ul.nav.navbar-nav.my-2.my-lg-0
+    %ul.nav.navbar-nav
       - if user_signed_in?
         %li.nav-item
           %a.nav-link{href: edit_user_registration_path} #{current_user.email}
