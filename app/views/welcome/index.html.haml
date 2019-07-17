@@ -1,21 +1,21 @@
 .bg
   .container
-    .row
+    .row.justify-content-start
       .col-4.ml-n2
-        .row.justify-content-center.pt-2
+        .row.justify-content-start.pt-2
           .jumbotron
             %h3.mb-n3.mt-n3
               Change your
               %b.text-danger thoughts
               , change your
               %b.text-danger life
-        .row.justify-content-center.mt-n4
+        .row.justify-content-start.mt-n4
           %h1
             %a.btn.btn-lg.btn-block.btn-danger{href: exercises_path} Practice a Stoic Think-Exercise
-        .row.justify-content-center
+        .row.justify-content-start
           %script{:src => "https://liberapay.com/Henryvw/widgets/receiving.js"}
 
-      .col-8
+      .col-8.ml-2
         .row.justify-content-end.pt-2.pb-2
           .w-75.mr-n4{style: "max-width: 32%"}
             = image_tag "stoic_penknife_logo_new_clay.png", class: "img-fluid"
