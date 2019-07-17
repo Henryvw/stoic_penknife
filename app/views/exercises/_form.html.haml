@@ -4,11 +4,9 @@
   = f.text_area :general_description, rows: '4'
   = f.text_area :tag_list, label: 'Category Tags (Seperated by commas, e.g. Assent, Sex, Freedom)', class: 'form-control', rows: '4'
   = f.file_field :icon, label: 'Add an image icon', class: 'form-control'
-
   %h3 Think-Exercise Questions
   = f.fields_for :questions do |question|
-    #e-question
-      = render 'question_fields', f: question
+    = render 'question_fields', f: question
   .links
     .col-6
       = link_to_add_association 'Add New Question', f, :questions, class: 'btn btn-md btn-primary form-control'
@@ -21,14 +19,11 @@
     = f.text_field :buzzword, label: 'Add an exciting buzzword-catchphrase for the exercise here', class: 'form-control'
   .actions
   %center
-    = f.submit 'Save Exercise', class: 'btn btn-lg'
+    = f.submit 'Save Exercise', class: 'btn btn-lg btn-success'
 
 :javascript
   $(document).ready(function() {
-         $('#e-question').on('cocoon:after-insert', function() {
-            console.log("HEY HEY HEY HEY HEY")
-           check_to_hide_or_show_add_link();
-         });
+    $('#e-questions').on('change', function() { console.log("HEY") })
 
     // Make clear also on refresh that field is required. If field is empty, add is-invalid class. If field is now full (but ANOTHER field is empty) then make sure the filled-in field displays green/valid.
     if ($('textarea#exercise_general_description').is(':empty')){
@@ -61,16 +56,30 @@
     $('#exercise_general_description').addClass('is-valid');
   });
 
+  // Hide Add Question Button (and check to re-add it) if more than 7 questions is reached
   $(document).ready(function() {
-      $(function() {
-         function check_to_hide_or_show_add_link() {
-           if ($('#questions .nested-fields:visible').length >= 2) {
-             $('a.add_fields').hide();
-           } 
-           else {
-             $('a.add_fields').show();
-           }
-         }
+    $(function() {
+      function check_to_hide_add_link() {
+        if ($('.nested-fields:visible').length >= 6) {
+          $('a.add_fields').hide();
+        }
+        else {
+          $('a.add_fields').show();
+        }
+      }
 
+      function check_to_re_add_add_link() {
+        if ($('.nested-fields:visible').length = 6) {
+          $('a.add_fields').show();
+        }
+      }
+
+      $('.card-body').on('click', '.btn-md', function() {
+        check_to_hide_add_link();
       });
+
+      $('.card-body').on('click', '.btn-sm', function() {
+        check_to_re_add_add_link();
+      });
+    });
   });
