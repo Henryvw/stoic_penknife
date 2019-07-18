@@ -18,6 +18,10 @@
               .card-text
                 = quotation.passage
               - unless @exercise.tags.empty?
-                %b Source:
-                .card-footer
-                  = link_to @exercise.tags.first.name, tag_path(@exercise.tags.first.name)
+                %br
+                .col
+                  .row
+                    %br
+                    %b Source:&nbsp;
+                    .card-text
+                      = link_to @exercise.tags.first.name, tag_path(@exercise.tags.first.name), class: "small text-muted"
