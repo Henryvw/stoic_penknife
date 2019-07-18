@@ -13,7 +13,7 @@ class StoicMailer < ActionMailer::Base
     begin
       devise_mail(record, :reset_password_instructions, {from: "henry@stoicpenknife.com"})
     rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
-      flash[:notice]=e.message
+      flash[:error]=e.message
     end
   end
 

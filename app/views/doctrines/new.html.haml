@@ -1,21 +1,19 @@
 %h1 New Doctrine Tag
 
-
 = link_to 'Back', doctrines_index_path
-
 
 = form_for @doctrine do |f|
   - if @doctrine.errors.any?
-    #error_explanation.stoic-dark-text
+    #error_explanation
       %h2= "#{pluralize(@quotation.errors.count, "error")} prohibited this quotation from being saved:"
       %ul
         - @doctrine.errors.full_messages.each do |msg|
           %li= msg
 
-  .field.stoic-dark-text
+  .field
     = f.label :doctrine_file_name
     = f.text_field :file_name
-  .field.stoic-dark-text 
+  .field
     = f.label :tag_list, "Category Tags"
     %br
     = f.label :tag_list, "(Separated by commas,"

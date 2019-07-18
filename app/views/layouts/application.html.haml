@@ -12,7 +12,9 @@
     %meta{content: "Experience the ancient Greek philosophical origin of modern Cognitive Behavioral Therapy (CBT). Practice exercises from Seneca, Marcus Aurelius and Epictetus that have the power to change your thoughts --- and your life.", property: "twitter:description"}/
     %body
       = render partial: "layouts/navbar"
-      = render "layouts/messages"
+      .row.justify-content-start
+        .container
+          = render "layouts/messages"
       = yield
     %center
       = image_tag "footer.png"
