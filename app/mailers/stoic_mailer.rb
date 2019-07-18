@@ -10,7 +10,11 @@ class StoicMailer < ActionMailer::Base
 
   def reset_password_instructions(record, token, opts = {})
     @token = token
-    devise_mail(record, :reset_password_instructions, opts)
+    begin
+      devise_mail(record, :reset_password_instructions, {from: "henry@stoicpenknife.com"})
+    rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
+      flash[:notice]=e.message
+    end
   end
 
   def unlock_instructions(record, token, opts = {})
