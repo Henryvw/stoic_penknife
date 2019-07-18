@@ -1,7 +1,7 @@
 = bootstrap_form_for(@exercise, label_errors: true) do |f|
   = f.hidden_field :user_id
-  = f.text_field :title
-  = f.text_area :general_description, rows: '4'
+  = f.text_field :title, required: true
+  = f.text_area :general_description, rows: '4', required: true
   = f.text_area :tag_list, label: 'Category Tags (Seperated by commas, e.g. Assent, Sex, Freedom)', class: 'form-control', rows: '4'
   = f.file_field :icon, label: 'Add an image icon', class: 'form-control'
   %h3 Think-Exercise Questions
@@ -23,23 +23,15 @@
 
 :javascript
   $(document).ready(function() {
-    $('#e-questions').on('change', function() { console.log("HEY") })
-
     // Make clear also on refresh that field is required. If field is empty, add is-invalid class. If field is now full (but ANOTHER field is empty) then make sure the filled-in field displays green/valid.
-    if ($('textarea#exercise_general_description').is(':empty')){
-      $('textarea#exercise_general_description').addClass('is-invalid');
-    }
-    else {
+    if ($('textarea#exercise_general_description').val().length ==! 0){
       $('textarea#exercise_general_description').removeClass('is-invalid');
       $('textarea#exercise_general_description').addClass('is-valid');
     };
   });
 
   $(document).ready(function() {
-    if ($('input#exercise_title').val().length === 0){
-      $('input#exercise_title').addClass('is-invalid');
-    }
-    else {
+    if ($('input#exercise_title').val().length ==! 0){
       $('input#exercise_title').removeClass('is-invalid');
       $('input#exercise_title').addClass('is-valid');
     };
