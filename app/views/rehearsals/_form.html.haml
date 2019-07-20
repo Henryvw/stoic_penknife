@@ -1,11 +1,7 @@
 = bootstrap_form_for @rehearsal do |f|
   = f.hidden_field :user_id
   .form-group.col-md-12
-    .card.mb-3
-      .card-body
-        .card-title
-          %h4 Think-Exercise Instructions
-        %p= @exercise.general_description
+    %p= @exercise.general_description
     - @rehearsal.answers.each_with_index do |answer, index|
       .form
         .form-group

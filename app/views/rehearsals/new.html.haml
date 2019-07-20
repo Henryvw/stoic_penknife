@@ -3,25 +3,24 @@
     .col-md-6
       .card.mb-3
         .card-body
-          .card-title
+          .card-title.ml-3
             %h4
               Practice
               = @exercise.title
           = render 'form'
-          = link_to "Back to the exercise page", @exercise, class: "btn btn-sm btn-primary"
+          = link_to "Back to the exercise page", @exercise, class: "btn btn-sm btn-primary ml-3"
     .col-3
       - unless @published_quotations.nil? || @published_quotations.empty?
         .card
           .card-body
             %b Ancient Philosopher Who Practiced This Exercise
             - @published_quotations.each do |quotation|
-              .card-text
-                = quotation.passage
               - unless @exercise.tags.empty?
                 %br
                 .col
                   .row
                     %br
-                    %b Source:&nbsp;
                     .card-text
                       = link_to @exercise.tags.first.name, tag_path(@exercise.tags.first.name), class: "small text-muted"
+              .card-text
+                = quotation.passage + "\""
