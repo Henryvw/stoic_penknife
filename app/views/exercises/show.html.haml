@@ -1,18 +1,15 @@
 .container
   .row
-    .col-md-8
-      .panel.panel-default.stoic-white.stoic-dark-text
-        %h3.panel-heading.stoic-light-blue
-          = @exercise.title
-        .panel-body
+    .col-md-7
+      .card
+        .card-body
+          %h3.card-title
+            = @exercise.title
           = @exercise.general_description
-          = image_tag(@exercise.icon, alt: "Exercise Tag", class: "img-responsive") if @exercise.icon.attached?
-          %br
-          %br
-          %p
-            %b
-              Philosophical Categories:
-            = raw @exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
+          Philosophical Categories:
+          .card-footer
+            = raw @exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-muted" }.join('  ')
+          = image_tag(@exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 30vh; object-fit: cover") if @exercise.icon.attached?
     .col-md-4
       %br
     .col-md-4
