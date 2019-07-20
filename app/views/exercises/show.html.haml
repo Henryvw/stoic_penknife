@@ -11,32 +11,21 @@
             = raw @exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-muted" }.join('  ')
           = image_tag(@exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 30vh; object-fit: cover") if @exercise.icon.attached?
     .col-md-4
-      %br
-    .col-md-4
-      = link_to 'Practice It', new_rehearsal_path(:exercise => @exercise.id), class: "btn btn-stoic-action btn-lg"
-    .col-md-4
-      %br
-    .col-md-4
-      = link_to 'Back to Exercise List', exercises_path, class: "btn btn-stoic-white"
-    .col-md-4
-      %br
-    .col-md-4
+      .row
+        = link_to 'Practice It', new_rehearsal_path(:exercise => @exercise.id), class: "btn btn-lg btn-success"
+      .row
+        = link_to 'Back to Think-Exercise List', exercises_path, class: "btn btn-sm btn-secondary"
+      .row
       - if can? :update, @exercise
-        = link_to 'Edit Exercise', edit_exercise_path(@exercise), class: "btn btn-stoic-white"
-        = link_to 'Delete Exercise', @exercise, :method => :delete, :data => { :confirm => "Are you certain that you'd like to delete this philosophical exercise?" }, class: "btn btn-stoic-white"
+        .row
+          = link_to 'Edit', edit_exercise_path(@exercise), class: "btn btn-sm btn-secondary"
+        .row
+          = link_to 'Delete', @exercise, method: :delete, data: { confirm: "Are you certain that you'd like to delete this philosophical exercise?" }, class: "btn btn-sm btn-secondary"
       - if @exercise.buzzword
-        %br
-        %br
-        .label{class: "label-#{randomize_color_css} #{randomize_diagonal_css}"}
+        .label{class: "badge badge-pill badge-#{randomize_color_css} #{randomize_diagonal_css}"}
           = @exercise.buzzword
-      - if @exercise.global
-        %br
-        %br
-        .label.label-primary Stoic Penknife Exercise
-      - else
-        %br
-        %br
-        .label.stoic-brown Your Custom Exercise
+      - if @exercise.global == false
+        .badge.badge-pill.badge-warning Your Custom Exercise
         
   .row
     %h3.page-header

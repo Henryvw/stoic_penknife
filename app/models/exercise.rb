@@ -11,6 +11,7 @@ class Exercise < ActiveRecord::Base
                                 allow_destroy: true
   validates :title, presence: true
   validates :general_description, presence: true
+  validates :questions, presence: true
   validate :maximum_number_of_questions
   has_one_attached :icon
 
