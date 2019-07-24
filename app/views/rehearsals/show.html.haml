@@ -22,10 +22,11 @@
             %p= @exercise.general_description
           .card-text
             - @rehearsal.answers.each_with_index do |answer, index|
-              %tr
-                %h5
-                  %th
-                    %b= answer.question.inquiry
+              %table.table.table-dark
+                %tr
+                  %h5
+                    %th
+                      %b= answer.question.inquiry
               %p
               %tr
                 %p
