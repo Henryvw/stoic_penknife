@@ -43,7 +43,8 @@ class RehearsalsController < ApplicationController
       if @rehearsal.save
         format.html do
           redirect_to @rehearsal.exercise,
-            notice: "You just practiced #{@rehearsal.exercise.title}. Great job."
+                      notice: "You just practiced #{@rehearsal.exercise.title}.
+                      Great job."
         end
       else
         format.html { render action: 'new' }
@@ -55,7 +56,8 @@ class RehearsalsController < ApplicationController
   def update
     if @rehearsal.update(rehearsal_params)
       redirect_to @rehearsal.exercise,
-        notice: "You just updated your earlier practice of #{@rehearsal.exercise.title}."
+                  notice: "You just updated your earlier
+                  practice of #{@rehearsal.exercise.title}."
     else
       render action: 'edit'
     end

@@ -8,10 +8,10 @@ module ApplicationHelper
 
   def fix_old_bootstrap_alert_css(level)
     case level
-      when "notice" then "success"
-      when "error" then "danger"
-      when "alert" then "danger"
-      else "secondary"
+    when 'notice' then 'success'
+    when 'error' then 'danger'
+    when 'alert' then 'danger'
+    else 'secondary'
     end
   end
 end
