@@ -10,7 +10,7 @@ RSpec.describe 'Users', type: :system do
     fill_in 'user_password', with: normal_user.password
     click_button 'Log in'
 
-    expect(page).to have_content 'Signed in successfully.'
+    expect(page).to have_content 'Signed in to Stoic Penknife successfully.'
     expect(page).to have_http_status(:success)
   end
 
@@ -18,7 +18,7 @@ RSpec.describe 'Users', type: :system do
     sign_in normal_user
     visit root_path
     click_link 'Sign Out'
-    expect(page).to have_content 'Signed out successfully.'
+    expect(page).to have_content 'Signed out of Stoic Penknife successfully.'
     expect(page).to have_http_status(:success)
   end
 

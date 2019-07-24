@@ -1,45 +1,45 @@
-.container
-  .row
-    %h2.page-header Stoic Philosophical Exercises
-    %h4 Click an exercise to practice one of the ancient techniques of the Stoic philosophers.
-    .panel.panel-default.stoic-dark-text
-      %h4.panel-heading.stoic-light-blue Only you can read your own personal, private writing as you practice these exercises.
-      .table-responsive
-        %table.table.table-striped.table-condensed
-          %tr
-            %th Exercise
-            %th
-            %th Description
-            %th Philosophical Category Tags
-          - @global_exercises.each do |global_exercise|
-            %tr{class: "exercise_#{global_exercise.id}"}
-              %td= link_to global_exercise.title, global_exercise, class: "btn btn-stoic-white"
-              %td
-                .label{class: "#{randomize_label_color_css} #{randomize_diagonal_css}"}
-                  = global_exercise.buzzword
-
-              %td= truncate(global_exercise.general_description, length: 200)
-              %td= raw global_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
-.container
-  .row
-    .panel.panel-default.stoic-dark-text
-      %h4.panel-heading.stoic-light-brown Create and edit your own custom exercises here. 
-      %h5.panel-heading.stoic-light-brown Both your custom exercise itself (your questions, etc.) and your personal writing as you practice the exercise, are private. Only you can read either of them.
-      = link_to 'Create New Exercise', new_exercise_path, class: "btn btn-stoic-brown"
-
-      %br
-      %br
-      .table-responsive
-        %table.table.table-striped.table-condensed
-          %tr
-            %th Exercise
-            %th
-            %th General description
-            %th Philosophical Category Tags
-          - @exercises.each do |exercise|
-            %tr{class: "exercise_#{exercise.id}"}
-              %td= link_to exercise.title, exercise, class: "btn btn-stoic-white"
-              %td= link_to 'Rehearse', new_rehearsal_path(:exercise => exercise.id), class: "btn btn-stoic-brown"
-              %td= truncate(exercise.general_description, length: 250)
-              %td= raw exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
-
+.container-fluid
+  .row.justify-content-center
+    .col-10
+      .card.bg-secondary
+        .card-body
+          %h2 Stoic Philosophical Think-Exercises
+          %h4
+            Practice one of the
+            %b.text-warning ancient techniques
+            of the Stoic philosophers.
+          %h6
+            .card
+              .card-header.bg-info
+                Only you can read your own personal, private writing as you practice these exercises.
+          .card-columns
+            - @global_exercises.each do |global_exercise|
+              .card{class: "bg-#{randomize_color_css}"}
+                = link_to(image_tag(global_exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 20vh; object-fit: cover"), global_exercise) if global_exercise.icon.attached?
+                .card-body
+                  = link_to global_exercise.title, global_exercise, class: "card-title btn btn-outline-light"
+                  .label{class: "border badge badge-pill badge-#{randomize_color_css} #{randomize_diagonal_css}"}
+                    = global_exercise.buzzword
+                  %p{class: "card-text"}=truncate(global_exercise.general_description, length: 200)
+                %p{class: "card-footer"}= raw global_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-light" }.join('  ')
+.container-fluid
+  .row.justify-content-center.mt-3
+    .col-10
+      .card.bg-light.text-dark
+        .card-body
+          %h4
+            Create and edit
+            %b.text-warning your own
+            custom exercises here.
+          %h5 Here, both your custom exercise itself (your questions, etc.) and your personal writing as you practice the exercise, are private. Only you can read either of them.
+          = link_to 'Create New Custom Exercise', new_exercise_path, class: "btn btn-primary mb-3"
+          .card-columns
+            - @exercises.each do |custom_exercise|
+              .card
+                = link_to(image_tag(custom_exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 20vh; object-fit: cover")) if custom_exercise.icon.attached?
+                .card-body
+                  = link_to custom_exercise.title, custom_exercise, class: "card-title btn btn-outline-dark"
+                  .label{class: "badge badge-pill badge-#{randomize_color_css} #{randomize_diagonal_css}"}
+                    = custom_exercise.buzzword
+                  %p{class: "card-text"}=truncate(custom_exercise.general_description, length: 200)
+                  %p{class: "card-footer"}= raw custom_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-muted" }.join('  ')

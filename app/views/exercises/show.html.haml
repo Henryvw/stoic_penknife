@@ -1,94 +1,77 @@
 .container
   .row
-    .col-md-8
-      .panel.panel-default.stoic-white.stoic-dark-text
-        %h3.panel-heading.stoic-light-blue
-          = @exercise.title
-        .panel-body
+    .col-md-7
+      .card
+        .card-body.bg-info
+          %h3.card-title
+            = @exercise.title
           = @exercise.general_description
-          = image_tag(@exercise.icon, alt: "Exercise Tag", class: "img-responsive") if @exercise.icon.attached?
-          %br
-          %br
-          %p
-            %b
-              Philosophical Categories:
-            = raw @exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
+          %p= raw @exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-light" }.join('  ')
+          = image_tag(@exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 30vh; object-fit: cover") if @exercise.icon.attached?
     .col-md-4
-      %br
-    .col-md-4
-      = link_to 'Rehearse this Exercise', new_rehearsal_path(:exercise => @exercise.id), class: "btn btn-stoic-action btn-lg"
-    .col-md-4
-      %br
-    .col-md-4
-      = link_to 'Back to Exercise List', exercises_path, class: "btn btn-stoic-white"
-    .col-md-4
-      %br
-    .col-md-4
+      .row.mb-2
+        - if @exercise.buzzword
+          .label{class: "border badge badge-pill badge-#{randomize_color_css} #{randomize_diagonal_css} mb-2 mt-3"}
+            = @exercise.buzzword
+      .row.mb-2
+        = link_to 'Practice It', new_rehearsal_path(:exercise => @exercise.id), class: "btn btn-lg btn-primary"
+      .row.mb-2
+        = link_to 'Back to Exercise List', exercises_path, class: "btn btn-sm btn-secondary"
+      .row.mb-2
       - if can? :update, @exercise
-        = link_to 'Edit Exercise', edit_exercise_path(@exercise), class: "btn btn-stoic-white"
-        = link_to 'Delete Exercise', @exercise, :method => :delete, :data => { :confirm => "Are you certain that you'd like to delete this philosophical exercise?" }, class: "btn btn-stoic-white"
-      - if @exercise.buzzword
-        %br
-        %br
-        .label{class: "#{randomize_label_color_css} #{randomize_diagonal_css}"}
-          = @exercise.buzzword
-      - if @exercise.global
-        %br
-        %br
-        .label.label-primary Stoic Penknife Exercise
-      - else
-        %br
-        %br
-        .label.stoic-brown Your Custom Exercise
-        
-  .row
-    %h3.page-header
-      Past Rehearsals
-    .table-responsive
-      %table.table.table-striped.table-condensed.stoic-dark-text.stoic-striped
-        %tbody
-        %th
-        %th Day
-        %th Place
-        - @exercise.questions.each do |question|
-          %th= truncate(question.inquiry, length: 100)
-        - @rehearsals.each do |rehearsal|
-          %tr
-            %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-stoic-white btn-lg"
-            %td= rehearsal.created_at.strftime("%d.%m.%Y")
-            -if rehearsal.city?
-              %td= rehearsal.city
-            -else
-              %td Unknown City
+        .row.mb-2
+          = link_to 'Edit', edit_exercise_path(@exercise), class: "btn btn-sm btn-secondary mr-2"
+          = link_to 'Delete', @exercise, method: :delete, data: { confirm: "Are you certain that you'd like to delete this philosophical exercise?" }, class: "btn btn-sm btn-secondary"
+      .row.mb-2
+        - if @exercise.global == false
+          .badge.badge-pill.badge-warning Your Custom Exercise
+  .row.mt-3
+    .col-xl-12
+      .card.bg-secondary
+        .card-body
+          .card-title
+            %h3 My Past Practice
+          .table-responsive-xl
+            %table.table.table-warning
+              %tbody
+              %th
+              %th Day
+              %th Place
+              - @exercise.questions.each do |question|
+                %th= truncate(question.inquiry, length: 75)
+              - @rehearsals.each do |rehearsal|
+                %tr{class: "bg-#{randomize_color_css} text-white"}
+                  %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-sm btn-outline-light"
+                  %td= rehearsal.created_at.strftime("%d.%m.%Y")
+                  -if rehearsal.city?
+                    %td= rehearsal.city
+                  -else
+                    %td Unknown City
 
-            - rehearsal.answers.each do |answer|
-              %td= truncate(answer.reply, length: 100)
+                  - rehearsal.answers.each do |answer|
+                    %td= truncate(answer.reply, length: 100)
 
-  - if @exercise.global
-    %br
-    .panel.panel-info
-      .panel-heading
-        %b Stoic Penknife Exercise
-        Your written practice of this Stoic Penknife exercise is private and only available to you to read.
-  - else
-    %br
-    .panel.stoic-brown
-      .panel-heading
-        %b Custom Exercise
-        This is a custom exercise created by, and only visible to, you. Both the exercise and your written practice of it are private to you.
-.container
-  .row
-    .col-md-4
-      .panel.panel-warning.stoic-grey
-        %b Steps in the Exercise
-        %table.table.table-bordered.table-responsive
-          %tbody
-          - @exercise.questions.each do |question|
-            %tr
-              %td= question.inquiry
-    .col-md-8
-      .panel.panel-warning
-        %b Doctrines Pertaining to This Exercise
-        - unless @published_doctrines.nil? || @published_doctrines.empty?
-          - @published_doctrines.each do |doctrine|
-            = render file: "doctrines/#{doctrine.file_name}.html.haml"
+  .row.mt-3
+    .col-xl-12
+      .card.bg-secondary
+        .card-header
+          %h5 Steps in this Think-Exercise
+        .card-body
+          .card-columns
+            - @exercise.questions.each_with_index do |question, count|
+              .card.border-dark
+                .card-body.text-dark
+                  .card-title
+                    %h5= "#{count+1}"
+                  .card-text
+                    = question.inquiry
+  .row.mt-3
+    .col-xl-12
+      .card.bg-secondary
+        .card-body
+          %h1.badge.badge-info Doctrines Pertaining to This Exercise
+          - unless @published_doctrines.nil? || @published_doctrines.empty?
+            - @published_doctrines.each do |doctrine|
+              = render file: "doctrines/#{doctrine.file_name}.html.haml"
+          - else
+            %p There are no Stoic philosophical doctrines associated with this exercise.

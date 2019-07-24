@@ -1,34 +1,28 @@
 .container
   .row
-    %h2.page-header Sign In To Stoic Penknife
-    .col-lg-6
-      .panel.stoic-white.black-thicker-stoic-border.stoic-dark-text
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          %div
-            = f.label :email_address_linked_to_your_account
-            %br/
-            = f.email_field :email, autofocus: true
-          %br/
-          %div
-            = f.label :password
-            %br/
+    .col-4
+      .card.bg-info
+        .card-header
+          %h2 Sign In To Stoic Penknife
+        .card-body
+          = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            = f.email_field :email, autofocus: true, label: "Email address linked to your account"
             = f.password_field :password, autocomplete: "off"
-          %br/
-          - if devise_mapping.rememberable?
-            %div
+            - if devise_mapping.rememberable?
               = f.check_box :remember_me
-              = f.label :remember_me
-          %br/
-          %div= f.submit "Log in", class: "btn btn-lg btn-stoic-green"
-        %br/
-        = render "devise/shared/links"
+            %br
+            = f.submit "Log in", class: "btn btn-lg btn-primary"
+          %br
+          = render "devise/shared/links"
     .col-lg-2
-      .panel.stoic-white.black-thicker-stoic-border.stoic-dark-text
-        %center
-          %h2 Or
-    .col-lg-4
-      .panel.stoic-white.black-thicker-stoic-border.stoic-dark-text
-        %center
-          %h1= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-lg btn-stoic-green"
+      .card.bg-info
+        .card-body
+          %center
+            %h2 Or
+    .col-lg-6
+      .card.bg-primary
+        .card-body
+          %center
+            %h1= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-lg btn-success"
           %h3 Why do I need a free account?
-        %p You can access the Doctrines and Quotations pages without an account. The reason that individual accounts are needed is because when you practice a Stoic Exercise in the Exercises section, you will enter into dialogue with yourself about personal experiences from an ancient Stoic philosophical perspective. You should have the choice to keep these thoughts private. An account enables you to do that. 
+          %p You can access the Doctrines and Quotations pages without an account. The reason that individual accounts are needed is because when you practice a Stoic Exercise in the Exercises section, you will enter into dialogue with yourself about personal experiences from an ancient Stoic philosophical perspective. You should have the choice to keep these thoughts private. An account enables you to do that. 

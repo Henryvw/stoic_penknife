@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Tags', type: :system do
   let(:current_user) { FactoryBot.create(:user) }
+  let(:question) { FactoryBot.create(:question) }
   it 'can fetch tags on global exercise' do
     seneca_tag = FactoryBot.create(:tag, name: 'Seneca')
-    FactoryBot.create(:exercise, tags: [seneca_tag], general_description: 'Senecas Favorite Exercise', global: true)
+    FactoryBot.create(:exercise, tags: [seneca_tag], general_description: 'Senecas Favorite Exercise', global: true, questions: [question])
 
     sign_in current_user
     visit "/tags/#{seneca_tag.name}"
@@ -15,7 +16,7 @@ RSpec.describe 'Tags', type: :system do
 
   it 'can fetch tags on private exercise, if it belongs to me' do
     marcus_tag = FactoryBot.create(:tag, name: 'Marcus')
-    FactoryBot.create(:exercise, tags: [marcus_tag], general_description: 'Senecas Favorite Exercise', global: false, user: current_user)
+    FactoryBot.create(:exercise, tags: [marcus_tag], general_description: 'Senecas Favorite Exercise', global: false, user: current_user, questions: [question])
 
     sign_in current_user
     visit "/tags/#{marcus_tag.name}"

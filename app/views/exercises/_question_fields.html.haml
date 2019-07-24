@@ -1,11 +1,6 @@
-%p
-.nested-fields
-  .col-lg-8
-    .input-group
-      .input-group-btn
-        = f.text_field :inquiry, class: "form-control", id: "form-border", rows: "2"
-        = f.hidden_field :id
-        = link_to_remove_association "Remove Question", f, class: "btn btn-default"
-
-
-
+.form-row.nested-fields
+  .col
+    = f.text_field :inquiry, hide_label: true, class: "form-control position-static", placeholder: "My Think-Exercise Question"
+    = f.hidden_field :id
+  .col-2
+    = link_to_remove_association "Remove", f, class: "form-control btn btn-sm btn-primary"

@@ -2,18 +2,15 @@
   .row
     .col-md-8
       %p#notice= notice
-      %p#quotation-label= @quotation.title
-      .panel.stoic-yellow
-        .panel-body.black-thicker-stoic-border
-          %h4#quotation-text= @quotation.passage
-        %br
-        %p
-          %b
+      .card
+        .card-header
+          %h4= @quotation.title
+        .card-body
+          .card-text
+            %h5= @quotation.passage + "\""
+        .card-footer
+          %h5
             Philosophical Category Tags:
-          = raw @quotation.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "btn btn-stoic-white" }.join('  ')
-        %br
-        = link_to 'Back to List of Quotations', quotations_path, class: "btn btn-stoic-white"
-        %br
-        %br
+          = raw @quotation.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-muted" }.join('  ')
         - if can? :update, @quotations
           = link_to 'Edit Quotation', edit_quotation_path(@quotation)

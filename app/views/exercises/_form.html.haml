@@ -1,60 +1,77 @@
-= form_for @exercise do |f|
-  - if @exercise.errors.any?
-    #error_explanation.stoic-dark-text
-      %h2= "#{pluralize(@exercise.errors.count, "error")} prohibited this exercise from being saved:"
-      %ul
-        - @exercise.errors.full_messages.each do |msg|
-          %li= msg
-  .field 
-    = f.hidden_field :user_id
-  .form-group.col-md-8.stoic-dark-text
-    .input-group
-      .input-group-addon
-        = f.label :title
-      = f.text_field :title, class: "form-control"
-    %br
-    .input-group
-      .input-group-addon
-        = f.label :general_description
-      = f.text_area :general_description, class: "form-control", rows: "4"
-    %br
-    .input-group
-      .input-group-addon
-        = f.label :tag_list, "Category Tags"
-        %br
-        = f.label :tag_list, "(Separated by commas,"
-        %br
-        = f.label :tag_list, "e.g. Assent, Sex, Freedom)"
-      = f.text_area :tag_list, class: "form-control", rows: "4"
-    %br
-    .input-group
-      .input-group-addon
-        = f.label "Add an image icon"
-        = f.file_field :icon, class: "form-control"
+= bootstrap_form_for(@exercise, label_errors: true) do |f|
+  = f.hidden_field :user_id
+  = f.text_field :title
+  = f.text_area :general_description, rows: '4'
+  = f.text_area :tag_list, label: 'Category Tags (Seperated by commas, e.g. Assent, Sex, Freedom)', class: 'form-control', rows: '4'
+  = f.file_field :icon, label: 'Add an image icon', class: 'form-control'
+  %h3 Think-Exercise Questions
+  = f.fields_for :questions do |question|
+    = render 'question_fields', f: question
+  .col-6
+    = link_to_add_association 'Add New Question', f, :questions, class: 'btn btn-md btn-primary form-control'
+  .col.pb-2.pt-2
+    %h5 At least one question is required in order to create a new exercise.
+    %h5 There is a limit of 7 questions per exercise.
 
-    %h3.page-header.exercise_title Exercise Questions
-    .input-group
-      #questions
-        = f.fields_for :questions do |e_builder|
-          = render "question_fields", :f => e_builder
-      .clearfix
-      .links
-        .clearfix
-        %br
-        = link_to_add_association 'Add New Question', f, :questions, class: "btn btn-stoic-white"
-        %h5 There is a limit of 7 questions per exercise.
-    - if current_user.admin
-      .input-group
-        .input-group-addon
-          = f.label "Publish this exercise globally to all users of Stoic Penknife"
-        .input-group-addon
-          = f.check_box :global, class: "checkbox"
-      %br
-      .input-group
-        .input-group-addon
-          = f.label "Add an exciting buzzword for the exercise here"
-          = f.text_field :buzzword, class: "form-control"
-      %br
-    .actions
-      %center
-        = f.submit 'Save Exercise', class: "btn btn-stoic-action btn-lg"
+  - if current_user.admin
+    = f.check_box :global, class: 'checkbox', label: "Publish this exercise globally to all users of Stoic Penknife"
+    %br
+    = f.text_field :buzzword, label: 'Add an exciting buzzword-catchphrase for the exercise here', class: 'form-control'
+  .actions
+  %center
+    = f.submit 'Save Exercise', class: 'btn btn-lg btn-success'
+
+:javascript
+  $(document).ready(function() {
+    // Make clear also on refresh that field is required. If field is empty, add is-invalid class. If field is now full (but ANOTHER field is empty) then make sure the filled-in field displays green/valid.
+    if ($('textarea#exercise_general_description').val().length ==! 0){
+      $('textarea#exercise_general_description').removeClass('is-invalid');
+      $('textarea#exercise_general_description').addClass('is-valid');
+    };
+  });
+
+  $(document).ready(function() {
+    if ($('input#exercise_title').val().length ==! 0){
+      $('input#exercise_title').removeClass('is-invalid');
+      $('input#exercise_title').addClass('is-valid');
+    };
+  });
+  
+  // Change to green border is-valid bootstrap class once you type into the field
+  $('#exercise_title').one('change',function () {
+    $('#exercise_title').removeClass('is-invalid');
+    $('#exercise_title').addClass('is-valid');
+  });
+
+  $('#exercise_general_description').one('change',function () {
+    $('#exercise_general_description').removeClass('is-invalid');
+    $('#exercise_general_description').addClass('is-valid');
+  });
+
+  // Hide Add Question Button (and check to re-add it) if more than 7 questions is reached
+  $(document).ready(function() {
+    $(function() {
+      function check_to_hide_add_link() {
+        if ($('.nested-fields:visible').length >= 6) {
+          $('a.add_fields').hide();
+        }
+        else {
+          $('a.add_fields').show();
+        }
+      }
+
+      function check_to_re_add_add_link() {
+        if ($('.nested-fields:visible').length = 6) {
+          $('a.add_fields').show();
+        }
+      }
+
+      $('.card-body').on('click', '.btn-md', function() {
+        check_to_hide_add_link();
+      });
+
+      $('.card-body').on('click', '.btn-sm', function() {
+        check_to_re_add_add_link();
+      });
+    });
+  });

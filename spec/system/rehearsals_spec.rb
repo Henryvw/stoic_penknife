@@ -65,15 +65,14 @@ RSpec.describe 'Rehearsals', type: :system do
 
     it 'can create a rehearsal' do
       FactoryBot.create(:rehearsal, exercise: exercise, user: normal_user)
-
       sign_in normal_user
       visit exercise_path(exercise.id)
 
-      click_link 'Rehearse this Exercise'
+      click_link 'Practice It'
       find(id: 'rehearsal_answers_attributes0_question_id', visible: false).set('Rehearsal Answer to 1st Question')
-      click_button "Finish Rehearsing #{exercise.title}"
+      click_button "Finish My Practice of #{exercise.title}"
 
-      expect(page).to have_content('Rehearsal was successfully created.')
+      expect(page).to have_content("You just practiced #{exercise.title}. Great job.")
     end
 
     it 'can edit a rehearsal' do
@@ -84,9 +83,9 @@ RSpec.describe 'Rehearsals', type: :system do
 
       click_link 'Edit This Rehearsal'
       find(id: "edit_rehearsal_#{rehearsal.id}", visible: false).set('Edit this rehearsals first question')
-      click_button "Finish Rehearsing #{exercise.title}"
+      click_button "Finish My Practice of #{exercise.title}"
 
-      expect(page).to have_content('Rehearsal was successfully updated.')
+      expect(page).to have_content("You just updated your earlier practice of #{exercise.title}")
     end
 
     it 'can delete a rehearsal' do

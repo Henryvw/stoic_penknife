@@ -1,0 +1,13 @@
+.progress
+  .progress-bar.bg-success{style: "min-width: 5px;"}
+/ JQuery progress bar script
+:javascript
+  $(".form").one('change',function () {
+      var number_of_questions = $(".form").length
+      var width = ((1 / number_of_questions) * 100);
+  
+      var filled = $(".progress-bar").data( "filled" ) || 0;
+      $(".progress-bar").data( "filled", ++filled );
+  
+      $(".progress-bar").css( "width", (width * filled) +"%" );
+  });

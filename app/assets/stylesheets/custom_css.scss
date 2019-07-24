@@ -1,0 +1,73 @@
+body {
+  font-family: 'grecoroman', sans-serif !important;
+  height: 100%;
+  background: linear-gradient(90deg, rgb(187, 60, 36) 30% 70%, rgb(156, 142, 111) 30%);
+  color: rgb(246, 247, 248) !important;
+ 
+  a {
+   color: $warning;
+  };
+
+  a:hover {
+    color: $white;
+  }
+}
+
+$text-color: rgb(246, 247, 248);
+
+.navbar a {
+  font-family: 'spqr', sans-serif !important;
+  text-color: "red";
+}
+
+.btn {
+  font-family: 'spqr', sans-serif !important;
+}
+
+.bg {
+  background: url('mosaic_hercules_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+}
+
+.masthead-brand {
+  font-family: 'spqr', sans-serif !important;
+  background: rgb(252, 170, 31);
+  border-radius: 25px;
+  padding: 20px; 
+}
+
+/* Bring in my custom Grecoroman and SPQR fonts, in relevant woff2, woff and tff formats */
+@font-face {
+  font-family: 'grecoroman';
+  src: font-url('grecoroman.woff2') format('woff2'),
+       font-url('grecoroman.woff') format('woff'),
+       font-url('grecoroman.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'spqr';
+  font-style: normal;
+  font-weight: 300;
+  src: local('spqr'),
+       font-url('spqr.woff2') format('woff2'),
+       font-url('spqr.woff') format('woff'),
+       font-url('spqr.ttf') format('truetype');
+}
+
+.diagonal-down {
+  transform: rotate(1.4deg);
+  display: inline-block;
+}
+
+.diagonal-up {
+  transform: rotate(-1.4deg);
+  display: inline-block;
+}
+
+label.required:after {
+  content:" *";
+}
