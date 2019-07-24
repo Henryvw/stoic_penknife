@@ -1,54 +1,61 @@
-
 .container
   .row
-    %h3.page-header
-      Features tagged in the Philosophical Category of
-      %u= "#{params[:tag]}"
-    %h3.page-header
-      %i
-        %u= "#{params[:tag]}"
-      Exercises
-    .panel.stoic-dark-text
-      %table.table.table-striped.table-condensed.table-responsive
-        %tr
-          %th Exercise
-          %th
-          %th General description
-          %th
-        - @global_exercises.each do |global_exercise|
-          %tr{class: "exercise_#{global_exercise.id}"}
-            %td= link_to global_exercise.title, global_exercise, class: "btn btn-stoic-white"
-            %td= link_to 'Rehearse', new_rehearsal_path(:exercise => global_exercise.id), class: "btn btn-stoic-action"
-            %td= global_exercise.general_description
-            %td
-              .label.stoic-blue
-                Global Exercise
-        - if user_signed_in?
-          - @exercises.each do |exercise|
-            %tr{class: "exercise_#{exercise.id}"}
-              %td= link_to exercise.title, exercise, class: "btn btn-stoic-white"
-              %td= link_to 'Rehearse', new_rehearsal_path(:exercise => exercise.id), class: "btn btn-stoic-action"
-              %td= exercise.general_description
-              %td
-                .label.stoic-brown
-                  Custom Exercise
+    .col-8
+      .card
+        .card-header
+          %h3
+            Features tagged in the Philosophical Category of
+            %u= "#{params[:tag]}"
+        .card-body
+          .card-title
+            %h3
+              %i
+                %u= "#{params[:tag]}"
+              Exercises
+          %table.table.table-dark.table-responsive
+            %tr
+              %th Exercise
+              %th
+              %th General description
+              %th
+            - @global_exercises.each do |global_exercise|
+              %tr{class: "exercise_#{global_exercise.id}"}
+                %td= link_to global_exercise.title, global_exercise, class: "btn btn-md btn-outline-light"
+                %td= link_to 'Practice It', new_rehearsal_path(:exercise => global_exercise.id), class: "btn btn-md btn-outline-light"
+                %td= global_exercise.general_description
+                %td
+                  .badge.badge-light
+                    Stoic Penknife Exercise
+            - if user_signed_in?
+              - @exercises.each do |exercise|
+                %tr{class: "exercise_#{exercise.id}"}
+                  %td= link_to exercise.title, exercise, class: "btn btn-md btn-outline-light"
+                  %td= link_to 'Rehearse', new_rehearsal_path(:exercise => exercise.id), class: "btn btn-md btn-outline-light"
+                  %td= exercise.general_description
+                  %td
+                    .badge.badge-light
+                      My Custom Exercise
+      .card.mt-3
+        .card-body
+          .card-title
+            %h3
+              %i
+                %u= "#{params[:tag]}"
+              Quotations from Stoic Philosophers
+            %h5 Quotations from Stoic Philosophers like Marcus Aurelius, Seneca, Epictetus
+          %table.table.table-light.table-responsive
+            - @quotations.each do |quotation|
+              %tr
+                %td= link_to quotation.title, quotation, class: "btn btn-md btn-dark"
+                %td= quotation.passage + "\""
 
-    %h3.page-header.quotation_title
-      %i
-        %u= "#{params[:tag]}"
-      Quotations from Stoic Philosophers
-    .panel.stoic-dark-text
-      %table.table.table-striped.table-responsive
-        %tr
-          %th Quotations from Stoic Philosophers like Marcus Aurelius, Seneca, Epictetus
-        - @quotations.each do |quotation|
-          %tr
-            %td= link_to quotation.title, quotation, class: "btn btn-stoic-yellow"
-
-
-    %h3.page-header.doctrine_title
-      %i
-        %u= "#{params[:tag]}"
-      Stoic Doctrines
-    - @doctrines.each do |doctrine|
-      = render file: "doctrines/#{doctrine.file_name}.html.haml"
+      .card.mt-3
+        .card-body
+          .card-title
+            %h3
+              %i
+                %u= "#{params[:tag]}"
+              Stoic Doctrines
+          .card-text
+            - @doctrines.each do |doctrine|
+              = render file: "doctrines/#{doctrine.file_name}.html.haml"
