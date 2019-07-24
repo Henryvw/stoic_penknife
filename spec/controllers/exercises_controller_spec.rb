@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe ExercisesController, type: :controller do
   describe '#index' do
-    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
+    let(:question) { FactoryBot.create(:question) }
+    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, questions: [question]) }
     let(:current_user) { FactoryBot.create(:user) }
 
     context 'As an authenticated user' do
@@ -25,7 +26,8 @@ RSpec.describe ExercisesController, type: :controller do
   end
 
   describe '#show' do
-    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, global: true) }
+    let(:question) { FactoryBot.create(:question) }
+    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, global: true, questions: [question]) }
     let(:current_user) { FactoryBot.create(:user) }
 
     context 'when logged in' do
@@ -44,7 +46,7 @@ RSpec.describe ExercisesController, type: :controller do
       end
 
       it 'blocks you (redirects you to root) from viewing a private, non-published/non-global exercise that does not belong to you' do
-        not_my_exercise = FactoryBot.create(:exercise, user: create(:user), global: false)
+        not_my_exercise = FactoryBot.create(:exercise, user: create(:user), global: false, questions: [question])
         get :show, params: { id: not_my_exercise.id }
         expect(response).to redirect_to root_path
       end
@@ -57,7 +59,7 @@ RSpec.describe ExercisesController, type: :controller do
       end
 
       it 'blocks (redirects) you from seeing a private exercise' do
-        someones_private_exercise = FactoryBot.create(:exercise, user: create(:user), global: false)
+        someones_private_exercise = FactoryBot.create(:exercise, user: create(:user), global: false, questions: [question])
         get :show, params: { id: someones_private_exercise.id }
         expect(response).to redirect_to root_path
       end
@@ -66,8 +68,9 @@ RSpec.describe ExercisesController, type: :controller do
 
   describe '#edit' do
     context 'As a signed-in, non-admin user' do
+      let(:question) { FactoryBot.create(:question) }
       let(:current_user) { FactoryBot.create(:user) }
-      let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
+      let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, questions: [question]) }
 
       before do
         allow(controller).to receive(:authenticate_user!)
@@ -75,13 +78,13 @@ RSpec.describe ExercisesController, type: :controller do
       end
 
       it 'blocks you (redirects you to root) from editing an exercise that is PRIVATE and does not belong to you' do
-        second_exercise = FactoryBot.create(:exercise, user: create(:user), global: false)
+        second_exercise = FactoryBot.create(:exercise, user: create(:user), global: false, questions: [question])
         get :edit, params: { id: second_exercise.id }
         expect(response).to redirect_to root_path
       end
 
       it 'blocks you (redirects you to root) from editing an exercise that is GLOBAL and does not belong to you' do
-        second_exercise = FactoryBot.create(:exercise, user: create(:user), global: true)
+        second_exercise = FactoryBot.create(:exercise, user: create(:user), global: true, questions: [question])
         get :edit, params: { id: second_exercise.id }
         expect(response).to redirect_to root_path
       end
@@ -98,12 +101,11 @@ RSpec.describe ExercisesController, type: :controller do
       end
 
       context 'with valid attributes' do
-        let(:question) { FactoryBot.create(:question)}
+        let(:question) { FactoryBot.create(:question) }
         let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, questions: [question]) }
 
         it 'adds a new exercise' do
           exercise_params = FactoryBot.attributes_for(:exercise, questions_attributes: [build(:question).attributes], user_id: current_user.id)
-          binding.pry
           expect { post :create, params: { exercise: exercise_params } }.to change(current_user.exercises, :count).by(1)
         end
       end
@@ -131,7 +133,8 @@ RSpec.describe ExercisesController, type: :controller do
   end
 
   describe '#update' do
-    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
+    let(:question) { FactoryBot.create(:question) }
+    let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, questions: [question]) }
     let(:current_user) { FactoryBot.create(:user) }
 
     context 'as an authorized user' do
@@ -172,7 +175,8 @@ RSpec.describe ExercisesController, type: :controller do
       # because otherwise, if not already instantiated by another call,
       # the destroy action will try to destroy something that isn't there
       let!(:current_user) { FactoryBot.create(:user) }
-      let!(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, global: false) }
+      let!(:question) { FactoryBot.create(:question) }
+      let!(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, global: false, questions: [question]) }
 
       it 'successfully deletes an exercise' do
         allow(controller).to receive(:authenticate_user!)
