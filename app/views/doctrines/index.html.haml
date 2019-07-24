@@ -2,22 +2,18 @@
 .container
   .row
     .col-md-8
-      %h2.page-header
+      %h2
         The Stoic Doctrine
         %br
-        %small.stoic-white An explanation of the doctrines and dogmas behind ancient Greek and Roman Stoic philosophy.
+        %small An explanation of the doctrines and dogmas behind ancient Greek and Roman Stoic philosophy.
         %a.tab_over_header{"data-parent" => "#accordion0", "data-toggle" => "collapse", href: "#collapseZero", "class" => "label label-default", "id" => "light"}
-      #collapseZero.panel-collapse
-        %p
-          %b Question every opinion. Let only your reason be the judge of your truths.
-        %p The Introduction to Stoic Philosophy provides an overview of the world in which Stoic philosophy took shape, and offers a survey of the nature of its ideas.
-        %p The Disciplines explain the three elements of thought to Stoic philosophical practice. The Three Disciplines also inform the Stoic Penknife Exercises. The Disciplines are the secret which gives dynamism and rhythm to Stoic writings such as Marcus Aurelius' Meditations. In this part we'll not only learn their internal structure but also start using them to interpret Marcus Aurelius and to practice our own exercises and write our own quotations.
+      %p
+        %b Question every opinion. Let only your reason be the judge of your truths.
+      %p The Introduction to Stoic Philosophy provides an overview of the world in which Stoic philosophy took shape, and offers a survey of the nature of its ideas.
+      %p The Disciplines explain the three elements of thought to Stoic philosophical practice. The Three Disciplines also inform the Stoic Penknife Exercises. The Disciplines are the secret which gives dynamism and rhythm to Stoic writings such as Marcus Aurelius' Meditations. In this part we'll not only learn their internal structure but also start using them to interpret Marcus Aurelius and to practice our own exercises and write our own quotations.
     .col-md-8
-      .panel
-        .panel-heading.stoic-blue.stoic-introduction-title 
-          %h4.btn-group.btn-group-lg.stoic-dark-text
-            %a{href: "doctrines_introduction", class: "label"}
-              Introduction to Stoic Philosophy
-        .panel-body.stoic-dark-text
-          A quick introduction to the ancient school of philosophy behind the application.
-        = render '/doctrines/panels/disciplines_panel'
+      %h4
+        %a{href: "doctrines_introduction", class: "badge"}
+          Introduction to Stoic Philosophy
+      %p A quick introduction to the ancient school of philosophy behind the application.
+      = render '/doctrines/panels/disciplines_panel'
