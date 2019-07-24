@@ -1,14 +1,26 @@
-.panel-body {
-  color: blue;
-}
-
 body {
   font-family: 'grecoroman', sans-serif !important;
   height: 100%;
-  background: linear-gradient(90deg, rgb(187, 60, 36) 30%, rgb(156, 142, 111) 30% 70%);
+  background: linear-gradient(90deg, rgb(187, 60, 36) 30% 70%, rgb(156, 142, 111) 30%);
+  color: rgb(246, 247, 248) !important;
+ 
+  a {
+   color: $warning;
+  };
+
+  a:hover {
+    color: $white;
+  }
 }
 
-nav.nav-item {
+$text-color: rgb(246, 247, 248);
+
+.navbar a {
+  font-family: 'spqr', sans-serif !important;
+  text-color: "red";
+}
+
+.btn {
   font-family: 'spqr', sans-serif !important;
 }
 
@@ -44,4 +56,18 @@ nav.nav-item {
        font-url('spqr.woff2') format('woff2'),
        font-url('spqr.woff') format('woff'),
        font-url('spqr.ttf') format('truetype');
+}
+
+.diagonal-down {
+  transform: rotate(1.4deg);
+  display: inline-block;
+}
+
+.diagonal-up {
+  transform: rotate(-1.4deg);
+  display: inline-block;
+}
+
+label.required:after {
+  content:" *";
 }

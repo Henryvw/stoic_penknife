@@ -1,6 +1,6 @@
 .container
   .row
-    .card
+    .card.bg-info
       .card-header
         %h2 Edit Your Stoic Penknife Account
       .card-body
@@ -18,7 +18,7 @@
             = f.password_field :current_password, label: "Old password", autocomplete: "off"
             = f.submit "Update My Password", class: "btn btn-md btn-dark"
   .row.mt-3
-    .card
+    .card.bg-info
       .card-header
         %h5 Cancel My Stoic Penknife Account
       .card-body

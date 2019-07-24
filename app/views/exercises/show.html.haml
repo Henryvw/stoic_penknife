@@ -2,11 +2,11 @@
   .row
     .col-md-7
       .card
-        .card-body
+        .card-body.bg-info
           %h3.card-title
             = @exercise.title
           = @exercise.general_description
-          %p= raw @exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-muted" }.join('  ')
+          %p= raw @exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-light" }.join('  ')
           = image_tag(@exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 30vh; object-fit: cover") if @exercise.icon.attached?
     .col-md-4
       .row.mb-2
@@ -14,7 +14,7 @@
           .label{class: "border badge badge-pill badge-#{randomize_color_css} #{randomize_diagonal_css} mb-2 mt-3"}
             = @exercise.buzzword
       .row.mb-2
-        = link_to 'Practice It', new_rehearsal_path(:exercise => @exercise.id), class: "btn btn-lg btn-success"
+        = link_to 'Practice It', new_rehearsal_path(:exercise => @exercise.id), class: "btn btn-lg btn-primary"
       .row.mb-2
         = link_to 'Back to Exercise List', exercises_path, class: "btn btn-sm btn-secondary"
       .row.mb-2
@@ -27,12 +27,12 @@
           .badge.badge-pill.badge-warning Your Custom Exercise
   .row.mt-3
     .col-xl-12
-      .card
+      .card.bg-secondary
         .card-body
           .card-title
             %h3 My Past Practice
           .table-responsive-xl
-            %table.table.table-dark
+            %table.table.table-warning
               %tbody
               %th
               %th Day
@@ -40,8 +40,8 @@
               - @exercise.questions.each do |question|
                 %th= truncate(question.inquiry, length: 75)
               - @rehearsals.each do |rehearsal|
-                %tr{class: "bg-#{randomize_color_css}"}
-                  %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-sm btn-secondary"
+                %tr{class: "bg-#{randomize_color_css} text-white"}
+                  %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-sm btn-outline-light"
                   %td= rehearsal.created_at.strftime("%d.%m.%Y")
                   -if rehearsal.city?
                     %td= rehearsal.city

@@ -1,6 +1,6 @@
 = bootstrap_form_for @rehearsal do |f|
   = f.hidden_field :user_id
-  .form-group.col-md-12
+  .form-group.col-md-12.mb-2
     %p= @exercise.general_description
     - @rehearsal.answers.each_with_index do |answer, index|
       .form
@@ -16,5 +16,5 @@
       = render 'progress_bar'
 
     .actions
-      = f.submit "Finish My Practice of #{@exercise.title}", class: "btn btn-md btn-success mt-3"
+      = f.submit "Finish My Practice of #{truncate(@exercise.title, length: 20)}", class: "btn btn-md btn-primary mt-3"
 

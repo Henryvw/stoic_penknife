@@ -1,7 +1,7 @@
 .container
   .row
     .col-4
-      .card
+      .card.bg-info
         .card-header
           %h2 Sign In To Stoic Penknife
         .card-body
@@ -15,12 +15,12 @@
           %br
           = render "devise/shared/links"
     .col-lg-2
-      .card
+      .card.bg-info
         .card-body
           %center
             %h2 Or
     .col-lg-6
-      .card
+      .card.bg-primary
         .card-body
           %center
             %h1= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-lg btn-success"

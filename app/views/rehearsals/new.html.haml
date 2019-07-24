@@ -1,17 +1,17 @@
 .container
   .row
     .col-md-6
-      .card.mb-3
+      .card.mb-3.bg-info
         .card-body
           .card-title.ml-3
             %h4
               Practice
               = @exercise.title
           = render 'form'
-          = link_to "Back to the exercise page", @exercise, class: "btn btn-sm btn-primary ml-3"
+          = link_to "Back to the exercise page", @exercise, class: "btn btn-sm btn-info ml-3"
     .col-3
       - unless @published_quotations.nil? || @published_quotations.empty?
-        .card
+        .card.bg-warning
           .card-body
             %b Ancient Philosopher Who Practiced This Exercise
             - @published_quotations.each do |quotation|

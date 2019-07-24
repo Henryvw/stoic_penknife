@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-xl.navbar-light.bg-transparent
-  %a.navbar-brand{href: root_url}
+  %a.navbar-brand.text-white{href: root_url}
     = image_tag("stoic_penknife_logo_ink.png", size: "40x40", class: "img-response mr-1")
     Stoic Penknife
   %button.navbar-toggler{"aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarSupportedContent", "data-toggle": "collapse", type: "button"}
@@ -7,27 +7,27 @@
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
       %li.nav-item
-        %a.nav-link{href: about_path} What Is This?
+        %a.text-white.nav-link{href: about_path} What Is This?
       %li.nav-item
-        %a.nav-link{href: how_it_works_path} How Does It Work?
+        %a.text-white.nav-link{href: how_it_works_path} How Does It Work?
       %li.nav-item
-        %a.nav-link{href: contact_path} Who Made It?
+        %a.text-white.nav-link{href: contact_path} Who Made It?
       %li.nav-item
-        %a.nav-link{href: doctrines_path} Stoic Doctrine
+        %a.text-white.nav-link{href: doctrines_path} Stoic Doctrine
       %li.nav-item
-        %a.nav-link{href: exercises_path} Stoic Think-Exercises
+        %a.text-white.nav-link{href: exercises_path} Stoic Think-Exercises
 
     %ul.nav.navbar-nav
       - if user_signed_in?
         %li.nav-item
-          %a.nav-link{href: edit_user_registration_path} #{current_user.email}
+          %a.text-white.nav-link{href: edit_user_registration_path} #{current_user.email}
         %li.nav-item
-          %a.nav-link{href: destroy_user_session_path} Sign Out
+          %a.text-white.nav-link{href: destroy_user_session_path} Sign Out
       - else
         %li.nav-item
-          %a.nav-link{href: new_user_registration_path} Sign Up
+          %a.text-white.nav-link{href: new_user_registration_path} Sign Up
         %li.nav-item
-          %a.nav-link{href: new_user_session_path} Sign In
+          %a.text-white.nav-link{href: new_user_session_path} Sign In
 
 
 =#Script needed - (must be here so the page reloads it) to change nav color with changing page

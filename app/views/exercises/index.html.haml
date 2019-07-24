@@ -6,30 +6,30 @@
           %h2 Stoic Philosophical Think-Exercises
           %h4
             Practice one of the
-            %b.text-danger ancient techniques
+            %b.text-warning ancient techniques
             of the Stoic philosophers.
           %h6
             .card
-              .card-header
+              .card-header.bg-info
                 Only you can read your own personal, private writing as you practice these exercises.
           .card-columns
             - @global_exercises.each do |global_exercise|
               .card{class: "bg-#{randomize_color_css}"}
                 = link_to(image_tag(global_exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 20vh; object-fit: cover"), global_exercise) if global_exercise.icon.attached?
                 .card-body
-                  = link_to global_exercise.title, global_exercise, class: "card-title btn btn-outline-dark"
+                  = link_to global_exercise.title, global_exercise, class: "card-title btn btn-outline-light"
                   .label{class: "border badge badge-pill badge-#{randomize_color_css} #{randomize_diagonal_css}"}
                     = global_exercise.buzzword
                   %p{class: "card-text"}=truncate(global_exercise.general_description, length: 200)
-                %p{class: "card-footer"}= raw global_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-muted" }.join('  ')
+                %p{class: "card-footer"}= raw global_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-light" }.join('  ')
 .container-fluid
   .row.justify-content-center.mt-3
     .col-10
-      .card.bg-light
+      .card.bg-light.text-dark
         .card-body
           %h4
             Create and edit
-            %b.text-danger your own
+            %b.text-warning your own
             custom exercises here.
           %h5 Here, both your custom exercise itself (your questions, etc.) and your personal writing as you practice the exercise, are private. Only you can read either of them.
           = link_to 'Create New Custom Exercise', new_exercise_path, class: "btn btn-primary mb-3"

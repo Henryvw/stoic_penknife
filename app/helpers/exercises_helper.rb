@@ -5,7 +5,6 @@ module ExercisesHelper
       danger
       info
       warning
-      default
       success
     ]
     color_list.sample
