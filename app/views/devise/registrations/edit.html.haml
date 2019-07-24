@@ -1,33 +1,26 @@
 .container
   .row
-    %h2.page-header.exercise_title Edit Your Stoic Penknife Account
-    .col-lg-10
-      .panel.stoic-white.black-thicker-stoic-border.stoic-dark-text 
-        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-          = devise_error_messages!
-          %div
-            = f.label :email_linked_to_my_account
-            %br/
-            = f.email_field :email, autofocus: true
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-            %div
+    .card
+      .card-header
+        %h2 Edit Your Stoic Penknife Account
+      .card-body
+        .card-text
+          = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+            = devise_error_messages!
+            = f.email_field :email, label: "Email linked to my account", autofocus: true
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
               Currently waiting confirmation for: #{resource.unconfirmed_email}
-          %div
             = f.label :new_password
             %i (leave blank if you don't want to change it)
-            %br/
-            = f.password_field :password, autocomplete: "off"
-          %div
-            = f.label :new_password_confirmation
-            %br/
+            = f.password_field :password, label: "New password", autocomplete: "off"
             = f.password_field :password_confirmation, autocomplete: "off"
-          %div
-            = f.label :old_password
             %i (we need your current password to confirm your changes)
-            %br/
-            = f.password_field :current_password, autocomplete: "off"
-          %br/
-          %div= f.submit "Update", class: "btn btn-stoic-action"
-        %h3 Cancel My Stoic Penknife Account
-        %p
-          Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+            = f.password_field :current_password, label: "Old password", autocomplete: "off"
+            = f.submit "Update My Password", class: "btn btn-md btn-dark"
+  .row.mt-3
+    .card
+      .card-header
+        %h5 Cancel My Stoic Penknife Account
+      .card-body
+        .card-text
+          %p Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-md btn-dark"}
