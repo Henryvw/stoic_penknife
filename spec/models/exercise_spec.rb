@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Exercise, type: :model do
   let(:current_user) { FactoryBot.create(:user) }
-  let(:exercise) { FactoryBot.create(:exercise, user: current_user) }
+  let(:question) { FactoryBot.create(:question) }
+  let(:exercise) { FactoryBot.create(:exercise, user: current_user, questions: [question]) }
 
   describe 'Validation - Basic Setup of Testing' do
     it 'has a valid factory' do
@@ -13,7 +14,8 @@ RSpec.describe Exercise, type: :model do
       exercise = Exercise.new(
         title: 'Senecas Dance with Dragons',
         general_description: 'An amazing exercise to really get your pants off.',
-        user: current_user
+        user: current_user,
+        questions: [question]
       )
 
       expect(exercise).to be_valid
@@ -22,22 +24,22 @@ RSpec.describe Exercise, type: :model do
 
   describe 'Attributes - Classic ActiveRecord Instance Methods' do
     it 'returns a title' do
-      exercise = FactoryBot.create(:exercise, title: 'Senecas Courage Walk')
+      exercise = FactoryBot.create(:exercise, title: 'Senecas Courage Walk', questions: [question])
       expect(exercise.title).to eq('Senecas Courage Walk')
     end
 
     it 'returns a general description' do
-      exercise = FactoryBot.create(:exercise, general_description: 'Take a stroll with Seneca and beef up your courage.')
+      exercise = FactoryBot.create(:exercise, general_description: 'Take a stroll with Seneca and beef up your courage.', questions: [question])
       expect(exercise.general_description).to eq('Take a stroll with Seneca and beef up your courage.')
     end
 
     it 'returns a global boolean' do
-      exercise = FactoryBot.create(:exercise, global: false)
+      exercise = FactoryBot.create(:exercise, global: false, questions: [question])
       expect(exercise.global?).to eq(false)
     end
 
     it 'can access the associated image icon attributes via active storage' do
-      exercise = FactoryBot.create(:exercise, :with_icon)
+      exercise = FactoryBot.create(:exercise, :with_icon, questions: [question])
       filename_hash = exercise.icon.filename.instance_values
       actual_filename_as_array = filename_hash.values
       expect(filename_hash).to include('filename')
@@ -49,7 +51,8 @@ RSpec.describe Exercise, type: :model do
   describe '#rehearsals_for_user' do
     it 'successfully fetches all rehearsals for that particular exercise for that particular user' do
       user = FactoryBot.create(:user)
-      exercise = FactoryBot.create(:exercise, :socrates_tag)
+      question = FactoryBot.create(:question)
+      exercise = FactoryBot.create(:exercise, :socrates_tag, questions: [question])
       rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: user)
 
       actual = exercise.rehearsals_for_user(user)
@@ -61,7 +64,8 @@ RSpec.describe Exercise, type: :model do
     it 'does not fetch other users rehearsals' do
       user = FactoryBot.build_stubbed(:user)
       user_two = FactoryBot.build_stubbed(:user)
-      exercise = FactoryBot.create(:exercise)
+      question = FactoryBot.create(:question)
+      exercise = FactoryBot.create(:exercise, questions: [question])
       rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: user_two)
 
       actual = exercise.rehearsals_for_user(user)
@@ -72,14 +76,14 @@ RSpec.describe Exercise, type: :model do
 
   describe '#self.tagged_with (find EXERCISE with this tag)' do
     it 'returns an exercise when given a tag associated with it' do
-      FactoryBot.create(:exercise, :heraklitus_tag, title: 'Courageous Seneca')
+      FactoryBot.create(:exercise, :heraklitus_tag, title: 'Courageous Seneca', questions: [question])
       expect(Exercise.tagged_with('Heraklitus').first.title).to eq('Courageous Seneca')
     end
   end
 
   describe '#tag_list (getter - find TAGS linked to this exercise)' do
     it 'returns an exercise when given a tag associated with it' do
-      exercise = FactoryBot.create(:exercise, :aristotle_tag)
+      exercise = FactoryBot.create(:exercise, :aristotle_tag, questions: [question])
       expect(exercise.tag_list).to include('Aristotle')
     end
   end
@@ -96,7 +100,8 @@ RSpec.describe Exercise, type: :model do
       exercise = Exercise.new(
         title: 'Senecas Dance with Dragons',
         general_description: 'An amazing exercise to really get your pants off.',
-        user: current_user
+        user: current_user,
+        questions: [question]
       )
 
       8.times { exercise.questions.build(inquiry: 'Why?') }
