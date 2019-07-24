@@ -1,13 +1,13 @@
 .container
   .row
-    .col-md-8.col-sm-offset-1 
-      .panel.stoic-blue
-        .panel-heading
-          %h3.page-header
-            Rehearsal of
+    .col-md-8.col-sm-offset-1
+      .card
+        .card-header
+          %h3
+            My Practice of
             = "#{@exercise.title}"
-            %h4
-              Originally rehearsed in
+            %h5
+              Originally practiced in
               %b 
                 -if @rehearsal.city?
                   = @rehearsal.city
@@ -16,23 +16,19 @@
               on
               %b
                 = "#{@rehearsal.created_at.strftime("%B %d, %Y at %H:%M")}"
-        .panel-body
-          .col-md-11
-            .panel
-              .panel-body.stoic-grey
-                %p= @exercise.general_description
-            .panel
-              .panel-body.stoic-white.stoic-dark-text
-                - @rehearsal.answers.each_with_index do |answer, index|
-                  %tr
-                    %h5.black-stoic-border
-                      %th
-                        %b= answer.question.inquiry
-                  %p
-                  %tr
-                    %p
-                      %td= answer.reply
-            = link_to "Back To #{@exercise.title}", @rehearsal.exercise, class: "btn btn-stoic-white"
-            = link_to 'Edit This Rehearsal', edit_rehearsal_path(@rehearsal), class: "btn btn-stoic-white"
-            %br
-            %br
+        .card-body
+          .card-title
+            %h5 Exercise Overview
+            %p= @exercise.general_description
+          .card-text
+            - @rehearsal.answers.each_with_index do |answer, index|
+              %tr
+                %h5
+                  %th
+                    %b= answer.question.inquiry
+              %p
+              %tr
+                %p
+                  %td= answer.reply
+          = link_to "Back To #{@exercise.title}", @rehearsal.exercise, class: "btn btn-sm btn-secondary"
+          = link_to 'Edit This Rehearsal', edit_rehearsal_path(@rehearsal), class: "btn btn-sm btn-secondary"
