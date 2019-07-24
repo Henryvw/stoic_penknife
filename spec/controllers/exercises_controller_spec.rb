@@ -98,11 +98,12 @@ RSpec.describe ExercisesController, type: :controller do
       end
 
       context 'with valid attributes' do
-        let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id) }
+        let(:question) { FactoryBot.create(:question)}
+        let(:exercise) { FactoryBot.create(:exercise, user_id: current_user.id, questions: [question]) }
 
         it 'adds a new exercise' do
-          exercise_params = FactoryBot.attributes_for(:exercise, user_id: current_user.id)
-          post :create, params: { exercise: exercise_params }
+          exercise_params = FactoryBot.attributes_for(:exercise, questions_attributes: [build(:question).attributes], user_id: current_user.id)
+          binding.pry
           expect { post :create, params: { exercise: exercise_params } }.to change(current_user.exercises, :count).by(1)
         end
       end
