@@ -1,12 +1,9 @@
-.container.stoic-dark-text 
+.container
   .row
     .col-md-8
-      .panel.stoic-brown
-        .panel-heading
-          %h1.page-header.exercise_title Edit the exercise
-        .panel-body
+      .card.bg-info
+        .card-body
+          .card-title
+            %h1 Edit the exercise
           = render 'form'
-        .panel-body
-          = link_to 'Back to List of Exercises', exercises_path, class: "btn btn-lg btn-stoic-action"
-          %br
-
+          = link_to 'Back to List of Exercises', exercises_path, class: "btn btn-sm btn-info"
