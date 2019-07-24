@@ -11,13 +11,30 @@ body {
   a:hover {
     color: $white;
   }
-}
 
-$text-color: rgb(246, 247, 248);
+  p, tbody, ul, ol {
+    font-family: $font-family-base;
+  }
+
+  .card .card-body {
+    font-family: $font-family-base;
+  }
+
+  .card .card-body .card-title h1,h2,h3,h4,h5 {
+    font-family: 'grecoroman', sans-serif !important;
+  }
+
+  .form-group input, label, textarea, .custom-file-input {
+    font-family: 'grecoroman', sans-serif !important;
+  }
+}
 
 .navbar a {
   font-family: 'spqr', sans-serif !important;
-  text-color: "red";
+}
+
+.navbar .nav-item a {
+  font-family: 'grecoroman', sans-serif !important;
 }
 
 .btn {
