@@ -3,7 +3,6 @@ class StoicMailer < ActionMailer::Base
 
   NET_HTTP_ERRORS =
     [
-      Net::SMTPAuthentication,
       Net::SMTPServerBusy,
       Net::SMTPSyntaxError,
       Net::SMTPFatalError,
