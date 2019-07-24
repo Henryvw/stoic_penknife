@@ -3,7 +3,8 @@ require 'rails_helper'
 describe Rehearsal, type: :model do
   let(:normal_user) { FactoryBot.create(:user) }
   let(:rehearsal) { FactoryBot.create(:rehearsal) }
-  let(:exercise) { FactoryBot.create(:exercise) }
+  let(:question) { FactoryBot.create(:question) }
+  let(:exercise) { FactoryBot.create(:exercise, questions: [question]) }
 
   it 'has a valid factory-esque (in this case custom) process for faking rehearsal objects' do
     expect(rehearsal).to be_valid
@@ -24,7 +25,7 @@ describe Rehearsal, type: :model do
 
   context 'classic Active Record instance methods' do
     it 'returns an exercises id' do
-      exercise = FactoryBot.create(:exercise, rehearsals: [rehearsal])
+      exercise = FactoryBot.create(:exercise, rehearsals: [rehearsal], questions: [question])
       expect(rehearsal.exercise_id).to eq(exercise.id)
     end
 
