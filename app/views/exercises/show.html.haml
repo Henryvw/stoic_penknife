@@ -11,7 +11,7 @@
     .col-md-4
       .row.mb-2
         - if @exercise.buzzword
-          .label{class: "badge badge-pill badge-#{randomize_color_css} #{randomize_diagonal_css} mb-2 mt-3"}
+          .label{class: "border badge badge-pill badge-#{randomize_color_css} #{randomize_diagonal_css} mb-2 mt-3"}
             = @exercise.buzzword
       .row.mb-2
         = link_to 'Practice It', new_rehearsal_path(:exercise => @exercise.id), class: "btn btn-lg btn-success"
@@ -27,30 +27,20 @@
           .badge.badge-pill.badge-warning Your Custom Exercise
   .row.mt-3
     .col-xl-12
-      .card.bg-secondary
-        .card-body
-          .card-header
-            %h5 Steps in this Think-Exercise
-          %table.table.table-bordered.table-responsive
-            %tbody
-            - @exercise.questions.each do |question|
-              %td= question.inquiry
-  .row.mt-3
-    .col-xl-12
       .card
         .card-body
           .card-title
             %h3 My Past Practice
-          .table-responsive
-            %table.table.table-striped.table-condensed.stoic-dark-text.stoic-striped
+          .table-responsive-xl
+            %table.table.table-dark
               %tbody
               %th
               %th Day
               %th Place
               - @exercise.questions.each do |question|
-                %th= truncate(question.inquiry, length: 100)
+                %th= truncate(question.inquiry, length: 75)
               - @rehearsals.each do |rehearsal|
-                %tr
+                %tr{class: "bg-#{randomize_color_css}"}
                   %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-sm btn-secondary"
                   %td= rehearsal.created_at.strftime("%d.%m.%Y")
                   -if rehearsal.city?
@@ -61,20 +51,23 @@
                   - rehearsal.answers.each do |answer|
                     %td= truncate(answer.reply, length: 100)
 
-  - if @exercise.global
-    .card.bg-info.mt-3
-      .card-body
-        %b Privacy Protection
-        Your written practice of this Stoic Penknife exercise is private and only available to you to read. Stoic Penknife uses SSL Encryption to securely protect your words from being read by an external party.
-  - else
-    %br
-    .card.bg-info.mt-3
-      .card-body
-        %b Custom Exercise
-        This is a custom exercise created by, and only visible to, you. Both the exercise itself (the title, the description, and the questions) and your written practice of it are private to you.
-  .row
-    .col-12
-      .card.bg-secondary.mt-3
+  .row.mt-3
+    .col-xl-12
+      .card.bg-secondary
+        .card-header
+          %h5 Steps in this Think-Exercise
+        .card-body
+          .card-columns
+            - @exercise.questions.each_with_index do |question, count|
+              .card.border-dark
+                .card-body.text-dark
+                  .card-title
+                    %h5= "#{count+1}"
+                  .card-text
+                    = question.inquiry
+  .row.mt-3
+    .col-xl-12
+      .card.bg-secondary
         .card-body
           %h1.badge.badge-info Doctrines Pertaining to This Exercise
           - unless @published_doctrines.nil? || @published_doctrines.empty?
