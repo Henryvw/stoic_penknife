@@ -1,10 +1,16 @@
 class Tag < ActiveRecord::Base
-  has_many :exercise_taggings
-  has_many :exercises, through: :exercise_taggings
-  has_many :quotation_taggings
-  has_many :quotations, through: :quotation_taggings
-  has_many :doctrine_taggings
-  has_many :doctrines, through: :doctrine_taggings
-
+  belongs_to :taggable, polymorphic: true
   validates :name, uniqueness: true
+
+  def self.find_doctrines
+    doctrines_active_record_relation = Tag.where(taggable_type: "Doctrine")
+    array_of_doctrines = doctrines_active_record_relation.records
+    array_of_doctrines
+  end
+
+  def self.find_exercises
+    exercises_active_record_relation = Tag.where(taggable_type: "Exercise")
+    array_of_exercises = exercises_active_record_relation.records
+    array_of_exercises
+  end
 end

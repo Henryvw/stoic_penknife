@@ -1,12 +1,8 @@
 class Doctrine < ActiveRecord::Base
-  has_many :doctrine_taggings
-  has_many :tags, through: :doctrine_taggings
-
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).doctrines
-  end
+  has_many :tags, as: :taggable
 
   def self.find_doctrines_with(multiple_tags)
+    binding.pry
     doctrines = []
     multiple_tags.each do |tag|
       doctrines += Tag.find_by_name!(tag.name).doctrines
