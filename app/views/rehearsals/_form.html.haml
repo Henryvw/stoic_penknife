@@ -16,5 +16,5 @@
       = render 'progress_bar'
 
     .actions
-      = f.submit "Finish My Practice of #{truncate(@exercise.title, length: 20)}", class: "btn btn-md btn-primary mt-3"
+      = f.submit "Finish My Practice of #{@exercise.title}", class: "btn btn-md btn-primary mt-3"
 

@@ -17,5 +17,5 @@
               %p= @rehearsal.city 
               %p= @rehearsal.created_at.strftime("%B %d, %Y at %H:%M")
 
-            = link_to "Back to #{@exercise.title} exercise page", @rehearsal.exercise, class: "btn btn-default"
-            = link_to 'Delete This Rehearsal', @rehearsal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
+            = link_to "Back to #{@exercise.title} exercise page", @rehearsal.exercise, class: "btn btn-sm btn-danger mb-3"
+            = link_to 'Delete This Rehearsal', @rehearsal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-sm btn-danger"

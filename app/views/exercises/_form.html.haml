@@ -7,11 +7,9 @@
   %h3 Think-Exercise Questions
   = f.fields_for :questions do |question|
     = render 'question_fields', f: question
-  .col-6
-    = link_to_add_association 'Add New Question', f, :questions, class: 'btn btn-md btn-primary form-control'
-  .col.pb-2.pt-2
-    %h5 At least one question is required in order to create a new exercise.
-    %h5 There is a limit of 7 questions per exercise.
+  = link_to_add_association 'Add New Question', f, :questions, class: 'btn btn-md btn-primary form-control mb-3'
+  %h5 At least one question is required in order to create a new exercise.
+  %h5 There is a limit of 7 questions per exercise.
 
   - if current_user.admin
     = f.check_box :global, class: 'checkbox', label: "Publish this exercise globally to all users of Stoic Penknife"
