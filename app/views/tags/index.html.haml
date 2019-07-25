@@ -1,12 +1,12 @@
 .container
   .row
     .col-8
-      .card
+      .card.bg-info
         .card-header
           %h3
             Features tagged in the Philosophical Category of
             %u= "#{params[:tag]}"
-        .card-body
+        .card-body.bg-info
           .card-title
             %h3
               %i
@@ -35,7 +35,7 @@
                   %td
                     .badge.badge-light
                       My Custom Exercise
-      .card.mt-3
+      .card.mt-3.bg-info
         .card-body
           .card-title
             %h3
@@ -49,7 +49,7 @@
                 %td= link_to quotation.title, quotation, class: "btn btn-md btn-dark"
                 %td= quotation.passage + "\""
 
-      .card.mt-3
+      .card.mt-3.bg-info
         .card-body
           .card-title
             %h3
