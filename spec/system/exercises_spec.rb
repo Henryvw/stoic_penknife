@@ -135,7 +135,8 @@ RSpec.describe 'Exercises', type: :system do
     end
 
     it 'can delete a question when creating/editing an exercise', js: true do
-      exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+      second_question = FactoryBot.create(:question)
+      exercise = FactoryBot.create(:exercise, questions: [question, second_question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
       sign_in normal_user
       visit exercise_path(exercise.id)
       click_link 'Edit'
