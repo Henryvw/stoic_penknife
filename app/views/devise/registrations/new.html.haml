@@ -1,7 +1,7 @@
 .container
   .row
     .col-7
-      .card.bg-info
+      .card.bg-dark
         .card-header
           %h2 Sign Up To Use Stoic Penknife
         .card-body
@@ -16,9 +16,9 @@
                   (#{@minimum_password_length} characters minimum)
               = f.password_field :password, autocomplete: "off"
               = f.password_field :password_confirmation, autocomplete: "off"
-              = f.submit "Sign up to activate Stoic Penknife", class: "btn btn-lg btn-success"
+              = f.submit "Sign up to activate Stoic Penknife", class: "btn btn-lg btn-danger"
       .card.mt-3.mb-3
-        .card-body
+        .card-body.bg-primary
           .card-title
             %h5 Why sign up? Why do we ask for an email address?
             %p You can use all the elements of Stoic Penknife without signing up -- except for the Exercises. You need to have your own separate account so that when you rehearse an Exercise, your words, your reflections, remain private. We ask for your email address in order to be able to contact you and verify your account and send you an occasional update on the project (from which you can easily unsubscribe. You can also cancel your account at any time). Having your own account also enables you to create your own custom (private) Exercises.

@@ -1,46 +1,70 @@
 .bg
   .container-fluid
     .row
-      .col
+      .col-9.mt-4
         .row.justify-content-start.pt-3.pr-2
-          .jumbotron.mr-3.ml-5.pt-5.pb-5.bg-warning.text-white
+          .jumbotron.mr-3.ml-5.bg-warning.pt-4.pb-4
             %h1.display-5
-              Change your
-              %b.text-danger> &nbsp;thoughts
-              , change your
-              %b.text-danger life
-        .row.justify-content-start.mt-n3
-          %h1.ml-5
-            %a.btn.btn-lg.btn-block.btn-primary{href: exercises_path} Practice a Stoic Think-Exercise
-        .row.justify-content-start.mr-5.ml-5.pt-5.pb-5.mt-n4
-          .ml-n3.mt-n3
-            %script{:src => "https://liberapay.com/Henryvw/widgets/receiving.js"}
-
-      .col
-        .row.justify-content-end.pt-3.pb-4.mr-2
-          .w-75{style: "max-width: 38%"}
-            = image_tag "stoic_penknife_logo_new_clay.png", class: "img-fluid"
-        .row.justify-content-end.pb-5.mr-2
-          .card.bg-danger
-            .card-body.pt-3.pb-3.mt-n2.mb-n2
-              Practice the
+              Solve the
+              %b.text-danger emotional problems
+              that
+              %b.text-danger block
+              your life
+          .jumbotron.mr-3.ml-5.pt-4.pb-4.bg-info
+            %h3.display-5
+              Practice
+              %b.text-warning ancient Stoic philosophy's
+              'think-exercises'
+          .jumbotron.mr-3.ml-5.pt-3.pb-3.bg-info
+            %h3.display-5
+              Experience the
               %b.text-warning ancient
               philosophical roots of
               %b.text-warning modern
               %a{href: "https://philarchive.org/archive/DIATPF"} Cognitive Behavioral Therapy (CBT)
-          .card.mt-3.bg-danger
-            .card-body.pt-3.pb-3.mt-n2.mb-n2
-              Experience Ancient Greek & Roman Philosophy's
-              %b.text-warning 'Technologies of the Soul'.
-              Practice exercises from
-              %b.text-warning Seneca,
-              %b.text-warning Epictetus,
-              and
-              %b.text-warning Marcus Aurelius
-              \-- and create your own
-    .row.pb-5
-    .row.pb-5
-    .row.pb-5
-    .row.pb-5
-    .row.pb-5
+        .row.justify-content-start.mr-5.ml-5.pt-5.pb-5.mt-n4
+          .col-2
+            .ml-n4.mt-n3
+              %script{src: "https://liberapay.com/Henryvw/widgets/receiving.js"}
+          .col-2
+            %a.btn.btn-danger{href: "#more-info"} Read More
 
+      .col-3.mt-4
+        .row.justify-content-end.pt-3.pb-4.mr-2
+          .w-75{style: "max-width: 100%"}
+            = image_tag "stoic_penknife_logo_new_clay.png", class: "img-fluid"
+        .row.justify-content-center.pt-3.mt-n3.mr-4
+          %h1.ml-5
+            %a.btn.btn-lg.btn-block.btn-primary{href: exercises_path} Try a Think-Exercise
+  .row.pb-5
+  .row.pb-5
+  .row.pb-5
+  .row.pb-5
+  .row.pb-5
+  .row.pb-5
+.row
+  .col.mt-4
+    .card.bg-dark
+      .card-body
+        Experience Ancient Greek & Roman Philosophy's
+        %b.text-warning 'Technologies of the Soul'.
+        Practice exercises from
+        %b.text-warning Seneca,
+        %b.text-warning Epictetus,
+        and
+        %b.text-warning Marcus Aurelius
+        \-- and create your own
+  .col.mt-4
+    .card.bg-dark#more-info
+      .card-body
+        = image_tag("stoic_penknife_logo_new_clay.png", alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 20vh; object-fit: cover")
+.row.mt-4
+  .col
+    .card.bg-dark
+      .card-body
+        Experience Ancient Greek & Roman Philosophy's
+        %b.text-light 'Technologies of the Soul'.
+        Practice exercises from
+        %b.text-light Seneca,
+        %b.text-light Epictetus,
+        and

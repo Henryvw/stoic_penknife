@@ -1,12 +1,15 @@
 $theme-colors: (
   "primary": rgb(22, 137, 192),
-  "danger": rgb(171, 40, 28),
-  "info": rgb(149, 136, 103),
+  "danger": rgb(183, 54, 27),
+  "info": rgb(130, 92, 10),
   "warning": rgb(253, 167, 27),
-  "success": rgb(110, 74, 11),
-  "secondary": rgb(62, 41, 1)
+  "secondary": rgb(161, 148, 118),
+  "success": rgb(156, 143, 110),
+  "dark": rgb(79, 54, 0)
 );
 
-$text-color: rgb(246, 247, 248) !important;
+$light-blue: rgb(168, 187, 254);
+$dark-brown: rgb(79, 54, 0);
+
 $text-color: rgb(246, 247, 248) !important;
 
