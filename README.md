@@ -29,7 +29,7 @@ The exception to Stoic Penknife's test coverage (the reason it is not 100% cover
 I use CircleCI to run the Rubocop linter and the full test suite, push to CodeCov and and manage deployment to the production Heroku instance: https://github.com/Henryvw/stoic_penknife/blob/master/.circleci/config.yml
 
 ## How Can I Contribute?
-Stoic Penknife is an open source project. If you are interested in contributing please write to me, Henry, at henry@stoicpenknife.com. We have a list of tasks in the Project tab. We would also love to hear about additional improvement ideas. You are also free to fork the project and to make your own version (perhaps an Epicurean, Platonic-Academic, Aristotlean-Peripatetic, Pyrrho-Skeptic, Eclectic, Diogenes-Cynic or Heraklitean version?!)
+Stoic Penknife is an open source project. If you are interested in contributing please write to me, Henry, at henry@stoicpenknife.com. We have a [list of tasks in the Project tab](https://github.com/Henryvw/stoic_penknife/projects/1). We would also love to hear about additional improvement ideas. You are also free to fork the project and to make your own version (perhaps an Epicurean, Platonic-Academic, Aristotlean-Peripatetic, Pyrrho-Skeptic, Eclectic, Diogenes-Cynic or Heraklitean version?!)
 
 ## How Can I Use the App?
 To practice ancient Stoic philosophical 'think-exercises' and to create your own custom 'think-exercises', visit the production instance at https://www.stoicpenknife.com.
