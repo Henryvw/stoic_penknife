@@ -1,6 +1,6 @@
 .container
   .row
-    .card.bg-info
+    .card.bg-dark
       .card-header
         %h2 Edit Your Stoic Penknife Account
       .card-body
@@ -16,11 +16,11 @@
             = f.password_field :password_confirmation, autocomplete: "off"
             %i (we need your current password to confirm your changes)
             = f.password_field :current_password, label: "Old password", autocomplete: "off"
-            = f.submit "Update My Password", class: "btn btn-md btn-dark"
+            = f.submit "Update My Password", class: "btn btn-md btn-danger"
   .row.mt-3
-    .card.bg-info
+    .card.bg-dark
       .card-header
         %h5 Cancel My Stoic Penknife Account
       .card-body
         .card-text
-          %p Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-md btn-dark"}
+          %p Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-md btn-danger"}

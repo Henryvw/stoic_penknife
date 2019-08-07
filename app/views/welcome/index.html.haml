@@ -1,46 +1,141 @@
 .bg
   .container-fluid
     .row
-      .col
+      .col-9.mt-4
         .row.justify-content-start.pt-3.pr-2
-          .jumbotron.mr-3.ml-5.pt-5.pb-5.bg-warning.text-white
+          .jumbotron.mr-3.ml-5.pt-4.pb-4.bg-warning
             %h1.display-5
-              Change your
-              %b.text-danger> &nbsp;thoughts
-              , change your
-              %b.text-danger life
-        .row.justify-content-start.mt-n3
-          %h1.ml-5
-            %a.btn.btn-lg.btn-block.btn-primary{href: exercises_path} Practice a Stoic Think-Exercise
-        .row.justify-content-start.mr-5.ml-5.pt-5.pb-5.mt-n4
-          .ml-n3.mt-n3
-            %script{:src => "https://liberapay.com/Henryvw/widgets/receiving.js"}
-
-      .col
-        .row.justify-content-end.pt-3.pb-4.mr-2
-          .w-75{style: "max-width: 38%"}
-            = image_tag "stoic_penknife_logo_new_clay.png", class: "img-fluid"
-        .row.justify-content-end.pb-5.mr-2
-          .card.bg-danger
-            .card-body.pt-3.pb-3.mt-n2.mb-n2
-              Practice the
+              The App to Practice
+              %b.text-danger ancient Stoic
+              philosophy's 'think-exercises'
+          .jumbotron.mr-3.ml-5.pt-4.pb-4.bg-info
+            %h3.display-5
+              %b.text-warning Dissect
+              and
+              %b.text-warning treat
+              the
+              %b.text-warning emotional problems
+              that
+              %b.text-warning block
+              your life by practicing the
               %b.text-warning ancient
               philosophical roots of
               %b.text-warning modern
               %a{href: "https://philarchive.org/archive/DIATPF"} Cognitive Behavioral Therapy (CBT)
-          .card.mt-3.bg-danger
-            .card-body.pt-3.pb-3.mt-n2.mb-n2
-              Experience Ancient Greek & Roman Philosophy's
-              %b.text-warning 'Technologies of the Soul'.
-              Practice exercises from
-              %b.text-warning Seneca,
-              %b.text-warning Epictetus,
-              and
-              %b.text-warning Marcus Aurelius
-              \-- and create your own
-    .row.pb-5
-    .row.pb-5
-    .row.pb-5
-    .row.pb-5
-    .row.pb-5
+        .row.mr-3.ml-5.justify-content-center
+          .col-3
+            %a.btn.btn-lg.btn-danger{href: "#more-info"} Read More
+          .col-4
+            %a.btn.btn-lg.btn-block.btn-primary{href: exercises_path} Try a Think-Exercise
 
+      .col-3.mt-4
+        .row.justify-content-end.pt-3.pb-4.mr-2
+          .w-75{style: "max-width: 100%"}
+            = image_tag "stoic_penknife_logo_new_clay.png", class: "img-fluid"
+        .row.justify-content-center.mr-5.ml-5.pt-4.pb-5.mt-n4
+          .col-2.mr-5
+            %script{src: "https://liberapay.com/Henryvw/widgets/receiving.js"}
+  .row.pb-5
+  .row.pb-5
+  .row.pb-5
+  .row.pb-5
+  .row.pb-5
+  .row.pb-5
+.row.mb-5.mt-4
+  .col
+    .row.justify-content-start.pt-3.pr-2
+      .card.bg-dark.mr-3.ml-5.pt-4.pb-4#more-info
+        .card-body
+          %h3
+            All problems are
+            =succeed "." do
+              %b.text-warning emotional problems
+            How do you
+            %b.text-warning think
+            about your problems?
+            Change your
+            %b.text-warning thoughts,
+            and change your
+            %b.text-warning life.
+            %br
+            %br
+            Let the
+            %b.text-warning ancient Stoic
+            philosophers take a look at
+            = succeed "!" do
+              %b.text-warning your thoughts
+            Let them
+            %b.text-warning advise
+            you!
+            %br
+            %br
+            How would they
+            see, question, and change your thinking about
+            %b.text-warning your problems
+            and
+            %b.text-warning your life?
+  .col
+    .card.bg-dark.mr-3.ml-5.pt-4.pb-4
+      .card-body
+        = image_tag("emotion_mosaic.jpeg", alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 50vh; object-fit: cover")
+.row.mb-4.pb-4
+  .col
+    .card.bg-dark.mr-3.ml-5.pt-4.pb-4
+      .card-body
+        = image_tag("roman_man_mosaic.jpeg", alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 30vh; object-fit: cover")
+  .col
+    .row.justify-content-start.pt-3.pr-2
+      .card.bg-dark.mr-3.ml-5.pt-4.pb-4#more-info
+        .card-body
+          %h3
+            Experience Ancient Greek & Roman Philosophy's
+            %b.text-warning 'Technologies of the Soul'.
+            Practice exercises from
+            the ancient writers
+            = succeed "," do
+              %b.text-warning Seneca
+            %b.text-warning Marcus Aurelius
+            and
+            %b.text-warning Epictetus
+            \-- and create your own
+.row.mb-4.pb-4
+  .col
+    .card.bg-dark.mr-3.ml-5.pt-4.pb-4
+      .card-body
+        %h3
+          Use the sharp logic of the
+          %b.text-warning 'penknife'
+          of the Stoics to
+          %b.text-warning dissect
+          and change your views of your life.
+  .col
+    .card.bg-dark.mr-3.ml-5.pt-4.pb-4
+      .card-body
+        = image_tag("doctor_mosaic.jpeg", alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 30vh; object-fit: cover")
+.row.mb-4
+  .col
+    .card.bg-dark.mr-3.ml-5.pt-4.pb-4
+      .card-body
+        = image_tag("tragedy_comedy_mosaic.jpeg", alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 50vh; object-fit: cover")
+  .col.mt-4
+    .row.justify-content-start.pt-3.pr-2
+      .card.bg-dark.mr-3.ml-5.pt-4.pb-4#more-info
+        .card-body
+          %h3
+            %i
+              "To use philosophical argument to modify the passions, the philosopher does not have to turn away from her commitment to reasoning and careful argument, for the
+              %b.text-warning passions
+              are
+              %b.text-warning made
+              up out of beliefs and
+              %b.text-warning respond
+              to
+              %b.text-warning arguments
+              \... arguments must
+              %b.text-warning dig deep
+              in order, as Epicurus puts it, to
+              %b.text-warning 'become powerful' in the soul."
+              %br
+              %br
+              %u The Therapy of Desire
+            \ --- Martha Nussbaum

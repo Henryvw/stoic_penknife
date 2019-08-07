@@ -1,21 +1,20 @@
 .container
   .row
     .col-md-8
-      .panel.panel-warning
-        .panel-heading
-          %h3.page-header.exercise_title
+      .card.bg-dark
+        .card-header
+          %h3
             Edit rehearsal of
             = "#{@exercise.title}"
             %br
             on
             = "#{@rehearsal.created_at.strftime("%B %d, %Y at %H:%M")}"
-          .panel-body
-            = render 'form'
-          .panel-body
-            %h4
-              Originally rehearsed in/on:
-              %p= @rehearsal.city 
-              %p= @rehearsal.created_at.strftime("%B %d, %Y at %H:%M")
+        .card-body
+          = render 'form'
+          %h4
+            Originally rehearsed in/on:
+            %p= @rehearsal.city
+            %p= @rehearsal.created_at.strftime("%B %d, %Y at %H:%M")
 
-            = link_to "Back to #{@exercise.title} exercise page", @rehearsal.exercise, class: "btn btn-sm btn-danger mb-3"
-            = link_to 'Delete This Rehearsal', @rehearsal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-sm btn-danger"
+          = link_to "Back to #{@exercise.title} exercise page", @rehearsal.exercise, class: "btn btn-sm btn-danger mb-3"
+          = link_to 'Delete This Rehearsal', @rehearsal, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-sm btn-danger"

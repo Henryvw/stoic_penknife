@@ -1,23 +1,26 @@
 body {
   font-family: 'grecoroman', sans-serif !important;
   height: 100%;
-  background: linear-gradient(90deg, rgb(187, 60, 36) 30% 70%, rgb(156, 142, 111) 30%);
+  background: rgb(130, 92, 10); /* Fallback color old browsers */
+  background: linear-gradient(90deg, rgba(130, 92, 10, 1) 20% 80%, rgba(156, 142, 111, 1) 20%);
   color: rgb(246, 247, 248) !important;
  
   a {
-   color: $warning;
+   color: $light-blue;
+   font-weight: bold;
   };
 
   a:hover {
     color: $white;
-  }
+    text-decoration: none;
+}
 
   p, tbody, ul, ol {
-    font-family: $font-family-base;
+    font-family: 'calluna';
   }
 
   .card .card-body {
-    font-family: $font-family-base;
+    font-family: 'calluna';
   }
 
   .card .card-body .card-title h1,h2,h3,h4,h5 {
@@ -31,6 +34,7 @@ body {
 
 .navbar a {
   font-family: 'spqr', sans-serif !important;
+  font-weight: normal;
 }
 
 .navbar .nav-item a {
@@ -55,7 +59,7 @@ body {
   padding: 20px; 
 }
 
-/* Bring in my custom Grecoroman and SPQR fonts, in relevant woff2, woff and tff formats */
+/* Bring in my custom Grecoroman (headlines), SPQR (buttons) and 'Calluna Light' (body) fonts, in relevant woff2, woff and tff formats */
 @font-face {
   font-family: 'grecoroman';
   src: font-url('grecoroman.woff2') format('woff2'),
@@ -73,6 +77,16 @@ body {
        font-url('spqr.woff2') format('woff2'),
        font-url('spqr.woff') format('woff'),
        font-url('spqr.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'calluna';
+  font-style: normal;
+  font-weight: 300;
+  src: local('calluna'),
+      font-url('calluna.woff2') format('woff2'),
+      font-url('calluna.woff') format('woff'),
+      font-url('calluna.ttf') format('calluna');
 }
 
 .diagonal-down {
