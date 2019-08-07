@@ -7,7 +7,7 @@
   %h3 Think-Exercise Questions
   = f.fields_for :questions do |question|
     = render 'question_fields', f: question
-  = link_to_add_association 'Add New Question', f, :questions, class: 'btn btn-md btn-primary form-control mb-3'
+  = link_to_add_association 'Add New Question', f, :questions, class: 'btn btn-md btn-danger form-control mb-3'
   %h5 At least one question is required in order to create a new exercise.
   %h5 There is a limit of 7 questions per exercise.
 
@@ -17,7 +17,7 @@
     = f.text_field :buzzword, label: 'Add an exciting buzzword-catchphrase for the exercise here', class: 'form-control'
   .actions
   %center
-    = f.submit 'Save Exercise', class: 'btn btn-lg btn-success'
+    = f.submit 'Save Exercise', class: 'btn btn-lg btn-danger'
 
 :javascript
   $(document).ready(function() {
