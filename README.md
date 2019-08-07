@@ -9,7 +9,7 @@
 [LIBERPAY]: http://img.shields.io/liberapay/receives/Henryvw.svg?logo=liberapay"
 
 ## What is Stoic Penknife?
-Stoic Penknife is a web application to practice **ancient Stoic philosophical 'think-exercises'** to question your perceptions about yourself and your life. **Marcus Aurelius**, **Seneca**, **Epictetus** and other ancient Greek + Roman philosophers once practiced these exercises on paper - now you can do it with an app! Amazing.
+Stoic Penknife (https://www.stoicpenknife.com) is a web application to practice **ancient Stoic philosophical 'think-exercises'** to question your perceptions about yourself and your life. **Marcus Aurelius**, **Seneca**, **Epictetus** and other ancient Greek + Roman philosophers once practiced these exercises on paper - now you can do it with an app! Amazing.
 
 ## How is the Application Organized?
 * Rails Active Record Backend
