@@ -1,6 +1,6 @@
 .container
   .row
-    .col-8
+    .col-10
       .card.bg-info
         .card-header
           %h3
@@ -22,7 +22,7 @@
               %tr{class: "exercise_#{global_exercise.id}"}
                 %td= link_to global_exercise.title, global_exercise, class: "btn btn-md btn-outline-light"
                 %td= link_to 'Practice It', new_rehearsal_path(:exercise => global_exercise.id), class: "btn btn-md btn-outline-light"
-                %td= global_exercise.general_description
+                %td= truncate(global_exercise.general_description, length: 200)
                 %td
                   .badge.badge-light
                     Stoic Penknife Exercise
