@@ -27,10 +27,11 @@
                   .badge.badge-light
                     Stoic Penknife Exercise
             - if user_signed_in?
+              %h5 My Custom Exercises
               - @exercises.each do |exercise|
                 %tr{class: "exercise_#{exercise.id}"}
                   %td= link_to exercise.title, exercise, class: "btn btn-md btn-outline-light"
-                  %td= link_to 'Rehearse', new_rehearsal_path(:exercise => exercise.id), class: "btn btn-md btn-outline-light"
+                  %td= link_to 'Practice It', new_rehearsal_path(:exercise => exercise.id), class: "btn btn-md btn-outline-light"
                   %td= exercise.general_description
                   %td
                     .badge.badge-light
