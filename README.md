@@ -15,6 +15,8 @@ Stoic Penknife (https://www.stoicpenknife.com) is a web application to practice 
 ## How Can I Use the App?
 To practice ancient Stoic philosophical 'think-exercises' and to create your own custom 'think-exercises', visit the production instance at https://www.stoicpenknife.com.
 
+[![ReadMe Screenshot](https://github.com/Henryvw/stoic_penknife/blob/master/app/assets/images/readme_screenshot.png)](https://www.stoicpenknife.com)
+
 ## How Can I Contribute?
 We would love to hear about your experiences using the application and in particular the 'think-exercises.' Are there 'think-exercises' that you find particularly helpful or meaningful?
 
@@ -47,3 +49,8 @@ If you want to play around, simply download the app and make sure you have Rails
 I still have not written a `seed` file for the database. You will need to manually create a User with `admin=true` in Rails Console in order to administer global exercises. 
 
 The second, ActiveAdmin back-end you can access at `/admin`. At the present time this also requires a Rails Console-manually-created separate, Active Admin user created using the `AdminUser` model.
+
+## License
+[![Creative Common License](https://licensebuttons.net/l/by-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
+
+Stoic Penknife is licensed under the **Creative Commons** Attribution-ShareAlike CC BY-SA License. This license lets you remix, tweak, and build upon Stoic Penknife even for commercial purposes, as long as you credit me and license your new creations under the identical terms. Read more at the [Creative Commons page for this license](https://creativecommons.org/licenses/by-sa/4.0/).
