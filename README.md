@@ -15,6 +15,8 @@ Stoic Penknife (https://www.stoicpenknife.com) is a web application to practice 
 ## How Can I Use the App?
 To practice ancient Stoic philosophical 'think-exercises' and to create your own custom 'think-exercises', visit the production instance at https://www.stoicpenknife.com.
 
+[![ReadMe Screenshot](https://github.com/Henryvw/stoic_penknife/blob/master/app/assets/images/readme_screenshot.png)](https://www.stoicpenknife.com)
+
 ## How Can I Contribute?
 We would love to hear about your experiences using the application and in particular the 'think-exercises.' Are there 'think-exercises' that you find particularly helpful or meaningful?
 
