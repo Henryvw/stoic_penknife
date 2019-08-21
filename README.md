@@ -1,12 +1,13 @@
 <img align="right" src="https://github.com/Henryvw/stoic_penknife/blob/master/app/assets/images/stoic_penknife_logo_new_clay.png" alt="Stoic Penknife" width="200" />
 
-# Stoic Penknife [![BUILD_STATUS][]][CIRCLE_CI] [![TEST_COVERAGE][]][CODE_COV] [![LIBERPAY][]][LIBERPAY]
+# Stoic Penknife [![BUILD_STATUS][]][CIRCLE_CI] [![TEST_COVERAGE][]][CODE_COV] [![LIBERPAY][]][DONATE]
 
 [BUILD_STATUS]: https://circleci.com/gh/Henryvw/stoic_penknife/tree/master.svg?style=svg
 [CIRCLE_CI]: https://circleci.com/gh/Henryvw/stoic_penknife/tree/master
-[TEST_COVERAGE]: https://codecov.io/gh/Henryvw/stoic_penknife/branch/master/graph/badge.svg
+[TEST_COVERAGE]: https://codecov.io/gh/Henryvw/stoic_penknife/branch/master/graph/badge.svg?style=svg
 [CODE_COV]: https://codecov.io/gh/Henryvw/stoic_penknife
-[LIBERPAY]: http://img.shields.io/liberapay/receives/Henryvw.svg?logo=liberapay"
+[LIBERPAY]: http://img.shields.io/liberapay/receives/Henryvw.svg?logo=liberapay"style=svg
+[DONATE]: https://liberapay.com/Henry.StoicPenknife/
 
 ## What is Stoic Penknife?
 Stoic Penknife (https://www.stoicpenknife.com) is a web application to practice **ancient Stoic philosophical 'think-exercises'** to question your perceptions about yourself and your life. **Marcus Aurelius**, **Seneca**, **Epictetus** and other ancient Greek + Roman philosophers once practiced these exercises on paper - now you can do it with an app! Amazing.
