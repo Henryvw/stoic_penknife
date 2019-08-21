@@ -30,6 +30,14 @@ RSpec.describe 'Exercises', type: :system do
       expect(page).to have_content('Great for after a break-up')
     end
 
+    it 'can see the latest exercise on the index page' do
+      FactoryBot.create(:exercise, questions: [question], global: true)
+      latest_exercise = FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Here is the latest exercise.')
+      visit exercises_path
+      expect(page).to have_content('Here is the latest exercise.')
+      expect(Exercise.where(global: true).last).to eq(latest_exercise)
+    end
+
     it 'can see the special tag on the individual exercise show page' do
       exercise = FactoryBot.create(:exercise, questions: [question], global: true, general_description: 'Senecas Amazing Exercise.')
       visit exercise_path(exercise.id)

@@ -30,6 +30,7 @@ class ExercisesController < ApplicationController
     # "custom nil object", aka a "Guest" User, who has
     # zero private exercises, a "name" of guest, etc.
     @exercises = Exercise.where(user_id: current_user.try(:id))
+    @latest_exercise = Exercise.where(global: true).last
   end
 
   # GET /exercises/1

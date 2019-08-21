@@ -8,11 +8,22 @@
             Practice one of the
             %b.text-warning ancient techniques
             of the Stoic philosophers.
+          %h2 More Think-Exercises
           %h6
             .card
               .card-header.bg-info
-                Only you can read your own personal, private writing as you practice these exercises.
+                Only you can read your own personal, private writing as you practice these exercises. 
           .card-columns
+            .card.bg-danger.mb-2.border-3.border-primary
+              .banner-container.banner.border.border-primary.border-3.rounded
+                %h5 Try this one first
+              = link_to(image_tag(@latest_exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 20vh; object-fit: cover"), @latest_exercise) if @latest_exercise.icon.attached?
+              .card-body
+                = link_to  @latest_exercise.title, @latest_exercise, class: "card-title btn btn-primary"
+                .label{class: "border badge badge-pill badge-warning #{randomize_diagonal_css}"}
+                  = @latest_exercise.buzzword
+                %p{class: "card-text"}=truncate(@latest_exercise.general_description, length: 200)
+              %p{class: "card-footer"}= raw @latest_exercise.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "small text-light" }.join('  ')
             - @global_exercises.each do |global_exercise|
               .card{class: "bg-#{randomize_color_css}"}
                 = link_to(image_tag(global_exercise.icon, alt: "Exercise Tag", class: "card-img-top", style: "width: 100%; height: 20vh; object-fit: cover"), global_exercise) if global_exercise.icon.attached?
