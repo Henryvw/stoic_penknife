@@ -192,6 +192,29 @@ RSpec.describe 'Exercises', type: :system do
     end
   end
 
+  it 'cannot see its own table of rehearsals if it hasnt practiced the exercise yet' do
+    normal_user = FactoryBot.create(:user)
+    question = FactoryBot.create(:question)
+    exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+    sign_in normal_user
+    visit exercise_path(exercise.id)
+
+    expect(page).to_not have_content('My Past Practice')
+  end
+
+  it 'can see its table of rehearsals if it has practiced the exercise' do
+    normal_user = FactoryBot.create(:user)
+    question = FactoryBot.create(:question)
+    FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+    exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
+    sign_in normal_user
+    answer = FactoryBot.create(:answer, reply: 'I learned to dance.')
+    FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user)
+    visit exercise_path(exercise.id)
+
+    expect(page).to have_content('My Past Practice', 'I learned to dance.')
+  end
+
   describe 'admin user' do
     let(:admin_user) { FactoryBot.create(:user, admin: true) }
     let(:question) { FactoryBot.create(:question) }

@@ -25,31 +25,32 @@
       .row.mb-2
         - if @exercise.global == false
           .badge.badge-pill.badge-warning Your Custom Exercise
-  .row.mt-3
-    .col-xl-12
-      .card.bg-dark
-        .card-body
-          .card-title
-            %h3 My Past Practice
-          .table-responsive-xl
-            %table.table.table-warning
-              %tbody
-              %th
-              %th Day
-              %th Place
-              - @exercise.questions.each do |question|
-                %th= truncate(question.inquiry, length: 75)
-              - @rehearsals.each do |rehearsal|
-                %tr{class: "bg-#{randomize_color_css} text-white"}
-                  %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-sm btn-outline-light"
-                  %td= rehearsal.created_at.strftime("%d.%m.%Y")
-                  -if rehearsal.city?
-                    %td= rehearsal.city
-                  -else
-                    %td Unknown City
+  - if @rehearsals.count > 0
+    .row.mt-3
+      .col-xl-12
+        .card.bg-dark
+          .card-body
+            .card-title
+              %h3 My Past Practice
+            .table-responsive-xl
+              %table.table.table-warning
+                %tbody
+                %th
+                %th Day
+                %th Place
+                - @exercise.questions.each do |question|
+                  %th= truncate(question.inquiry, length: 75)
+                - @rehearsals.each do |rehearsal|
+                  %tr{class: "bg-#{randomize_color_css} text-white"}
+                    %td= link_to 'Read', rehearsal_path(rehearsal), class: "btn btn-sm btn-outline-light"
+                    %td= rehearsal.created_at.strftime("%d.%m.%Y")
+                    -if rehearsal.city?
+                      %td= rehearsal.city
+                    -else
+                      %td Unknown City
 
-                  - rehearsal.answers.each do |answer|
-                    %td= truncate(answer.reply, length: 100)
+                    - rehearsal.answers.each do |answer|
+                      %td= truncate(answer.reply, length: 100)
 
   .row.mt-3
     .col-xl-12
