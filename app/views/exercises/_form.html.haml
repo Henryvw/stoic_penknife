@@ -6,8 +6,9 @@
   = f.file_field :icon, label: 'Add an image icon', class: 'form-control'
   %h3 Think-Exercise Questions
   = f.fields_for :questions do |question|
-    = render 'question_fields', f: question
-  = link_to_add_association 'Add New Question', f, :questions, class: 'btn btn-md btn-danger form-control mb-3'
+    = render 'question_fields', f: question, id: 'question'
+  .links
+    = link_to_add_association 'Add New Question', f, :questions, class: 'btn btn-md btn-danger form-control mb-3'
   %h5 At least one question is required in order to create a new exercise.
   %h5 There is a limit of 7 questions per exercise.
 
