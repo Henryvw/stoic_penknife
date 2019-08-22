@@ -6,6 +6,8 @@ module ExercisesHelper
       info
       warning
       success
+      dark
+      secondary
     ]
     color_list.sample
   end
