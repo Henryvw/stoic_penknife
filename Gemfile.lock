@@ -1,29 +1,29 @@
 GIT
-  remote: git://github.com/activeadmin/activeadmin.git
-  revision: 664d86374e071e22e4f99c936d9196189b9594a0
+  remote: https://github.com/activeadmin/activeadmin.git
+  revision: c4658b0e977fad4e4dc27fad4955a6f33364904c
   specs:
-    activeadmin (2.0.0.rc1)
-      arbre (~> 1.2)
+    activeadmin (2.2.0)
+      arbre (~> 1.2, >= 1.2.1)
       formtastic (~> 3.1)
       formtastic_i18n (~> 0.4)
       inherited_resources (~> 1.7)
       jquery-rails (~> 4.2)
       kaminari (~> 1.0, >= 1.0.1)
-      railties (>= 5.0, < 6.0)
-      ransack (~> 2.1, >= 2.1.1)
-      sass (~> 3.4)
+      railties (>= 5.0, < 6.1)
+      ransack (~> 2.3)
+      sassc-rails (~> 2.1)
       sprockets (>= 3.0, < 4.1)
       sprockets-es6 (~> 0.9, >= 0.9.2)
 
 GIT
-  remote: git://github.com/activeadmin/inherited_resources.git
-  revision: 2ba6982ddd6a56e7ef9ed7396473e5500ad77126
+  remote: https://github.com/activeadmin/inherited_resources.git
+  revision: 47acbb1b0859b68639b85ebe95f99e67c34e8e1d
   specs:
-    inherited_resources (1.10.0)
-      actionpack (>= 5.0, < 6.0)
+    inherited_resources (1.11.0)
+      actionpack (>= 5.0, < 6.1)
       has_scope (~> 0.6)
-      railties (>= 5.0, < 6.0)
-      responders (~> 2.0)
+      railties (>= 5.0, < 6.1)
+      responders (>= 2, < 4)
 
 GEM
   remote: https://rubygems.org/
@@ -71,7 +71,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
-    arbre (1.2.0)
+    arbre (1.2.1)
       activesupport (>= 3.0.0)
     arel (9.0.0)
     ast (2.4.0)
@@ -209,6 +209,8 @@ GEM
     parser (2.6.2.1)
       ast (~> 2.4.0)
     pg (1.1.4)
+    polyamorous (2.3.0)
+      activerecord (>= 5.0)
     popper_js (1.14.5)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -257,11 +259,12 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (12.3.3)
-    ransack (2.1.1)
+    ransack (2.3.0)
       actionpack (>= 5.0)
       activerecord (>= 5.0)
       activesupport (>= 5.0)
       i18n
+      polyamorous (= 2.3.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -415,4 +418,4 @@ RUBY VERSION
    ruby 2.6.2p47
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
