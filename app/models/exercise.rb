@@ -3,8 +3,7 @@ class Exercise < ActiveRecord::Base
   has_many :answers, through: :questions
   has_many :questions, dependent: :destroy
   has_many :rehearsals
-  has_many :exercise_taggings
-  has_many :tags, through: :exercise_taggings
+  has_many :tags, as: :tagable
   accepts_nested_attributes_for :rehearsals
   accepts_nested_attributes_for :questions,
                                 reject_if: ->(a) { a[:inquiry].blank? },

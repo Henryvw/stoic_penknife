@@ -1,6 +1,6 @@
 class Tag < ActiveRecord::Base
-  has_many :exercise_taggings
-  has_many :exercises, through: :exercise_taggings
+  belongs_to :tagable, polymorphic: true
+
   has_many :quotation_taggings
   has_many :quotations, through: :quotation_taggings
   has_many :doctrine_taggings
