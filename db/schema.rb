@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_063035) do
 
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
-    t.string "tagable_id"
+    t.bigint "tagable_id"
     t.string "tagable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

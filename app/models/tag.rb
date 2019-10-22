@@ -1,5 +1,6 @@
 class Tag < ActiveRecord::Base
-  belongs_to :tagable, polymorphic: true
+  has_many :taggings
+  has_many :exercises, through: :taggings, source: :tagable, source_type: 'Exercise'
 
   has_many :quotation_taggings
   has_many :quotations, through: :quotation_taggings

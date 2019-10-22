@@ -1,4 +1,8 @@
 class Exercise < ActiveRecord::Base
+
+  #Include Taggable methods via the Taggable Concern Module
+  include Taggable
+
   belongs_to :user
   has_many :answers, through: :questions
   has_many :questions, dependent: :destroy
@@ -16,20 +20,6 @@ class Exercise < ActiveRecord::Base
   validates :questions, presence: true
   validate :maximum_number_of_questions
   has_one_attached :icon
-
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).exercises
-  end
-
-  def tag_list
-    tags.map(&:name).join(', ')
-  end
-
-  def tag_list=(names)
-    self.tags = names.split(',').map do |n|
-      Tag.where(name: n.strip).first_or_create!
-    end
-  end
 
   def rehearsals_for_user(user)
     rehearsals.where(user: user)

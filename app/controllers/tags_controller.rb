@@ -8,8 +8,6 @@ class TagsController < ApplicationController
   end
 
   def grab_global_exercises
-    binding.pry
-    @global_exercises = Tag.tagable.where(global: true)
     @global_exercises = Exercise.tagged_with(params[:tag])
                                 .where(global: true)
   end
