@@ -3,7 +3,10 @@ class Exercise < ActiveRecord::Base
   has_many :answers, through: :questions
   has_many :questions, dependent: :destroy
   has_many :rehearsals
-  has_many :tags, as: :tagable
+
+  has_many :taggings, as: :tagable
+  has_many :tags, through: :taggings
+
   accepts_nested_attributes_for :rehearsals
   accepts_nested_attributes_for :questions,
                                 reject_if: ->(a) { a[:inquiry].blank? },
@@ -13,10 +16,6 @@ class Exercise < ActiveRecord::Base
   validates :questions, presence: true
   validate :maximum_number_of_questions
   has_one_attached :icon
-
-  def rehearsals_for_user(user)
-    rehearsals.where(user: user)
-  end
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).exercises
@@ -30,6 +29,10 @@ class Exercise < ActiveRecord::Base
     self.tags = names.split(',').map do |n|
       Tag.where(name: n.strip).first_or_create!
     end
+  end
+
+  def rehearsals_for_user(user)
+    rehearsals.where(user: user)
   end
 
   def maximum_number_of_questions
