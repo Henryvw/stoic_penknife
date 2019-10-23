@@ -26,4 +26,3 @@ module Taggable
     end
   end
 end
-
