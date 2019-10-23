@@ -1,9 +1,8 @@
 class Tag < ActiveRecord::Base
   has_many :taggings
   has_many :exercises, through: :taggings, source: :tagable, source_type: 'Exercise'
+  has_many :quotations, through: :taggings, source: :tagable, source_type: 'Quotation'
 
-  has_many :quotation_taggings
-  has_many :quotations, through: :quotation_taggings
   has_many :doctrine_taggings
   has_many :doctrines, through: :doctrine_taggings
 
