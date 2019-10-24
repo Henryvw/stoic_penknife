@@ -24,5 +24,15 @@ module Taggable
       tag.send(relevant_model)
       #For example tag.exercises, tag.quotations, etc.
     end
+
+  def find_me_with(multiple_tags)
+    relevant_model = self.name.pluralize.downcase.to_sym
+    objects_array = []
+    multiple_tags.each do |tag|
+      objects_array += Tag.find_by_name!(tag.name).send(relevant_model)
+    end
+    objects_array
+  end
+
   end
 end

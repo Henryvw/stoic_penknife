@@ -41,8 +41,8 @@ describe Doctrine, type: :model do
         expect(Doctrine.tagged_with('Musonius Rufus').first.file_name).to eq('hadot_marcus_aurelius')
       end
 
-      it '#find_quotations_with - when given a LIST of tags, find all doctrines attached to all of the tags in the database' do
-        expect(Doctrine.find_doctrines_with(tags).first.file_name).to eq('hadot_marcus_aurelius')
+      it '#find_me_with - when given a LIST of tags, find all doctrines attached to all of the tags in the database' do
+        expect(Doctrine.find_me_with(tags).first.file_name).to eq('hadot_marcus_aurelius')
       end
     end
 

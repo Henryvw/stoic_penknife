@@ -61,9 +61,9 @@ describe Quotation, type: :model do
     end
   end
 
-  describe '#find_quotations_with' do
-    it '#find_quotations_with - when given a LIST of tags, find all quotations attached to all of the tags in the database' do
-      expect(Quotation.find_quotations_with(tags).first.title).to eq('Title')
+  describe '#find_me_with' do
+    it '#find_me_with - when given a LIST of tags, find all quotations attached to all of the tags in the database' do
+      expect(Quotation.find_me_with(tags).first.title).to eq('Title')
     end
   end
 

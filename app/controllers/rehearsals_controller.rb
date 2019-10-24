@@ -27,7 +27,7 @@ class RehearsalsController < ApplicationController
 
     exercise_tags = @exercise.tags
     @published_quotations = Quotation.where(publish: true)
-                                     .find_quotations_with(exercise_tags)
+                                     .find_me_with(exercise_tags)
   end
 
   # GET /rehearsals/1/edit
