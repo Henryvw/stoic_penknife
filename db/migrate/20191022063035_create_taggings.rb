@@ -8,6 +8,6 @@ class CreateTaggings < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :taggings, [:tagable_type, :tagable_id]
+    add_index :taggings, %i[tagable_type tagable_id]
   end
 end

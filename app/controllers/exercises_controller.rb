@@ -30,12 +30,11 @@ class ExercisesController < ApplicationController
     # "custom nil object", aka a "Guest" User, who has
     # zero private exercises, a "name" of guest, etc.
     @exercises = Exercise.where(user_id: current_user.try(:id))
-
-    if Exercise.where(global: true).count > 0
-      @latest_exercise = Exercise.where(global: true).last
-    else
-      @latest_exercise = Exercise.new(global: true, title: "Sample", general_description: "Sample")
-    end
+    @latest_exercise = if Exercise.where(global: true).count.positive?
+                         Exercise.where(global: true).last
+                       else
+                         Exercise.new(global: true, title: 'Sample')
+                       end
   end
 
   # GET /exercises/1

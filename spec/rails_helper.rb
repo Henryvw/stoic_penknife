@@ -69,6 +69,7 @@ RSpec.configure do |config|
         uncommitted transaction data setup over the spec's database connection.
       MSG
     end
+
     DatabaseCleaner.clean_with(:truncation)
   end
 
@@ -88,7 +89,6 @@ RSpec.configure do |config|
       DatabaseCleaner.strategy = :truncation
     end
   end
-
 
   config.before(:each) do
     DatabaseCleaner.start

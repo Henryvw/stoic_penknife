@@ -1,6 +1,5 @@
 class Exercise < ActiveRecord::Base
-
-  #Include Taggable methods via the Taggable Concern Module
+  # Include Taggable methods via the Taggable Concern Module
   include Taggable
 
   belongs_to :user
