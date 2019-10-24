@@ -48,6 +48,7 @@ RSpec.describe 'Quotations', type: :system do
 
   describe 'Admin user' do
     it 'can see a list (index) of quotations' do
+      FactoryBot.create(:quotation, title: 'Goethe Love', passage: 'Die Menschheit.')
       sign_in admin_user
       visit quotations_path
       expect(page).to have_content 'Goethe Love'

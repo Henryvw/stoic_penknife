@@ -5,16 +5,16 @@ RSpec.describe 'Rehearsals', type: :system do
     let(:normal_user) { FactoryBot.create(:user) }
     let(:question) { FactoryBot.create(:question) }
     let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
-    let(:answer) { FactoryBot.create(:answer) }
+    let(:answer) { FactoryBot.create(:answer, question: question) }
     let(:rehearsal) { FactoryBot.create(:rehearsal, answers: [answer]) }
 
     it 'can read a rehearsal if it belongs to me' do
-      answer = FactoryBot.create(:answer, reply: 'I learned to dance.')
+      question = FactoryBot.create(:question)
+      answer = FactoryBot.create(:answer, reply: 'I learned to dance.', question: question)
       rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user)
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)
-
       expect(page).to have_content('I learned to dance.')
     end
 
@@ -29,7 +29,8 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can capture and view the city in which I practiced my rehearsal' do
-      answer = FactoryBot.create(:answer, reply: 'I learned to dance.')
+      question = FactoryBot.create(:question)
+      answer = FactoryBot.create(:answer, reply: 'I learned to dance.', question: question)
       rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user, city: 'Moscow')
 
       sign_in normal_user
