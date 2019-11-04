@@ -75,29 +75,11 @@ ActiveRecord::Schema.define(version: 2019_11_04_132944) do
     t.integer "rehearsal_id"
   end
 
-  create_table "doctrine_taggings", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "doctrine_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["doctrine_id"], name: "index_doctrine_taggings_on_doctrine_id"
-    t.index ["tag_id"], name: "index_doctrine_taggings_on_tag_id"
-  end
-
   create_table "doctrines", force: :cascade do |t|
     t.string "file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "publish"
-  end
-
-  create_table "exercise_taggings", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "exercise_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["exercise_id"], name: "index_exercise_taggings_on_exercise_id"
-    t.index ["tag_id"], name: "index_exercise_taggings_on_tag_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -132,15 +114,6 @@ ActiveRecord::Schema.define(version: 2019_11_04_132944) do
     t.text "inquiry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "quotation_taggings", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "quotation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["quotation_id"], name: "index_quotation_taggings_on_quotation_id"
-    t.index ["tag_id"], name: "index_quotation_taggings_on_tag_id"
   end
 
   create_table "quotations", force: :cascade do |t|
