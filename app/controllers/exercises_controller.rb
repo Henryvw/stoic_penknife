@@ -30,7 +30,11 @@ class ExercisesController < ApplicationController
     # "custom nil object", aka a "Guest" User, who has
     # zero private exercises, a "name" of guest, etc.
     @exercises = Exercise.where(user_id: current_user.try(:id))
-    @latest_exercise = Exercise.where(global: true).last
+    @latest_exercise = if Exercise.where(global: true).count.positive?
+                         Exercise.where(global: true).last
+                       else
+                         Exercise.new(global: true, title: 'Sample')
+                       end
   end
 
   # GET /exercises/1
@@ -38,7 +42,7 @@ class ExercisesController < ApplicationController
     @rehearsals = @exercise.rehearsals_for_user(current_user)
     exercise_tags = @exercise.tags
     @published_doctrines = Doctrine.where(publish: true)
-                                   .find_doctrines_with(exercise_tags)
+                                   .find_me_with(exercise_tags)
   end
 
   # GET /exercises/new

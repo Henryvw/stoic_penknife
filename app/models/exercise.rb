@@ -1,10 +1,15 @@
 class Exercise < ActiveRecord::Base
+  # Include Taggable methods via the Taggable Concern Module
+  include Taggable
+
   belongs_to :user
   has_many :answers, through: :questions
   has_many :questions, dependent: :destroy
   has_many :rehearsals
-  has_many :exercise_taggings
-  has_many :tags, through: :exercise_taggings
+
+  has_many :taggings, as: :tagable
+  has_many :tags, through: :taggings
+
   accepts_nested_attributes_for :rehearsals
   accepts_nested_attributes_for :questions,
                                 reject_if: ->(a) { a[:inquiry].blank? },
@@ -17,20 +22,6 @@ class Exercise < ActiveRecord::Base
 
   def rehearsals_for_user(user)
     rehearsals.where(user: user)
-  end
-
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).exercises
-  end
-
-  def tag_list
-    tags.map(&:name).join(', ')
-  end
-
-  def tag_list=(names)
-    self.tags = names.split(',').map do |n|
-      Tag.where(name: n.strip).first_or_create!
-    end
   end
 
   def maximum_number_of_questions

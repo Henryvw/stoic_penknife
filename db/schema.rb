@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_170240) do
+ActiveRecord::Schema.define(version: 2019_11_04_132944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,29 +75,11 @@ ActiveRecord::Schema.define(version: 2019_06_28_170240) do
     t.integer "rehearsal_id"
   end
 
-  create_table "doctrine_taggings", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "doctrine_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["doctrine_id"], name: "index_doctrine_taggings_on_doctrine_id"
-    t.index ["tag_id"], name: "index_doctrine_taggings_on_tag_id"
-  end
-
   create_table "doctrines", force: :cascade do |t|
     t.string "file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "publish"
-  end
-
-  create_table "exercise_taggings", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "exercise_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["exercise_id"], name: "index_exercise_taggings_on_exercise_id"
-    t.index ["tag_id"], name: "index_exercise_taggings_on_tag_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -134,15 +116,6 @@ ActiveRecord::Schema.define(version: 2019_06_28_170240) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "quotation_taggings", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "quotation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["quotation_id"], name: "index_quotation_taggings_on_quotation_id"
-    t.index ["tag_id"], name: "index_quotation_taggings_on_tag_id"
-  end
-
   create_table "quotations", force: :cascade do |t|
     t.string "title"
     t.text "passage"
@@ -158,6 +131,16 @@ ActiveRecord::Schema.define(version: 2019_06_28_170240) do
     t.integer "exercise_id"
     t.integer "user_id"
     t.string "city"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "tagable_id"
+    t.string "tagable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["tagable_type", "tagable_id"], name: "index_taggings_on_tagable_type_and_tagable_id"
   end
 
   create_table "tags", force: :cascade do |t|
