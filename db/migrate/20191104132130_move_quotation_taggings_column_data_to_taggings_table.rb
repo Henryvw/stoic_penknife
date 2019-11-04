@@ -1,4 +1,7 @@
 class MoveQuotationTaggingsColumnDataToTaggingsTable < ActiveRecord::Migration[5.2]
+  class QuotationTagging < ActiveRecord::Base
+  end
+
   def change
     QuotationTagging.find_each do |qt|
       new_tagging = Tagging.create(
