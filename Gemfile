@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.6.2'
+ruby '2.7.1'
 gem 'activeadmin', github: 'activeadmin'
 gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 4.3.1'
