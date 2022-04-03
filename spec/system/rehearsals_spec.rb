@@ -5,13 +5,13 @@ RSpec.describe 'Rehearsals', type: :system do
     let(:normal_user) { FactoryBot.create(:user) }
     let(:question) { FactoryBot.create(:question) }
     let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
-    let(:answer) { FactoryBot.create(:answer, question: question) }
+    let(:answer) { FactoryBot.create(:answer, question:) }
     let(:rehearsal) { FactoryBot.create(:rehearsal, answers: [answer]) }
 
     it 'can read a rehearsal if it belongs to me' do
       question = FactoryBot.create(:question)
-      answer = FactoryBot.create(:answer, reply: 'I learned to dance.', question: question)
-      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user)
+      answer = FactoryBot.create(:answer, reply: 'I learned to dance.', question:)
+      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise:, user: normal_user)
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)
@@ -20,7 +20,7 @@ RSpec.describe 'Rehearsals', type: :system do
 
     it 'cannot read a rehearsal that belongs to another user' do
       second_normal_user = FactoryBot.create(:user)
-      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: second_normal_user)
+      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise:, user: second_normal_user)
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)
@@ -30,8 +30,8 @@ RSpec.describe 'Rehearsals', type: :system do
 
     it 'can capture and view the city in which I practiced my rehearsal' do
       question = FactoryBot.create(:question)
-      answer = FactoryBot.create(:answer, reply: 'I learned to dance.', question: question)
-      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user, city: 'Moscow')
+      answer = FactoryBot.create(:answer, reply: 'I learned to dance.', question:)
+      rehearsal = FactoryBot.create(:rehearsal, answers: [answer], exercise:, user: normal_user, city: 'Moscow')
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)
@@ -44,7 +44,7 @@ RSpec.describe 'Rehearsals', type: :system do
       second_answer = FactoryBot.create(:answer, reply: 'I learned to dance a 2nd time')
       third_answer = FactoryBot.create(:answer, reply: 'I learned to dance a 3rd time')
       answers = [first_answer, second_answer, third_answer]
-      FactoryBot.create(:rehearsal, answers: answers, exercise: exercise, user: normal_user)
+      FactoryBot.create(:rehearsal, answers:, exercise:, user: normal_user)
 
       sign_in normal_user
       visit exercise_path(exercise.id)
@@ -56,7 +56,7 @@ RSpec.describe 'Rehearsals', type: :system do
 
     it 'can see a city on the individual exercises rehearsal index' do
       answer = FactoryBot.create(:answer, reply: 'I learned to dance.')
-      FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user, city: 'Moscow')
+      FactoryBot.create(:rehearsal, answers: [answer], exercise:, user: normal_user, city: 'Moscow')
 
       sign_in normal_user
       visit exercise_path(exercise.id)
@@ -65,7 +65,7 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can create a rehearsal' do
-      FactoryBot.create(:rehearsal, exercise: exercise, user: normal_user)
+      FactoryBot.create(:rehearsal, exercise:, user: normal_user)
       sign_in normal_user
       visit exercise_path(exercise.id)
 
@@ -77,7 +77,7 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can edit a rehearsal' do
-      rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: normal_user)
+      rehearsal = FactoryBot.create(:rehearsal, exercise:, user: normal_user)
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)
@@ -90,7 +90,7 @@ RSpec.describe 'Rehearsals', type: :system do
     end
 
     it 'can delete a rehearsal' do
-      rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: normal_user)
+      rehearsal = FactoryBot.create(:rehearsal, exercise:, user: normal_user)
 
       sign_in normal_user
       visit rehearsal_path(rehearsal.id)

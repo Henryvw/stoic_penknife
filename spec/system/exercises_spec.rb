@@ -203,7 +203,7 @@ RSpec.describe 'Exercises', type: :system do
     exercise = FactoryBot.create(:exercise, questions: [question], global: false, general_description: 'Senecas Amazing Exercise.', user: normal_user)
     sign_in normal_user
     answer = FactoryBot.create(:answer, reply: 'I learned to dance.')
-    FactoryBot.create(:rehearsal, answers: [answer], exercise: exercise, user: normal_user)
+    FactoryBot.create(:rehearsal, answers: [answer], exercise:, user: normal_user)
     visit exercise_path(exercise.id)
 
     expect(page).to have_content('I learned to dance.')

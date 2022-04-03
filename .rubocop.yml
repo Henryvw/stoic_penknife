@@ -51,3 +51,4 @@ AllCops:
     # cause a large number of Rubocop errors. I'm not 
     # going to mess with or second-guess their changes.
     - db/migrate/*active_storage.rb
+    - db/migrate/20141009070947_devise_create_admin_users.rb 

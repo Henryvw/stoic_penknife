@@ -21,7 +21,7 @@ class Exercise < ActiveRecord::Base
   has_one_attached :icon
 
   def rehearsals_for_user(user)
-    rehearsals.where(user: user)
+    rehearsals.where(user:)
   end
 
   def maximum_number_of_questions

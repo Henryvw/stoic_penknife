@@ -8,11 +8,11 @@ describe Answer do
 
   it 'returns an exercise answer as a string' do
     answer = FactoryBot.create(:answer, reply: 'Yes, I practice it every day.')
-    expect(answer.reply). to eq 'Yes, I practice it every day.'
+    expect(answer.reply).to eq 'Yes, I practice it every day.'
   end
 
   it 'can be accessed via an question' do
-    answer = FactoryBot.create(:answer, question: question)
+    answer = FactoryBot.create(:answer, question:)
     expect(question.answers).to include(answer)
   end
 

@@ -8,7 +8,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 
 # Require FactoryBot Config. Part of FactoryBot setup.
-require 'support/factory_bot.rb'
+require 'support/factory_bot'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

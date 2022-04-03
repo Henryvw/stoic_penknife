@@ -53,7 +53,7 @@ RSpec.describe Exercise, type: :model do
       user = FactoryBot.create(:user)
       question = FactoryBot.create(:question)
       exercise = FactoryBot.create(:exercise, :socrates_tag, questions: [question])
-      rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: user)
+      rehearsal = FactoryBot.create(:rehearsal, exercise:, user:)
 
       actual = exercise.rehearsals_for_user(user)
 
@@ -66,7 +66,7 @@ RSpec.describe Exercise, type: :model do
       user_two = FactoryBot.build_stubbed(:user)
       question = FactoryBot.create(:question)
       exercise = FactoryBot.create(:exercise, questions: [question])
-      rehearsal = FactoryBot.create(:rehearsal, exercise: exercise, user: user_two)
+      rehearsal = FactoryBot.create(:rehearsal, exercise:, user: user_two)
 
       actual = exercise.rehearsals_for_user(user)
 
