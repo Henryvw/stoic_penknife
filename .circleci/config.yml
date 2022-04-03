@@ -15,7 +15,7 @@ jobs:
   build:
     # 1.1 Docker Images to be the background of this setup
     docker:
-      - image: circleci/ruby:2.6.2-browsers
+      - image: circleci/ruby:2.7.1-browsers
         environment:
           RAILS_ENV: test
           DATABASE_URL: "postgres://test_user:test_password@localhost:5432/test_stoic_db"
