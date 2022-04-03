@@ -1,11 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Exercises', type: :system do
-include ActionDispatch::TestProcess::FixtureFile
-include Rack::Test::Methods
   describe 'non-logged-in (guest) user' do
-include Rack::Test::Methods
-include ActionDispatch::TestProcess::FixtureFile
     let(:question) { FactoryBot.create(:question) }
     let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
 
@@ -49,7 +45,6 @@ include ActionDispatch::TestProcess::FixtureFile
     end
 
     it 'can see the active storage image on the individual exercise show page' do
-      include ActionDispatch::TestProcess::FixtureFile
       exercise = FactoryBot.create(:exercise, :with_icon, global: true, questions: [question])
       visit exercise_path(exercise.id)
       expect(page).to have_css("img[src*='test-image.jpg']")
@@ -57,7 +52,6 @@ include ActionDispatch::TestProcess::FixtureFile
   end
 
   describe 'normal signed-in user' do
-include ActionDispatch::TestProcess::FixtureFile
     let(:normal_user) { FactoryBot.create(:user) }
     let(:question) { FactoryBot.create(:question) }
     let(:exercise) { FactoryBot.create(:exercise, questions: [question], global: true) }
