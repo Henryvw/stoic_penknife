@@ -39,6 +39,14 @@ jobs:
       - run: bin/rails db:create
       - run: bin/rails db:migrate
   # 2. Test
+  # Apparently now with Rails 7.0.2 upgrade etc. I need Selenium to run here. Not sure why I didn't need it before.
+      - run:
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          background: true
   # A way to dump shell environment variables to the screen
   # - run: env
       - run: bundle exec rubocop
