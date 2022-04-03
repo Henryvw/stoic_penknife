@@ -41,7 +41,7 @@ group :development, :test do
   gem 'pry'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.67.2', require: false
+  gem 'rubocop', require: false
   # Needed in new OS X Sierra for this version of Ruby with Pry
   gem 'railroady'
   gem 'rb-readline'
