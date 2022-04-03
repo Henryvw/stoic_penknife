@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.6.0'
 gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 gem 'pg'
-gem 'rails', '5.2.4.3'
+gem 'rails', '5.2.5'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
