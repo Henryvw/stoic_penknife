@@ -58,4 +58,4 @@
               Stoic Doctrines
           .card-text
             - @doctrines.each do |doctrine|
-              = render file: "doctrines/#{doctrine.file_name}.html.haml"
+              = render file: Rails.root.join("app/views/doctrines/#{doctrine.file_name}.html.haml")

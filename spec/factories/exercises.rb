@@ -32,7 +32,7 @@ FactoryBot.define do
   trait :with_icon do
     after(:build) do |exercise|
       file_path = Rails.root.join('spec', 'support', 'assets', 'test-image.jpg')
-      file = fixture_file_upload(Rails.root.join(file_path))
+      file = Rack::Test::UploadedFile.new(Rails.root.join(file_path))
       exercise.icon.attach(file)
     end
   end

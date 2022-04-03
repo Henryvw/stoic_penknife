@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.7.1'
+ruby '3.1.1'
 gem 'activeadmin', github: 'activeadmin'
 gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 4.3.1'
@@ -21,9 +21,9 @@ gem 'jbuilder', '~> 2.6.0'
 gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 gem 'pg'
-gem 'rails', '5.2.5'
-# Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'rails', '7.0.2.3'
+# Replace outdated sass-rails gem with cssbundling-rails for 6.0
+
 # Use Uglifier as compressor for JavaScript assets
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -34,14 +34,13 @@ end
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
-  gem 'capybara', '~> 3.18.0'
-  gem 'codecov', require: false, group: :test
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'pry'
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rspec-rails'
   gem 'rubocop', '~> 0.67.2', require: false
   # Needed in new OS X Sierra for this version of Ruby with Pry
   gem 'railroady'
@@ -50,13 +49,13 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'spring-commands-rspec'
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3'
 end
 
 group :production do
   gem 'aws-sdk-s3', require: false
-  gem 'puma'
-  gem 'puma-heroku'
+  gem 'puma', '~> 4.3'
+  gem 'puma-heroku', '~> 1.1.0'
   gem 'rails_12factor'
 end
 
