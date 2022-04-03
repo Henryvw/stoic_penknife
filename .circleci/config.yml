@@ -2,7 +2,8 @@ version: 2.1
 orbs:
   heroku: circleci/heroku@0.0.6
   codecov: codecov/codecov@3.2.2
-
+  # New browser-tools orb needed for new cimg ruby to activate selenium
+  browser-tools: circleci/browser-tools@1.2.5
 workflows:
   build_test_deploy:
     jobs:
@@ -27,8 +28,10 @@ jobs:
           POSTGRES_DB: test_stoic_db
   # 1.2 Run commands to install relevant packages
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - run: echo "Henry here we go. Building Stoic Penknife for you. If all you had was this echo command CircleCI would consider the build a green success. A friendly salutation from the CircleCI Build."
+      - run: google-chrome
       - run: gem install bundler:2.0.1
       - run: bundle install
       # Javascript Runtime needed, see https://github.com/rails/execjs. That's why I install NodeJS below. The extra nodesource.com line is because
@@ -39,14 +42,6 @@ jobs:
       - run: bin/rails db:create
       - run: bin/rails db:migrate
   # 2. Test
-  # Apparently now with Rails 7.0.2 upgrade etc. I need Selenium to run here. Not sure why I didn't need it before.
-      - run:
-          name: Download Selenium
-          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
-      - run:
-          name: Start Selenium
-          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
-          background: true
   # A way to dump shell environment variables to the screen
   # - run: env
       - run: bundle exec rubocop
