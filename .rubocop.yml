@@ -12,7 +12,7 @@ Style/FrozenStringLiteralComment:
 Style/RedundantSelf:
   Exclude:
     - app/models/concerns/taggable.rb
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Enabled: False
 # Rubocop is maybe right here but I need to exclude
 # These particular files
