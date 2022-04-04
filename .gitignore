@@ -22,3 +22,8 @@
 
 # Hide test/factory-generated image (icon) assets
 /storage/*
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+/node_modules
