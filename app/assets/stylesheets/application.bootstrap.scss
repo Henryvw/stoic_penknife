@@ -1,3 +1,6 @@
+// NOTE: I used to have color variables and custom css in nice, separate CSS files. However with Rails 7 Asset pipeline these CSS Files were not loading properly into the asset pipeline. After much frustration I simply decided to combine everything into application.scss. As there is more documentation about Rails 7, maybe there will be more solutions to this. 
+
+// Color Variables, etc. Must be Loaded BEFORE Bootstrap
 $theme-colors: (
   "primary": rgb(22, 137, 192),
   "danger": rgb(183, 54, 27),
@@ -13,9 +16,12 @@ $dark-brown: rgb(79, 54, 0);
 
 $text-color: rgb(246, 247, 248) !important;
 
+// Load Bootstrap
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+
+// Load Custom CSS
 body {
   font-family: 'grecoroman', sans-serif !important;
   height: 100%;
