@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  heroku: circleci/heroku@0.0.6
+  heroku: circleci/heroku@1.2.6
   codecov: codecov/codecov@3.2.2
   # New browser-tools orb needed for new cimg ruby to activate selenium
   browser-tools: circleci/browser-tools@1.2.5
@@ -11,6 +11,9 @@ workflows:
       - deploy:
           requires:
             - build
+          filters:
+            branches:
+              only: master
 
 jobs:
   # 1. Build
@@ -53,6 +56,5 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git:
-          only-branch: master
+      - heroku/deploy-via-git
 
