@@ -34,7 +34,7 @@ jobs:
       - browser-tools/install-browser-tools
       - checkout
       - run: echo "Henry here we go. Building Stoic Penknife for you. If all you had was this echo command CircleCI would consider the build a green success. A friendly salutation from the CircleCI Build."
-      - run: gem install bundler:2.0.1
+      - run: gem install bundler:2.3.10
       - run: bundle install
       # Javascript Runtime needed, see https://github.com/rails/execjs. That's why I install NodeJS below. The extra nodesource.com line is because
       # There is an error due to the version of Node combined with the Ruby Docker image. See: https://github.com/ai/autoprefixer-rails/issues/144
