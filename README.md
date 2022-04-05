@@ -43,7 +43,7 @@ The exception to Stoic Penknife's test coverage (the reason it is not 100% cover
 I use CircleCI to run the `Rubocop` linter and the full test suite, push to CodeCov and and manage deployment to the production Heroku instance: https://github.com/Henryvw/stoic_penknife/blob/master/.circleci/config.yml
 
 ## Play with the App Locally / Have a Dev Environment
-If you want to play around, simply download the app and make sure you have Rails 5.2.3 and Ruby 2.6.2 installed and spin her up - `rails s`.
+If you want to play around, simply download the app and make sure you have Rails 7.0.2 and Ruby 3.1.1 installed and spin her up - `bin/dev`.
 
 I still have not written a `seed` file for the database. You will need to manually create a User with `admin=true` in Rails Console in order to administer global exercises. 
 
