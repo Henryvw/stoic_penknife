@@ -64,4 +64,4 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem "cssbundling-rails", "~> 1.1"
+gem 'cssbundling-rails', '~> 1.1'
