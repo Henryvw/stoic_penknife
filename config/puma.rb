@@ -1,6 +1,3 @@
-# Added on instruction of Puma, including puma-heroku gem... not sure if needed?
-plugin 'heroku'
-
 workers Integer(ENV['WEB_CONCURRENCY'] || 2)
 threads_count = Integer(ENV['RAILS_MAX_THREADS'] || 16)
 threads threads_count, threads_count
