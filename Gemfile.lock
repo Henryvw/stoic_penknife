@@ -246,10 +246,8 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (4.3.12)
+    puma (5.6.4)
       nio4r (~> 2.0)
-    puma-heroku (1.1.0)
-      puma (>= 3.0, < 5.0)
     racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -410,8 +408,7 @@ DEPENDENCIES
   mini_magick (>= 4.9.4)
   pg
   pry
-  puma (~> 4.3)
-  puma-heroku (~> 1.1.0)
+  puma (~> 5.6.4)
   railroady
   rails (= 7.0.2.3)
   rails-controller-testing

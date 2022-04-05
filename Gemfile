@@ -22,7 +22,9 @@ gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 gem 'pg'
 gem 'rails', '7.0.2.3'
+
 # Replace outdated sass-rails gem with cssbundling-rails for 6.0
+gem 'cssbundling-rails', '~> 1.1'
 
 # Use Uglifier as compressor for JavaScript assets
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -54,8 +56,7 @@ end
 
 group :production do
   gem 'aws-sdk-s3', require: false
-  gem 'puma', '~> 4.3'
-  gem 'puma-heroku', '~> 1.1.0'
+  gem 'puma', '~> 5.6.4'
   gem 'rails_12factor'
 end
 
@@ -63,5 +64,3 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-gem 'cssbundling-rails', '~> 1.1'
