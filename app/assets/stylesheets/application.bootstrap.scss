@@ -12,5 +12,168 @@ $light-blue: rgb(168, 187, 254);
 $dark-brown: rgb(79, 54, 0);
 
 $text-color: rgb(246, 247, 248) !important;
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+body {
+  font-family: 'grecoroman', sans-serif !important;
+  height: 100%;
+  background: rgb(130, 92, 10); /* Fallback color old browsers */
+  background: linear-gradient(90deg, rgba(130, 92, 10, 1) 20% 80%, rgba(156, 142, 111, 1) 20%);
+  color: rgb(246, 247, 248) !important;
+ 
+  a {
+   color: $light-blue;
+   font-weight: bold;
+  };
+
+  a:hover {
+    color: $white;
+    text-decoration: none;
+}
+
+  p, tbody, ul, ol {
+    font-family: 'calluna';
+  }
+
+  .card .card-body {
+    font-family: 'calluna';
+  }
+
+  .card .card-body .card-title h1,h2,h3,h4,h5 {
+    font-family: 'grecoroman', sans-serif !important;
+  }
+
+  .form-group input, label, textarea, .custom-file-input {
+    font-family: 'grecoroman', sans-serif !important;
+  }
+}
+
+.navbar a {
+  font-family: 'spqr', sans-serif !important;
+  font-weight: normal;
+}
+
+.navbar .nav-item a {
+  font-family: 'grecoroman', sans-serif !important;
+}
+
+.btn {
+  font-family: 'spqr', sans-serif !important;
+}
+
+.bg {
+  background: url('mosaic_hercules_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+}
+
+.masthead-brand {
+  font-family: 'spqr', sans-serif !important;
+  background: rgb(252, 170, 31);
+  border-radius: 25px;
+  padding: 20px; 
+}
+
+/* Bring in my custom Grecoroman (headlines), SPQR (buttons) and 'Calluna Light' (body) fonts, in relevant woff2, woff and tff formats */
+@font-face {
+  font-family: 'grecoroman';
+  src: font-url('grecoroman.woff2') format('woff2'),
+       font-url('grecoroman.woff') format('woff'),
+       font-url('grecoroman.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'spqr';
+  font-style: normal;
+  font-weight: 300;
+  src: local('spqr'),
+       font-url('spqr.woff2') format('woff2'),
+       font-url('spqr.woff') format('woff'),
+       font-url('spqr.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'calluna';
+  font-style: normal;
+  font-weight: 300;
+  src: local('calluna'),
+      font-url('calluna.woff2') format('woff2'),
+      font-url('calluna.woff') format('woff'),
+      font-url('calluna.ttf') format('calluna');
+}
+
+.diagonal-down {
+  transform: rotate(1.4deg);
+  display: inline-block;
+}
+
+.diagonal-up {
+  transform: rotate(-1.4deg);
+  display: inline-block;
+}
+
+label.required:after {
+  content:" *";
+}
+
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+    border-radius:3px;
+  }
+}
+
+.banner-container {
+	width: 150px;
+	height: 50px;
+	overflow: hidden;
+	position: absolute;
+	top: 110px;
+	right: -50px;
+	&:after {
+		content: "";
+		display: block;
+		width: 10px;
+		height: 5px;
+		background-color: darken($warning, 5%);
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: -2;
+	}
+	&:before {
+		content: "";
+		display: block;
+		height: 5px;
+		width: 10px;
+		background-color: darken($warning, 5%);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: -2;
+	}
+}
+
+
+.banner {
+	width: 200px;
+	padding: 15px;
+	background-color: $warning;
+	color: $dark;
+	text-align: center;
+	transform: rotate(45deg) translate(-28%, -35%);
+	box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+.border-3 {
+  border-width:3px !important;
+}
+
