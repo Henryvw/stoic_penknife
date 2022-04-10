@@ -73,6 +73,6 @@
           %h1.badge.badge-info Doctrines Pertaining to This Exercise
           - unless @published_doctrines.nil? || @published_doctrines.empty?
             - @published_doctrines.each do |doctrine|
-              = render template: "doctrines/#{doctrine.file_name}.html.haml"
+              = render template: "doctrines/#{doctrine.file_name}"
           - else
             %p There are no Stoic philosophical doctrines associated with this exercise.
