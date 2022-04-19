@@ -57,6 +57,5 @@ jobs:
       - checkout
       - heroku/install
       - heroku/deploy-via-git:
-        parameters:
           force: true
 

@@ -23,6 +23,7 @@ Are there any problems that you encountered? You can open an Issue or write to m
 
 # For Programmers
 ## How Can I Contribute?
+
 Stoic Penknife is an open source project. If you are interested in contributing, feel free to create an issue or a task in the Project tab: We have a [list of tasks in the Project tab](https://github.com/Henryvw/stoic_penknife/projects/1). Alternatively or in addition, feel free to write to me, Henry, at `henry@stoicpenknife.com`. We would also love to hear about additional improvement ideas. You are also free to fork the project and to make your own version (perhaps an Epicurean, Platonic-Academic, Aristotlean-Peripatetic, Pyrrho-Skeptic, Eclectic, Diogenes-Cynic or Heraklitean version?!)
 
 ## How is the Application Organized?
