@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.6.0'
 gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 gem 'pg'
+gem 'pry'
 gem 'rails', '7.0.2.3'
 
 # Replace outdated sass-rails gem with cssbundling-rails for 6.0
@@ -40,7 +41,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'launchy'
-  gem 'pry'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'rubocop', require: false
