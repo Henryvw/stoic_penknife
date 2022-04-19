@@ -56,6 +56,11 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git:
-          force: true
+      - heroku/deploy-via-git
+        # force: true
+        # If you get a problem with the git history, you can use force: true to force circleci to git push -f to heroku. I myself have used this several times.
+        # Note, you must add a colon (:) to heroku/deploy-via-git. Also force: true must be indented twice, it seems to me
+        # Then it will look like:
+        # - heroku/deploy-via-git:
+            # force: true
 
