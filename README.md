@@ -53,7 +53,7 @@ The second, ActiveAdmin back-end you can access at `/admin`. At the present time
 ### Note about Selenium Web Driver and Chrome RSpec Tests
 In order to run the test suite, you will need to install the `chromedriver` utility. On Mac OS X, this is managed by `homebrew`. Every time Chrome releases a new version of itself, for example going from Version 74 to Version 76, on your local machine to run the test suite you will need to update the `chromedriver` utility.
 
-On Mac OS X, `chromedriver` is managed by `homebrew`. You can update it via the command: 
+On Mac OS X, `chromedriver` is managed by `homebrew`. You can update it via the command:
 
 `brew cask reinstall chromedriver`
 
