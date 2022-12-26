@@ -8,7 +8,7 @@
 [CODE_COV]: https://codecov.io/gh/Henryvw/stoic_penknife
 
 ## What is Stoic Penknife?
-Stoic Penknife (https://www.stoicpenknife.com) is a web application to practice **ancient Stoic philosophical 'think-exercises'** to question your perceptions about yourself and your life. **Marcus Aurelius**, **Seneca**, **Epictetus** and other ancient Greek + Roman philosophers once practiced these exercises on paper - now you can do it with an app! Amazing. 
+Stoic Penknife (https://www.stoicpenknife.com) is a web application to practice **ancient Stoic philosophical 'think-exercises'** to question your perceptions about yourself and your life. **Marcus Aurelius**, **Seneca**, **Epictetus** and other ancient Greek + Roman philosophers once practiced these exercises on paper - now you can do it with an app! Amazing.
 
 # For Philosophers
 ## How Can I Use the App?
